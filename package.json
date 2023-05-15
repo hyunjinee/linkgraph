@@ -1,0 +1,11 @@
+{
+  "name": "linkgraph",
+  "packageManager": "yarn@3.5.1",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2"
+  }
+}
