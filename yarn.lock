@@ -68,6 +68,40 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@linkgraph/admin@workspace:packages/admin":
+  version: 0.0.0-use.local
+  resolution: "@linkgraph/admin@workspace:packages/admin"
+  dependencies:
+    "@types/node": 20.1.4
+    "@types/react": 18.2.6
+    "@types/react-dom": 18.2.4
+    autoprefixer: 10.4.14
+    next: 13.4.2
+    postcss: 8.4.23
+    react: 18.2.0
+    react-dom: 18.2.0
+    tailwindcss: 3.3.2
+    typescript: 5.0.4
+  languageName: unknown
+  linkType: soft
+
+"@linkgraph/frontend@workspace:packages/frontend":
+  version: 0.0.0-use.local
+  resolution: "@linkgraph/frontend@workspace:packages/frontend"
+  dependencies:
+    "@types/node": 20.1.4
+    "@types/react": 18.2.6
+    "@types/react-dom": 18.2.4
+    autoprefixer: 10.4.14
+    next: 13.4.2
+    postcss: 8.4.23
+    react: 18.2.0
+    react-dom: 18.2.0
+    tailwindcss: 3.3.2
+    typescript: 5.0.4
+  languageName: unknown
+  linkType: soft
+
 "@next/env@npm:13.4.2":
   version: 13.4.2
   resolution: "@next/env@npm:13.4.2"
@@ -248,23 +282,6 @@ __metadata:
   checksum: a4a97ec07d7ea112c517036882b2ac22f3109b7b19077dc656316d07d308438aac28e4d9746dc4d84bf6b1e75b4a7b0a5f3cb30592419f128ca9a8cee3bcfa17
   languageName: node
   linkType: hard
-
-"admin@workspace:packages/admin":
-  version: 0.0.0-use.local
-  resolution: "admin@workspace:packages/admin"
-  dependencies:
-    "@types/node": 20.1.4
-    "@types/react": 18.2.6
-    "@types/react-dom": 18.2.4
-    autoprefixer: 10.4.14
-    next: 13.4.2
-    postcss: 8.4.23
-    react: 18.2.0
-    react-dom: 18.2.0
-    tailwindcss: 3.3.2
-    typescript: 5.0.4
-  languageName: unknown
-  linkType: soft
 
 "agent-base@npm:6, agent-base@npm:^6.0.2":
   version: 6.0.2
@@ -822,23 +839,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"frontend@workspace:packages/frontend":
-  version: 0.0.0-use.local
-  resolution: "frontend@workspace:packages/frontend"
-  dependencies:
-    "@types/node": 20.1.4
-    "@types/react": 18.2.6
-    "@types/react-dom": 18.2.4
-    autoprefixer: 10.4.14
-    next: 13.4.2
-    postcss: 8.4.23
-    react: 18.2.0
-    react-dom: 18.2.0
-    tailwindcss: 3.3.2
-    typescript: 5.0.4
-  languageName: unknown
-  linkType: soft
-
 "fs-minipass@npm:^2.0.0, fs-minipass@npm:^2.1.0":
   version: 2.1.0
   resolution: "fs-minipass@npm:2.1.0"
@@ -1030,7 +1030,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^8.0.3":
+"husky@npm:^8.0.0":
   version: 8.0.3
   resolution: "husky@npm:8.0.3"
   bin:
@@ -1203,8 +1203,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "linkgraph@workspace:."
   dependencies:
-    husky: ^8.0.3
+    husky: ^8.0.0
     lint-staged: ^13.2.2
+    prettier: ^2.8.8
+    typescript: ^5.0.4
   languageName: unknown
   linkType: soft
 
@@ -1846,6 +1848,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier@npm:^2.8.8":
+  version: 2.8.8
+  resolution: "prettier@npm:2.8.8"
+  bin:
+    prettier: bin-prettier.js
+  checksum: b49e409431bf129dd89238d64299ba80717b57ff5a6d1c1a8b1a28b590d998a34e083fa13573bc732bb8d2305becb4c9a4407f8486c81fa7d55100eb08263cf8
+  languageName: node
+  linkType: hard
+
 "promise-inflight@npm:^1.0.1":
   version: 1.0.1
   resolution: "promise-inflight@npm:1.0.1"
@@ -2360,7 +2371,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.0.4":
+"typescript@npm:5.0.4, typescript@npm:^5.0.4":
   version: 5.0.4
   resolution: "typescript@npm:5.0.4"
   bin:
@@ -2370,7 +2381,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@5.0.4#~builtin<compat/typescript>":
+"typescript@patch:typescript@5.0.4#~builtin<compat/typescript>, typescript@patch:typescript@^5.0.4#~builtin<compat/typescript>":
   version: 5.0.4
   resolution: "typescript@patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"
   bin:

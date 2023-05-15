@@ -4,8 +4,16 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "frontend": "yarn workspace @linkgraph/frontend dev",
+    "admin": "yarn workspace @linkgraph/admin dev",
+    "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx",
+    "postinstall": "husky install"
+  },
   "devDependencies": {
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.2"
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4"
   }
 }
