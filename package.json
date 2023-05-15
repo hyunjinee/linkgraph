@@ -3,11 +3,13 @@
   "packageManager": "yarn@3.5.1",
   "private": true,
   "workspaces": [
+    "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "frontend": "yarn workspace @linkgraph/frontend dev",
-    "admin": "yarn workspace @linkgraph/admin dev",
+    "dev": "yarn workspace @linkgraph/frontend dev",
+    "admin": "yarn workspace @linkgraph/admin",
+    "frontend": "yarn workspace @linkgraph/frontend",
     "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx",
     "postinstall": "husky install"
   },
