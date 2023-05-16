@@ -10,7 +10,7 @@
     "dev": "yarn workspace @linkgraph/frontend dev",
     "d3-poc": "yarn workspace @linkgraph/d3-poc",
     "admin": "yarn workspace @linkgraph/admin",
-    "docs": "yarn workspace @linkgraph/docs start -p 3001",
+    "docs": "yarn workspace @linkgraph/docs",
     "frontend": "yarn workspace @linkgraph/frontend",
     "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx",
     "postinstall": "husky install"
