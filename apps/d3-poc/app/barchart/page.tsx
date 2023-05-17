@@ -7,13 +7,13 @@ const BarChart: NextPage = () => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
-    select(svgRef.current).append('rect');
+    select(svgRef.current).append('rect').attr('height', 100).attr('width', 100);
     console.log(select(svgRef.current));
   }, []);
 
   return (
     <div>
-      <svg ref={svgRef} />
+      <svg ref={svgRef}></svg>
     </div>
   );
 };
