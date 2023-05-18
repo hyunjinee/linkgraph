@@ -11,6 +11,7 @@
     "d3-poc": "yarn workspace @linkgraph/d3-poc",
     "admin": "yarn workspace @linkgraph/admin",
     "docs": "yarn workspace @linkgraph/docs",
+    "d3": "yarn workspace @linkgraph/d3",
     "frontend": "yarn workspace @linkgraph/frontend",
     "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx",
     "postinstall": "husky install"
