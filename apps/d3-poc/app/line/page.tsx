@@ -23,15 +23,20 @@ const Test: NextPage = () => {
       .style('stroke', 'black')
       .style('stroke-width', 2);
 
-    d3.select('svg').append('text').attr('x', 20).attr('y', 20).text('hello');
     d3.select('svg').append('circle').attr('r', 20).attr('cx', 20).attr('cy', 20).style('fill', 'red');
+    d3.select('svg').append('text').attr('id', 'a').attr('x', 20).attr('y', 20).style('opacity', 0).text('Hello World');
     d3.select('svg').append('circle').attr('r', 100).attr('cx', 400).attr('cy', 400).style('fill', 'lightblue');
-    d3.select('svg').append('text').attr('x', 400).attr('y', 400).text('world');
+    d3.select('svg').append('text').attr('id', 'b').attr('x', 400).attr('y', 400).style('opacity', 0).text('Uh, hi.');
+
+    d3.select('#a').transition().delay(1000).style('opacity', 1);
+    d3.select('#b').transition().delay(2000).style('opacity', 0.75);
+
+    d3.selectAll('circle').transition().duration(2000).attr('cy', 200);
   }, []);
   // return null;
   return (
     <>
-      <svg ref={svgRef} className="bg-gray-200 w-[500px] h-[500px] order-blue-100 border-4 border-blue-200" />
+      <svg ref={svgRef} className="bg-gray-200 w-[500px] h-[500px] border-1 border-black-200" />
     </>
   );
 };
