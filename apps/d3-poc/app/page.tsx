@@ -31,8 +31,6 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen p-24 bg-red-100">
-      <span>hdi</span>
-
       <svg ref={svgRef}></svg>
       <button
         onClick={() => {
