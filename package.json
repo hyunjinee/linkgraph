@@ -8,12 +8,17 @@
   ],
   "scripts": {
     "dev": "yarn workspace @linkgraph/frontend dev",
+    "d3-poc": "yarn workspace @linkgraph/d3-poc",
     "admin": "yarn workspace @linkgraph/admin",
+    "docs": "yarn workspace @linkgraph/docs",
+    "d3": "yarn workspace @linkgraph/d3",
     "frontend": "yarn workspace @linkgraph/frontend",
     "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx",
     "postinstall": "husky install"
   },
   "devDependencies": {
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
     "husky": "^8.0.0",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
