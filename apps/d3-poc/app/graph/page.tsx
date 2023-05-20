@@ -3,12 +3,7 @@ import { NextPage } from 'next';
 import { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-const nodes = [{ id: 'Alice' }, { id: 'Bob' }, { id: 'Carol' }];
-
-const links = [
-  { source: 0, target: 1 }, // Alice → Bob
-  { source: 1, target: 2 }, // Bob → Carol
-];
+import { nodes, links } from '~/data/forcegraph';
 
 const centerX = 960 / 2;
 const centerY = 500 / 2;
