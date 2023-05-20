@@ -20,11 +20,19 @@ const Graph: NextPage = () => {
 
     const svg = d3.select(svgRef.current);
     const circles = svg.selectAll('circle').data(nodes).enter().append('circle').attr('r', 10);
+    const text = svg
+      .selectAll('text')
+      .data(nodes)
+      .enter()
+      .append('text')
+      .text((node) => node.id);
     const lines = svg.selectAll('line').data(links).enter().append('line').attr('stroke', 'black');
 
     simulation.on('tick', () => {
       circles.attr('cx', (node: any) => node.x);
       circles.attr('cy', (node: any) => node.y);
+
+      text.attr('x', (node: any) => node.x).attr('y', (node: any) => node.y);
 
       lines
         .attr('x1', (link: any) => link.source.x)
