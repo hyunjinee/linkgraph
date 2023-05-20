@@ -15,8 +15,11 @@ const Graph: NextPage = () => {
   useEffect(() => {
     const simulation = d3
       .forceSimulation(nodes as any)
-      .force('charge', d3.forceManyBody().strength(-2000))
-      .force('link', d3.forceLink(links))
+      .force('charge', d3.forceManyBody().strength(-500))
+      .force(
+        'link',
+        d3.forceLink(links).distance((link) => link.distance),
+      )
       .force('center', d3.forceCenter(centerX, centerY));
 
     const svg = d3.select(svgRef.current);
