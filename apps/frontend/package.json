@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "ts-node ./prisma/seed.js"
+    "seed": "ts-node ./prisma/seed.js",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@linkgraph/site-info": "*",
