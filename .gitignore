@@ -26,3 +26,6 @@ tsconfig.tsbuildinfo
 
 # msw Service Worker
 mockServiceWorker.js
+
+# .env files
+.env
