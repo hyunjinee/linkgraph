@@ -17,3 +17,8 @@
 - 개인당 링크 연결 30개
 - 참고 headless ui
 - 모든 프로젝트에서 next.js를 사용한다. 이를 위한 ES Lint 설정을 공통으로 사용한다.
+
+## Done
+
+- D3 Force 그래프 PoC
+- PlanetScale connect with prisma (Deployed)
