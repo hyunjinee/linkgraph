@@ -1,4 +1,5 @@
 'use client';
+
 import { NextPage } from 'next';
 import { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
@@ -14,18 +15,27 @@ const Graph: NextPage = () => {
   useEffect(() => {
     const simulation = d3
       .forceSimulation(nodes as any)
-      .force('charge', d3.forceManyBody())
+      .force('charge', d3.forceManyBody().strength(-2000))
       .force('link', d3.forceLink(links))
       .force('center', d3.forceCenter(centerX, centerY));
 
     const svg = d3.select(svgRef.current);
-    const circles = svg.selectAll('circle').data(nodes).enter().append('circle').attr('r', 10);
+    const circles = svg
+      .selectAll('circle')
+      .data(nodes)
+      .enter()
+      .append('circle')
+      .attr('r', (node: any) => node.size)
+      .attr('fill', 'grey');
     const text = svg
       .selectAll('text')
       .data(nodes)
       .enter()
       .append('text')
-      .text((node) => node.id);
+      .text((node) => node.id)
+      .attr('text-anchor', 'middle')
+      .attr('alignment-baseline', 'middle');
+
     const lines = svg.selectAll('line').data(links).enter().append('line').attr('stroke', 'black');
 
     simulation.on('tick', () => {
