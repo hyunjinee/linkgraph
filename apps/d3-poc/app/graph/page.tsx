@@ -32,7 +32,7 @@ const Graph: NextPage = () => {
       .data(nodes)
       .enter()
       .append('text')
-      .text((node) => node.id)
+      .text((node: any) => node.id)
       .attr('text-anchor', 'middle')
       .attr('alignment-baseline', 'middle');
 
