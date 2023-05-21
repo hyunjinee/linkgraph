@@ -15,8 +15,8 @@ interface RootLayoutProps {
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
-    <html lang="ko">
-      <body className={inter.className}>
+    <html lang="ko" className="h-full antialiased scroll-smooth">
+      <body className={`${inter.className} flex h-full flex-col`}>
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
