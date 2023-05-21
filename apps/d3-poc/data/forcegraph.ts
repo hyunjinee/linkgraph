@@ -5,8 +5,9 @@ const MAIN_NODE_SIZE = 50;
 const CHILD_NODE_SIZE = 20;
 const LEAF_NODE_SIZE = 5;
 
-const DEFAULT_DISTANCE = 30;
-const LEAF_NODE_DISTANCE = 10;
+const DEFAULT_DISTANCE = 200;
+const LEAF_NODE_DISTANCE = 20;
+export const MANY_BODY_STRENGTH = -50;
 
 const addMainNode = (node: any) => {
   node.size = MAIN_NODE_SIZE;

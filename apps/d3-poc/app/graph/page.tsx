@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 import { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-import { nodes, links } from '~/data/forcegraph';
+import { nodes, links, MANY_BODY_STRENGTH } from '~/data/forcegraph';
 
 const centerX = 960 / 2;
 const centerY = 500 / 2;
@@ -15,7 +15,7 @@ const Graph: NextPage = () => {
   useEffect(() => {
     const simulation = d3
       .forceSimulation(nodes as any)
-      .force('charge', d3.forceManyBody().strength(-500))
+      .force('charge', d3.forceManyBody().strength(MANY_BODY_STRENGTH))
       .force(
         'link',
         d3.forceLink(links).distance((link) => link.distance),
