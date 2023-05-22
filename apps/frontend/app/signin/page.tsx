@@ -6,6 +6,8 @@ import GoogleSignInButton from '~/components/GoogleSignInButton';
 const SignInPage: NextPage = () => {
   const { data: session } = useSession();
 
+  console.log(session);
+
   if (session) {
     return (
       <div>
