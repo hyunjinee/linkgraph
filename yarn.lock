@@ -2854,6 +2854,7 @@ __metadata:
   resolution: "@linkgraph/frontend@workspace:apps/frontend"
   dependencies:
     "@linkgraph/site-info": "*"
+    "@next-auth/prisma-adapter": ^1.0.6
     "@prisma/client": ^4.14.1
     "@types/node": 20.1.4
     "@types/react": 18.2.6
@@ -2939,6 +2940,16 @@ __metadata:
     pump: ^3.0.0
     tar-fs: ^2.1.1
   checksum: f0a44392b8a452cb76f0bf80b1392c968bbf1a8535ea502c99ff3615a454140c41c65003771d017d1de73aa7ca969e14c9fbec8b36027dae74d3b0b85888b482
+  languageName: node
+  linkType: hard
+
+"@next-auth/prisma-adapter@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "@next-auth/prisma-adapter@npm:1.0.6"
+  peerDependencies:
+    "@prisma/client": ">=2.26.0 || >=3"
+    next-auth: ^4
+  checksum: 353036805c60be595a83f7fcced49298c7efee41b38f75c0f691c4982c920f49d3e42a9d85d83dd8ceda8a3609b9fa89fcf0435d60bcf6a73161528edfebcdd7
   languageName: node
   linkType: hard
 
