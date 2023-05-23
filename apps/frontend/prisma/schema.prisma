@@ -74,6 +74,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  links         Link[]
   role          Role      @default(USER)
 }
 
@@ -85,6 +86,12 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model link {
-  id String @id @default(cuid())
+model Link {
+  id  String @id @default(cuid())
+  url String
+  userId String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }

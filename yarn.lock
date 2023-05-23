@@ -5261,6 +5261,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:20.2.3":
+  version: 20.2.3
+  resolution: "@types/node@npm:20.2.3"
+  checksum: 576065e8fc1fa45798c8f59a6bf809169582d04abc2e25fab1a048ffc734975b9992ae31be0d960cf705a21fb37112f7fcde11aa322beddf7491e73d5a5a988c
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:^16.0.0":
   version: 16.18.31
   resolution: "@types/node@npm:16.18.31"
@@ -6302,6 +6309,23 @@ __metadata:
   checksum: 463e2f8e43384f1afb54bc68485c436d7622acec08b6fad269b421cb1d29cebb5af751426793d0961ed243146fe4dc983402f6d5a51b720b277818dbf6f2e49e
   languageName: node
   linkType: hard
+
+"auth-practice@workspace:apps/auth-practice":
+  version: 0.0.0-use.local
+  resolution: "auth-practice@workspace:apps/auth-practice"
+  dependencies:
+    "@types/node": 20.2.3
+    "@types/react": 18.2.6
+    "@types/react-dom": 18.2.4
+    autoprefixer: 10.4.14
+    next: 13.4.3
+    postcss: 8.4.23
+    react: 18.2.0
+    react-dom: 18.2.0
+    tailwindcss: 3.3.2
+    typescript: 5.0.4
+  languageName: unknown
+  linkType: soft
 
 "autoprefixer@npm:10.4.14, autoprefixer@npm:^10.4.12, autoprefixer@npm:^10.4.7":
   version: 10.4.14
@@ -12877,7 +12901,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^13.4.3":
+"next@npm:13.4.3, next@npm:^13.4.3":
   version: 13.4.3
   resolution: "next@npm:13.4.3"
   dependencies:
