@@ -2,6 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import Header from './components/Header';
 import Provider from './components/Provider';
+import Footer from './components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -13,10 +14,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.className} h-full scroll-smooth antialiased`}>
-      <body className={'flex flex-col h-full'}>
+      <body className="flex flex-col h-full">
         <Provider>
           <Header />
           <main className="grow">{children}</main>
+          <Footer />
         </Provider>
       </body>
     </html>
