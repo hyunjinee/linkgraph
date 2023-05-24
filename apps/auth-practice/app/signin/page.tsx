@@ -1,6 +1,7 @@
 import TextField from '../components/TextField';
 import GoogleSignInButton from '../components/GoogleSignInButton';
 import Button from '../components/Button';
+import KakaoSignInButton from '../components/KakaoLoginButton';
 
 export default function SignInPage() {
   return (
@@ -29,7 +30,11 @@ export default function SignInPage() {
           <div className="flex items-center w-full mx-auto my-10 justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400">
             or
           </div>
-          <GoogleSignInButton />
+
+          <div className="flex flex-col gap-2">
+            <GoogleSignInButton />
+            <KakaoSignInButton />
+          </div>
         </div>
       </div>
     </section>
