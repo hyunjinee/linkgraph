@@ -1,0 +1,141 @@
+// {
+//   "root": true,
+//   "extends": ["airbnb", "prettier"],
+//   "plugins": ["prettier", "react-hooks"],
+//   "parser": "@typescript-eslint/parser",
+//   "rules": {
+//     "prettier/prettier": "error",
+//     "import/prefer-default-export": "off",
+//     "import/extensions": [
+//       "error",
+//       "ignorePackages",
+//       {
+//         "js": "never",
+//         "mjs": "never",
+//         "jsx": "never",
+//         "ts": "never",
+//         "tsx": "never"
+//       }
+//     ],
+//     "react/react-in-jsx-scope": "off",
+//     "react/function-component-definition": "off",
+//     "react/jsx-filename-extension": ["error", { "extensions": [".tsx", ".jsx", "spec.js"] }]
+//   },
+
+//   "overrides": [
+//     // {
+//     //   "files": ["**/*.ts?(x)"],
+//     //   "parser": "@typescript-eslint/parser",
+//     //   "extends": [
+//     //     "plugin:@typescript-eslint/recommended",
+//     //     "plugin:@typescript-eslint/recommended-requiring-type-checking"
+//     //   ],
+//     //   "rules": {
+//     //     // "react/require-default-props": "off",
+//     //     // "react/react-in-jsx-scope": "off",
+//     //     // "react/jsx-filename-extension": ["error", { "extensions": [".tsx", ".jsx", "spec.js"] }],
+//     //     // "react/jsx-props-no-spreading": "off"
+//     //   },
+//     //   "parserOptions": {
+//     //     "project": ["./tsconfig.json", "./apps/**/tsconfig.json", "./packages/**/tsconfig.json"]
+//     //   }
+//     // }
+//     // {
+//     //   "files": ["apps/frontend/**/*.ts?(x)", "apps/frontend/**/*.js?(x)"],
+//     //   "settings": {
+//     //     "import/resolver": {
+//     //       "typescript": {
+//     //         "project": "apps/frontend/tsconfig.json"
+//     //       }
+//     //     }
+//     //   }
+//     // },
+//     // {
+//     //   "files": ["apps/auth-practice/**/*.ts?(x)", "apps/auth-practice/**/*.js?(x)"],
+//     //   "settings": {
+//     //     "import/resolver": {
+//     //       "typescript": {
+//     //         "project": "apps/auth-practice/tsconfig.json"
+//     //       }
+//     //     }
+//     //   }
+//     // }
+//   ],
+//   // "plugins": ["prettier"],
+//   // "rules": {
+//   //   "no-console": "warn",
+//   //   "import/extensions": [
+//   //     "error",
+//   //     "ignorePackages",
+//   //     {
+//   //       "js": "never",
+//   //       "mjs": "never",
+//   //       "jsx": "never",
+//   //       "ts": "never",
+//   //       "tsx": "never"
+//   //     }
+//   //   ],
+//   //   "import/no-extraneous-dependencies": [
+//   //     "error",
+//   //     {
+//   //       "devDependencies": [
+//   //         "**/*.stories.tsx",
+//   //         "**/*.@(spec|test).@(js|ts)?(x)",
+//   //         "**/testUtils.tsx",
+//   //         "**/jest.setup.ts",
+//   //         "**/.storybook/*.@(js|ts)?(x)",
+//   //         "**/webpack.*.js",
+//   //         "**/script/*.js",
+//   //         "**/mocks/**/*.@(js|ts)?(x)"
+//   //       ]
+//   //     }
+//   //   ]
+//   // },
+//   // "overrides": [
+//   //   {
+//   //     "files": ["**/*.ts?(x)"],
+//   //     "parser": "@typescript-eslint/parser",
+//   //     "extends": [
+//   //       "plugin:@typescript-eslint/recommended",
+//   //       "plugin:@typescript-eslint/recommended-requiring-type-checking"
+//   //     ],
+//   //     "rules": {
+//   //       "react/require-default-props": "off",
+//   //       "react/react-in-jsx-scope": "off",
+//   //       "react/jsx-filename-extension": ["error", { "extensions": [".tsx", ".jsx", "spec.js"] }],
+//   //       "react/jsx-props-no-spreading": "off"
+//   //     },
+//   //     "parserOptions": {
+//   //       "project": ["./tsconfig.json", "./packages/**/tsconfig.json"]
+//   //     }
+//   //   },
+//   //   {
+//   //     "files": ["apps/auth-practice/**/*.ts?(x)", "apps/auth-practice/**/*.js?(x)"],
+//   //     "settings": {
+//   //       "import/resolver": {
+//   //         "typescript": {
+//   //           "project": "apps/auth-practice/tsconfig.json"
+//   //         }
+//   //       }
+//   //     }
+//   //   }
+//   // ],
+//   // "settings": {
+//   //   "import/extensions": [".js", ".jsx", ".ts", ".tsx", "spec.js"],
+//   //   "import/parsers": {
+//   //     "@typescript-eslint/parser": [".ts", ".tsx", ".d.ts", ".js", ".jsx"]
+//   //   },
+//   //   "import/resolver": {
+//   //     "node": {
+//   //       "extensions": [".js", ".jsx", ".ts", ".tsx"]
+//   //     },
+//   //     "typescript": {
+//   //       "alwaysTryTypes": true
+//   //     }
+//   //   }
+//   // },
+//   "env": {
+//     "browser": true,
+//     "jest": true
+//   }
+// }
