@@ -1,4 +1,5 @@
 export default function Home() {
+  console.log('hi');
   return (
     <section>
       <div className="container">
