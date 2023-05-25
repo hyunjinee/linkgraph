@@ -3,6 +3,9 @@
     "baseUrl": ".",
     "strict": true,
     "module": "esnext",
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "noEmit": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   }
 }
