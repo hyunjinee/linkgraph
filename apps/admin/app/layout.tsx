@@ -1,8 +1,8 @@
-import { Suspense } from 'react';
 import './globals.css';
 
 import { Inter } from 'next/font/google';
-import Navbar from './components/Navbar';
+import Navbar from '~/app/components/Navbar';
+import SessionProvider from '~/app/components/SessionProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,8 +15,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ko" className="h-full bg-gray-50">
       <body className={inter.className}>
-        <Navbar />
-        {children}
+        <SessionProvider>
+          <Navbar />
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );
