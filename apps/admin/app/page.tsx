@@ -2,12 +2,18 @@ import { Title, Text, Card } from '@tremor/react';
 import type { NextPage } from 'next';
 import UserTable from './components/UserTable';
 
-const Home: NextPage = () => {
+const Home = async () => {
+  // const res = await fetch('http://localhost:3000/api/users');
+  // const data = await res.json();
+
+  // console.log(data);
+
   return (
     <main className="p-4 mx-auto md:p-10 max-w-7xl">
       <Title>Users</Title>
       <Text>A list of users retrieved from a MySQL database (PlanetScale).</Text>
 
+      {/* {JSON.stringify(data)} */}
       <Card className="mt-6">
         <UserTable />
       </Card>
