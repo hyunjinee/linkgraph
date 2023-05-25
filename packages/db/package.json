@@ -1,0 +1,12 @@
+{
+  "name": "@linkgraph/db",
+  "packageManager": "yarn@3.5.1",
+  "main": "./src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "prisma": "^4.14.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.14.1"
+  }
+}

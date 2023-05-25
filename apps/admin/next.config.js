@@ -1,4 +1,17 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const { PrismaPlugin } = require('@prisma/nextjs-monorepo-workaround-plugin');
 
-module.exports = nextConfig
+const nextConfig = {
+  images: {
+    domains: ['avatars.githubusercontent.com', 'avatar.vercel.sh'],
+  },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.plugins = [...config.plugins, new PrismaPlugin()];
+    }
+
+    return config;
+  },
+};
+
+module.exports = nextConfig;
