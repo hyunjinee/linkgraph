@@ -13,25 +13,6 @@ enum Role {
   USER
 }
 
-model Product {
-  id          Int       @id @default(autoincrement())
-  name        String
-  description String
-  price       Decimal
-  image       String
-  category    Category? @relation(fields: [category_id], references: [id])
-  category_id Int
-
-  @@index([category_id])
-}
-
-model Category {
-  id          Int       @id @default(autoincrement())
-  name        String
-  description String
-  products    Product[]
-}
-
 model Account {
   id                       String  @id @default(cuid())
   userId                   String
@@ -84,9 +65,11 @@ model VerificationToken {
 }
 
 model Link {
-  id  String @id @default(cuid())
-  url String
-  userId String
+  id          String  @id @default(cuid())
+  url         String
+  description String?
+  imageUrl    String?
+  userId      String
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
