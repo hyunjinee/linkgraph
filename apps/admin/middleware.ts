@@ -1,34 +1,37 @@
-import { NextResponse } from 'next/server';
+// export { default } from 'next-auth/middleware';
+// export const config = { matcher: ['/playground'] };
 
-const allowedOrigins =
-  process.env.NODE_ENV === 'production' ? ['https://linkgraph-admin.vercel.app/'] : ['http://localhost:3000'];
+// import { NextResponse } from 'next/server';
 
-export const middleware = (request: Request) => {
-  const origin = request.headers.get('origin');
+// const allowedOrigins =
+//   process.env.NODE_ENV === 'production' ? ['https://linkgraph-admin.vercel.app/'] : ['http://localhost:3000'];
 
-  if (origin && !allowedOrigins.includes(origin)) {
-    return new NextResponse(null, {
-      status: 400,
-      statusText: 'Bad Request',
-      headers: {
-        'Content-Type': 'text/plain',
-      },
-    });
-  }
+// export const middleware = (request: Request) => {
+//   const origin = request.headers.get('origin');
 
-  // const regex = new RegExp('/api/*');
-  // if (regex.test(request.url)) {
-  // }
+//   if (origin && !allowedOrigins.includes(origin)) {
+//     return new NextResponse(null, {
+//       status: 400,
+//       statusText: 'Bad Request',
+//       headers: {
+//         'Content-Type': 'text/plain',
+//       },
+//     });
+//   }
 
-  // console.log('Middleware Run');
-  // console.log(request.method);
-  // console.log(request.url);
+//   // const regex = new RegExp('/api/*');
+//   // if (regex.test(request.url)) {
+//   // }
 
-  // console.log(origin);
+//   // console.log('Middleware Run');
+//   // console.log(request.method);
+//   // console.log(request.url);
 
-  return NextResponse.next();
-};
+//   // console.log(origin);
 
-export const config = {
-  matcher: '/api/:path*',
-};
+//   return NextResponse.next();
+// };
+
+// export const config = {
+//   matcher: '/api/:path*',
+// };
