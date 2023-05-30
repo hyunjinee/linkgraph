@@ -1,5 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
-const { categories, products } = require('../../../packages/db/prisma/data.js/index.js');
+const { categories, products } = require('./data');
 const prisma = new PrismaClient();
 
 const load = async () => {
