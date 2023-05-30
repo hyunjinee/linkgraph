@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  transpilePackages: ['@linkgraph/site-info'],
-};
+const nextConfig = {};
 
 module.exports = nextConfig;
