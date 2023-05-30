@@ -67,6 +67,7 @@ model VerificationToken {
 model Link {
   id          String  @id @default(cuid())
   url         String
+  title       String?
   description String?
   imageUrl    String?
   userId      String
