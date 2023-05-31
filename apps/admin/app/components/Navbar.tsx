@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import VercelIcon from '~/app/components/VercelIcon';
+import LinkGraph from '~/app/components/LinkGraph';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Fragment } from 'react';
 
@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
               <div className="flex">
                 <div className="flex items-center flex-shrink-0">
                   {/* TODO LinkGraph 아이콘으로 바꾸기 */}
-                  <VercelIcon />
+                  <LinkGraph />
                 </div>
                 <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                   {navigation.map((item) => (

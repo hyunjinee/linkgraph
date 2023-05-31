@@ -12,7 +12,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  console.log('first');
   return (
     <html lang="en" className={`${inter.className} h-full scroll-smooth antialiased`}>
       <body className="flex flex-col h-full">
