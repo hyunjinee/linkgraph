@@ -4,9 +4,9 @@
   "main": "./src/index.ts",
   "type": "module",
   "devDependencies": {
-    "prisma": "^4.14.1"
+    "prisma": "latest"
   },
   "dependencies": {
-    "@prisma/client": "^4.14.1"
+    "@prisma/client": "latest"
   }
 }
