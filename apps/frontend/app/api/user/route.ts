@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import prisma from '../../../prisma/prisma';
+import { prisma } from '@linkgraph/db';
 
 export const GET = async () => {
   const data = await prisma.user.findMany();
