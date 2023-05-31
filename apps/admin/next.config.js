@@ -3,7 +3,7 @@ const { PrismaPlugin } = require('@prisma/nextjs-monorepo-workaround-plugin');
 
 const nextConfig = {
   images: {
-    domains: ['avatars.githubusercontent.com', 'avatar.vercel.sh'],
+    domains: ['avatars.githubusercontent.com', 'avatar.vercel.sh', 'lh3.googleusercontent.com'],
   },
   webpack: (config, { isServer }) => {
     if (isServer) {

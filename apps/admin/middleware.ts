@@ -1,7 +1,7 @@
 // export { default } from 'next-auth/middleware';
 // export const config = { matcher: ['/playground'] };
 
-// import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 // const allowedOrigins =
 //   process.env.NODE_ENV === 'production' ? ['https://linkgraph-admin.vercel.app/'] : ['http://localhost:3000'];
@@ -35,3 +35,7 @@
 // export const config = {
 //   matcher: '/api/:path*',
 // };
+
+export const middleware = () => {
+  return NextResponse.next();
+};
