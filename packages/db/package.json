@@ -3,6 +3,9 @@
   "packageManager": "yarn@3.5.1",
   "main": "./src/index.ts",
   "type": "module",
+  "scripts": {
+    "postinstall": "prisma generate"
+  },
   "devDependencies": {
     "prisma": "latest"
   },
