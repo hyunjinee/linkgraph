@@ -69,7 +69,7 @@ const categories: {
 export default function PlaygroundPage() {
   return (
     <main className="p-4 mx-auto md:p-10 max-w-7xl">
-      <Grid className="gap-6" numColsSm={2} numColsLg={3}>
+      {/* <Grid className="gap-6" numColsSm={2} numColsLg={3}>
         {categories.map((item) => (
           <Card key={item.title}>
             <Flex alignItems="start">
@@ -97,7 +97,7 @@ export default function PlaygroundPage() {
             <BarList className="mt-2" data={item.data} valueFormatter={dataFormatter} />
           </Card>
         ))}
-      </Grid>
+      </Grid> */}
       {/* <Chart /> */}
     </main>
   );
