@@ -1,4 +1,5 @@
 'use client';
+
 import { getSiteInfo } from '@linkgraph/site-info';
 import type { NextPage } from 'next';
 import GoogleSignInButton from './components/GoogleSignInButton';
