@@ -33,8 +33,24 @@ export const GET = async () => {
   return NextResponse.json(data);
 };
 
-export const POST = async () => {
-  return NextResponse.json({});
+export const POST = async (req: Request) => {
+  const data = await req.json();
+  const session = await getServerSession(authOptions);
+
+  if (!session || !session.user) {
+    return NextResponse.json({
+      message: '로그인을 해주세요.',
+    });
+  }
+
+  const link = await prisma.link.create({
+    data: {
+      userId: 'clib000y600002nu8lkr8z322',
+      url: data.url,
+    },
+  });
+
+  return NextResponse.json(link);
 };
 
 // export const POST = async ({ body }: { body: any }) => {
