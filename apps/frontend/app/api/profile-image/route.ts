@@ -2,12 +2,16 @@ import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } fro
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { NextResponse } from 'next/server';
 
-const s3 = new S3Client({
+const client = new S3Client({
   region: process.env.AWS_REGION,
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
   },
+});
+const command = new GetObjectCommand({
+  Bucket: process.env.AWS_BUCKET_NAME,
+  Key: process.env.AWS_ACCESS_KEY_ID,
 });
 
 async function getSignedFileUrl(data: any) {
@@ -16,7 +20,7 @@ async function getSignedFileUrl(data: any) {
     Key: data.name,
   };
   const command = new PutObjectCommand(params);
-  const url = await getSignedUrl(s3, command, {
+  const url = await getSignedUrl(client, command, {
     expiresIn: 3600,
   });
   return url;
@@ -30,7 +34,7 @@ async function uploadFile(fileBuffer: any, fileName: any, mimetype: any) {
     ContentType: mimetype,
   };
 
-  const res = await s3.send(new PutObjectCommand(uploadParams));
+  const res = await client.send(new PutObjectCommand(uploadParams));
   return res.$metadata.httpStatusCode;
 }
 
@@ -39,13 +43,26 @@ export const GET = () => {
 };
 
 export const POST = async (req: Request, context: {}) => {
-  // console.log(req);
-  // const { file } = req.body;
-  // console.log(req);
-
   const data = await req.json();
 
   console.log(data);
+
+  const command = new PutObjectCommand({
+    Bucket: process.env.AWS_BUCKET_NAME,
+    Key: data.name,
+    ContentType: data.type,
+  });
+  // const preSignedUrl = await getSignedFileUrl(client);
+
+  const signedUrl = await getSignedUrl(client, command, { expiresIn: 3600 });
+  console.log(signedUrl, '?');
   // console.log(JSON.parse(req.body));
-  return NextResponse.json({ hi: 'hi' });
+
+  // const result = await fetch(signedUrl, {
+  //   method: 'PUT',
+  //   body:
+  // })
+  return NextResponse.json({
+    url: signedUrl,
+  });
 };

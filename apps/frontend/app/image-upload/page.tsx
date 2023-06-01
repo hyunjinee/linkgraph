@@ -8,7 +8,7 @@ const ImageUpload: NextPage = () => {
   const [createObjectURL, setCreateObjectURL] = useState('');
 
   console.log(image, 'image', typeof image);
-  console.log(createObjectURL, 'createObjectURL');
+  // console.log(createObjectURL, 'createObjectURL');
 
   const uploadToClient = (e: any) => {
     if (createObjectURL) {
@@ -16,10 +16,8 @@ const ImageUpload: NextPage = () => {
     }
 
     if (e.target.files && e.target.files[0]) {
-      const i = e.target.files;
-      console.log(i, '?????????');
-      setImage(i);
-      setCreateObjectURL(URL.createObjectURL(i[0]));
+      setImage(e.target.files[0]);
+      setCreateObjectURL(URL.createObjectURL(e.target.files[0]));
     }
   };
   const uploadImgClient = async () => {
@@ -41,8 +39,17 @@ const ImageUpload: NextPage = () => {
       const data = await urlRes.json();
 
       console.log(data);
+
       const signedUrl = data.url;
 
+      const uploadResult = await fetch(signedUrl, {
+        method: 'PUT',
+        body: image,
+        headers: {
+          'Content-type': image.type,
+        },
+      });
+      console.log(uploadResult);
       // console.log('signedUrl', signedUrl);
 
       // console.log(signedUrl);
