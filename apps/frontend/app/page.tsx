@@ -2,7 +2,7 @@
 
 import { getSiteInfo } from '@linkgraph/site-info';
 import type { NextPage } from 'next';
-import GoogleSignInButton from './components/GoogleSignInButton';
+import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 
 getSiteInfo();
@@ -10,12 +10,16 @@ getSiteInfo();
 const Home: NextPage = () => {
   const { data: session } = useSession();
 
-  console.log(session);
   return (
-    <main className="flex flex-col items-center justify-between min-h-screen p-24">
+    <main className="flex flex-col items-center justify-center min-h-screen p-24">
       <section>
-        <button>구글로 로그인</button>
-        <GoogleSignInButton />
+        <div>
+          <Image src="/linkgraph.svg" alt="hi" width="200" height="200" />
+        </div>
+
+        <br />
+
+        <h1 className="font-bold text-center">서비스 준비중입니다.</h1>
       </section>
     </main>
   );

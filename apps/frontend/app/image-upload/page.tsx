@@ -3,6 +3,20 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
 
+// 현재 날짜와 시간을 포맷팅하는 함수
+const getCurrentDateTime = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+
+  const dateTime = `${year}${month}${day}${hours}${minutes}${seconds}`;
+  return dateTime;
+};
+
 const ImageUpload: NextPage = () => {
   const [image, setImage] = useState<File>();
   const [createObjectURL, setCreateObjectURL] = useState('');
@@ -26,7 +40,7 @@ const ImageUpload: NextPage = () => {
     }
 
     const body = {
-      name: 'client/' + Math.random().toString(36).substring(2, 11) + image.name,
+      name: 'profile/' + getCurrentDateTime() + '-' + image.name,
       type: image.type,
     };
 
@@ -55,8 +69,6 @@ const ImageUpload: NextPage = () => {
       // console.log(signedUrl);
     } catch (error) {}
   };
-  const uploadToFs = () => {};
-  const uploadImgMulter = () => {};
 
   return (
     <div>
@@ -66,12 +78,6 @@ const ImageUpload: NextPage = () => {
         <>
           <button type="submit" onClick={uploadImgClient}>
             클라이언트에서 바로 업로드
-          </button>
-          <button type="submit" onClick={uploadToFs}>
-            form, fs로 업로드
-          </button>
-          <button type="submit" onClick={uploadImgMulter}>
-            미들웨어, multer로 업로드
           </button>
         </>
       )}
