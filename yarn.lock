@@ -4130,11 +4130,13 @@ __metadata:
     "@next-auth/prisma-adapter": ^1.0.6
     "@prisma/client": ^4.14.1
     "@prisma/nextjs-monorepo-workaround-plugin": ^4.14.1
+    "@types/d3": ^7.4.0
     "@types/node": 20.1.4
     "@types/react": 18.2.6
     "@types/react-dom": 18.2.4
     autoprefixer: 10.4.14
     aws-crt: ^1.15.17
+    d3: ^7.8.5
     limiter: ^2.1.0
     next: 13.4.4
     next-auth: ^4.22.1
@@ -9894,6 +9896,44 @@ __metadata:
     d3-transition: 3
     d3-zoom: 3
   checksum: 8dfea4d026e5597ab9c46035df7f0ca4f3891b2b52b21b181bd8660fc61d85f0bbe3cc2b8f1e922978084156cb017cbbfa350a8e42349310642023a9f1517471
+  languageName: node
+  linkType: hard
+
+"d3@npm:^7.8.5":
+  version: 7.8.5
+  resolution: "d3@npm:7.8.5"
+  dependencies:
+    d3-array: 3
+    d3-axis: 3
+    d3-brush: 3
+    d3-chord: 3
+    d3-color: 3
+    d3-contour: 4
+    d3-delaunay: 6
+    d3-dispatch: 3
+    d3-drag: 3
+    d3-dsv: 3
+    d3-ease: 3
+    d3-fetch: 3
+    d3-force: 3
+    d3-format: 3
+    d3-geo: 3
+    d3-hierarchy: 3
+    d3-interpolate: 3
+    d3-path: 3
+    d3-polygon: 3
+    d3-quadtree: 3
+    d3-random: 3
+    d3-scale: 4
+    d3-scale-chromatic: 3
+    d3-selection: 3
+    d3-shape: 3
+    d3-time: 3
+    d3-time-format: 4
+    d3-timer: 3
+    d3-transition: 3
+    d3-zoom: 3
+  checksum: e407e79731f74d946a5eb8dec2f037b5a4ad33c294409b1d3531fdf7094de48adfe364974cb37e2396bdb81e23149d56d0ede716c004d6aebb52b3cc114cd15c
   languageName: node
   linkType: hard
 
