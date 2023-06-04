@@ -6,8 +6,6 @@ export const createLink = async (url: string) => {
       data: { url, userId: '1' },
     });
 
-    console.log(link);
-
     return { link };
   } catch (error) {
     console.log(error);
