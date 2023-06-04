@@ -1,2 +1,2 @@
-export { default as prisma } from './prisma/client';
+export { default } from './prisma/client';
 export * from './prisma/link';

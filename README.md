@@ -1,6 +1,6 @@
 # LinkGraph
 
-![linkgraph](https://github.com/hyunjinee/linkgraph/assets/63354527/7899c683-556f-4840-888b-20cc820253c5)
+![Vector](https://github.com/hyunjinee/linkgraph/assets/63354527/6d4cacbd-577f-44e6-bbbb-24554ceff58d)
 
 링크들을 그래프 형태로 나타내보자.
 
@@ -9,11 +9,10 @@
 
 ## 서비스 아키텍처
 
-![image](https://github.com/hyunjinee/linkgraph/assets/63354527/05af401d-04c6-45e3-8fdd-1ae211e621d7)
+![image](https://github.com/hyunjinee/linkgraph/assets/63354527/36ca1fcb-d4bd-4298-b09c-6219a78a8c47)
 
 ## 사용자 스토리
 
-- 사용자는 로그인을 할 수 있다.
 - 사용자는 메인화면에서 로그인을 할 수 있어야 한다. (현재는 구글 로그인을 제공.)
 - 사용자는 로그아웃을 할 수 있다.
 - 사용자는 회원탈퇴를 할 수 있다.
@@ -30,16 +29,4 @@
 
 - EsLint 설정 공통 프로젝트
 - tsconfig 설정 공통 프로젝트
-- 카카오 로그인 구현 중 세션 혹은 JWT 방식 확인 필요
-- Next.js, prisma, S3, cloudfront를 사용해 구축
 - 개인당 링크 연결 30개 제한
-- 모든 프로젝트에서 next.js를 사용한다. 이를 위한 ES Lint 설정을 공통으로 사용한다.
-- DB 설계
-- 요청을 보낼 때 세션 정보 같이 이동하는지 확인
-  https://next-auth.js.org/configuration/nextjs
-
-## Done
-
-- D3 Force 그래프 PoC
-- PlanetScale connect with prisma (Deployed)
-- 구글 로그인

@@ -1,24 +1,40 @@
 import { NextPage } from 'next';
 import { notFound } from 'next/navigation';
-import { prisma } from '@linkgraph/db';
+import prisma from '@linkgraph/db';
 
-const User = async ({ params }: { params: { userId: string[] } }) => {
-  console.log(params);
-
+/*
+  Graph Page
+  서버에서 데이터 페칭 후 그래프 컴포넌트에게 데이터 전달. 그래프 컴포넌트는 클라이언트 컴포넌트
+*/
+const Graph = async ({ params }: { params: { userId: string[] } }) => {
   const userId = params.userId[0];
-
-  const user = await prisma.user.findUnique({
+  const links = await prisma.link.findMany({
     where: {
-      id: userId,
+      userId,
     },
   });
-  console.log(user);
+
+  // const user = await prisma.user.findUnique({
+  //   where: {
+  //     id: userId,
+  //   },
+  // });
 
   // if (true) {
   //   notFound();
   // }
 
-  return <div>hi</div>;
+  return (
+    <div>
+      {/* {JSON.stringify(user, null, 2)} */}
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      {/* {JSON.stringify(links, null, 2)} */}
+    </div>
+  );
 };
 
-export default User;
+export default Graph;

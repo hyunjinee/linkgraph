@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@linkgraph/db';
+import prisma from '@linkgraph/db';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '~/api/auth/[...nextauth]/route';
 

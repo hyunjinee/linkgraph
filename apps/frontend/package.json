@@ -22,6 +22,7 @@
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
     "aws-crt": "^1.15.17",
+    "d3": "^7.8.5",
     "limiter": "^2.1.0",
     "next": "13.4.4",
     "next-auth": "^4.22.1",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@prisma/nextjs-monorepo-workaround-plugin": "^4.14.1",
+    "@types/d3": "^7.4.0",
     "prisma": "^4.14.1"
   }
 }
