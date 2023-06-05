@@ -45,7 +45,7 @@ export const POST = async (req: Request) => {
 
   const link = await prisma.link.create({
     data: {
-      userId: 'clib000y600002nu8lkr8z322',
+      userId: data.userId,
       url: data.url,
     },
   });

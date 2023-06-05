@@ -1,18 +1,13 @@
-// 'use client';
-
-import { countLink } from '@linkgraph/db';
-import { getSiteInfo } from '@linkgraph/site-info';
-import type { NextPage } from 'next';
 import { getServerSession } from 'next-auth';
 import Image from 'next/image';
-import { authOptions } from './api/auth/[...nextauth]/route';
-// import { useSession } from 'next-auth/react';
 
-getSiteInfo();
+import { countLink } from '@linkgraph/db';
+import { authOptions } from '~/api/auth/[...nextauth]/route';
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
   const count = await countLink(session?.user.id);
+  console.log(count);
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen p-24">
