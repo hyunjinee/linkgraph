@@ -6,7 +6,12 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    domains: ['avatars.githubusercontent.com', 'avatar.vercel.sh', 'd1wdpf820bqp3t.cloudfront.net'],
+    domains: [
+      'avatars.githubusercontent.com',
+      'avatar.vercel.sh',
+      'd1wdpf820bqp3t.cloudfront.net',
+      'link-graph.s3.ap-northeast-2.amazonaws.com',
+    ],
   },
   webpack: (config, { isServer }) => {
     if (isServer) {
