@@ -4,6 +4,6 @@ import { createLink } from '@linkgraph/db';
 import { revalidatePath } from 'next/cache';
 
 export const createLinkAction = async (url: string) => {
-  await createLink(url);
+  await createLink({ url, userId: 'hyunjin' });
   revalidatePath('/setting');
 };

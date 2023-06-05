@@ -4,29 +4,24 @@ import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 import { createLinkAction } from '~/_action';
 
+interface LinkFromProps {}
+
 const LinkForm: React.FC = () => {
   const [URL, setURL] = useState('');
-  const { data } = useSession();
+  const { data: session } = useSession();
 
-  console.log(data);
-
-  // TODO user없으면 로그인 시켜야함
-
-  // const action = async (data: FormData) => {
-  //   const url = data.get('url');
-
-  //   if (!url || typeof url !== 'string') {
-  //     return;
-  //   }
-
-  //   await createLinkAction(url);
-  // };
+  // TODO if not logged in -> redirect to homepage
 
   const onClick = async () => {
+    if (!session?.user.id || URL === '') {
+      return;
+    }
+
     const res = await fetch('/api/link', {
       method: 'POST',
       body: JSON.stringify({
         url: URL,
+        userId: session.user.id,
       }),
     });
 
@@ -41,7 +36,6 @@ const LinkForm: React.FC = () => {
 
   return (
     <>
-      {/* <form action={action}> */}
       <h2 className="mb-2 font-medium">Create New Link</h2>
       <input
         value={URL}
@@ -53,7 +47,6 @@ const LinkForm: React.FC = () => {
       <button onClick={onClick} className="px-2 py-1 ml-2 text-sm text-white rounded bg-slate-700">
         Add Link
       </button>
-      {/* </form> */}
     </>
   );
 };

@@ -1,6 +1,6 @@
 # LinkGraph
 
-![Vector](https://github.com/hyunjinee/linkgraph/assets/63354527/6d4cacbd-577f-44e6-bbbb-24554ceff58d)
+![linkgraph](https://github.com/hyunjinee/linkgraph/assets/63354527/be412ccd-a0bc-451d-8e41-6333525b16bf)
 
 링크들을 그래프 형태로 나타내보자.
 
