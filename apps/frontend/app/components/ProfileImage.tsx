@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { useUpload } from '~/hooks/useUpload';
 import { useState } from 'react';
+import { cloudFrontURL } from '@linkgraph/site-info';
 
 const ProfileImage = () => {
   const { data: session } = useSession();
@@ -24,21 +25,18 @@ const ProfileImage = () => {
       return;
     }
 
-    console.log('hi');
-
     const body = {
       name: 'profile/' + getCurrentDateTime() + '-' + image.name,
       type: image.type,
     };
 
     try {
-      const presignedURLResult = await fetch('/api/profile-image', {
+      const presignedURLResponse = await fetch('/api/profile-image', {
         method: 'POST',
         body: JSON.stringify(body),
       });
-      const { url: presignedURL } = await presignedURLResult.json();
-      console.log('here');
-      console.log(presignedURL);
+      const { url: presignedURL } = await presignedURLResponse.json();
+
       const uploadResponse = await fetch(presignedURL, {
         method: 'PUT',
         body: image,
@@ -48,8 +46,11 @@ const ProfileImage = () => {
       });
       console.log(uploadResponse);
       if (uploadResponse.status === 200) {
-        setProfileImageURL(uploadResponse.url);
+        setProfileImageURL(cloudFrontURL + new URL(presignedURL).pathname);
       }
+
+      // console.log(uploadResponse.url);
+      console.log(new URL(presignedURL).pathname, '?');
 
       // const upload = await uploadResult.json();
       // console.log(upload);
