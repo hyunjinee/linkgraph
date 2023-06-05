@@ -21,16 +21,15 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: '/',
   },
+  callbacks: {
+    async session({ session, user }) {
+      session.user.id = user.id;
+
+      return session;
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
-
-// callbacks: {
-//   async jwt({ token }: { token: any }) {
-//     token.userRole = 'admin';
-//     console.log('hi');
-//     return token;
-//   },
-// },

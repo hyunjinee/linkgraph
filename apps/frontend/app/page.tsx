@@ -1,20 +1,24 @@
-'use client';
+// 'use client';
 
+import { countLink } from '@linkgraph/db';
 import { getSiteInfo } from '@linkgraph/site-info';
 import type { NextPage } from 'next';
+import { getServerSession } from 'next-auth';
 import Image from 'next/image';
-import { useSession } from 'next-auth/react';
+import { authOptions } from './api/auth/[...nextauth]/route';
+// import { useSession } from 'next-auth/react';
 
 getSiteInfo();
 
-const Home: NextPage = () => {
-  const { data: session } = useSession();
+const Home = async () => {
+  const session = await getServerSession(authOptions);
+  const count = await countLink(session?.user.id);
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen p-24">
       <section>
-        <div>
-          <Image src="/linkgraph.svg" alt="hi" width="200" height="200" />
+        <div className="relative w-200px h-200px">
+          <Image src="/linkgraph.svg" alt="hi" priority width={200} height={200} />
         </div>
 
         <br />

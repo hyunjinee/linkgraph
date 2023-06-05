@@ -12,3 +12,14 @@ export const createLink = async (url: string) => {
     return { error };
   }
 };
+
+export const countLink = async (userId: string) => {
+  try {
+    const count = await prisma.link.count({ where: { userId } });
+    console.log(count);
+    return { count };
+  } catch (error) {
+    console.log(error);
+    return { error };
+  }
+};
