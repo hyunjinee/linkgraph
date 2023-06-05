@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
-import prisma from '@linkgraph/db';
 import { getServerSession } from 'next-auth';
+
+import prisma, { countLink } from '@linkgraph/db';
 import { authOptions } from '~/api/auth/[...nextauth]/route';
 
 export const GET = async () => {
@@ -40,6 +41,14 @@ export const POST = async (req: Request) => {
   if (!session || !session.user) {
     return NextResponse.json({
       message: '로그인을 해주세요.',
+    });
+  }
+
+  const linkCount = await countLink(data.userId);
+
+  if (linkCount > 30) {
+    return NextResponse.json({
+      message: '링크는 30개까지만 등록할 수 있습니다.',
     });
   }
 

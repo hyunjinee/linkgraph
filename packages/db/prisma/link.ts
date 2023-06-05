@@ -22,18 +22,17 @@ export const createLink = async ({ url, userId }: { url: string; userId: string 
 
     return { link };
   } catch (error) {
-    console.log(error);
-    return { error };
+    return error;
   }
 };
 
 export const countLink = async (userId: string) => {
   try {
     const count = await prisma.link.count({ where: { userId } });
-    console.log(count);
-    return { count };
+
+    return count;
   } catch (error) {
     console.log(error);
-    return { error };
   }
+  return 0;
 };

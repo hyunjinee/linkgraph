@@ -1,1 +1,1 @@
-# site-info
+# @linkgraph/site-info

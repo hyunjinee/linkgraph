@@ -2,7 +2,6 @@
 
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
-import { createLinkAction } from '~/_action';
 
 interface LinkFromProps {}
 
@@ -25,9 +24,7 @@ const LinkForm: React.FC = () => {
         userId: session.user.id,
       }),
     });
-
     const data = await res.json();
-
     console.log(data);
   };
 
