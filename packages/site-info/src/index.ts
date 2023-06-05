@@ -6,3 +6,5 @@ const PROJECT = Object.freeze({
 export const getSiteInfo = () => {
   return PROJECT;
 };
+
+export const cloudFrontURL = 'https://d1wdpf820bqp3t.cloudfront.net';

@@ -8,10 +8,9 @@ export const getLinks = async (userId: string) => {
       },
     });
 
-    return { links };
+    return links;
   } catch (error) {
     console.log(error);
-    return { error };
   }
 };
 

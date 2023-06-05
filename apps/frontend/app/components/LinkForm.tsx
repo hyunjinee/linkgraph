@@ -13,6 +13,7 @@ const LinkForm: React.FC = () => {
   // TODO if not logged in -> redirect to homepage
 
   const onClick = async () => {
+    console.log(session);
     if (!session?.user.id || URL === '') {
       return;
     }
