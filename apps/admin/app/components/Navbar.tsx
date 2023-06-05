@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import LinkGraph from '~/app/components/LinkGraph';
@@ -18,6 +18,7 @@ const classNames = (...classes: string[]) => classes.filter(Boolean).join(' ');
 const Navbar: React.FC = () => {
   const { data: session } = useSession();
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <Disclosure as="nav" className="bg-white shadow-sm">
@@ -26,8 +27,7 @@ const Navbar: React.FC = () => {
           <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
               <div className="flex">
-                <div className="flex items-center flex-shrink-0">
-                  {/* TODO LinkGraph 아이콘으로 바꾸기 */}
+                <div className="flex items-center flex-shrink-0 cursor-pointer" onClick={() => router.push('/')}>
                   <LinkGraph />
                 </div>
                 <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
