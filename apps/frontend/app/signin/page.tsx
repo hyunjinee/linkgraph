@@ -22,8 +22,6 @@ const SignInPage: NextPage = () => {
     <section>
       <button>구글로 로그인</button>
       <GoogleSignInButton />
-
-      <button onClick={() => signIn('kakao')}>카카오로 로그인</button>
     </section>
   );
 };
