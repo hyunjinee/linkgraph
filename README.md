@@ -29,4 +29,3 @@
 
 - EsLint 설정 공통 프로젝트
 - tsconfig 설정 공통 프로젝트
-- Next Swagger 작성
