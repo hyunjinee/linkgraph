@@ -56,7 +56,9 @@ const Graph: NextPage = () => {
   }, []);
   return (
     <>
-      <svg ref={svgRef} className="w-[960px] h-[500px] bg-red-200" />
+      <div className="w-full h-full bg-red-200">
+        <svg ref={svgRef} className="w-full h-full" />
+      </div>
     </>
   );
 };
