@@ -13,7 +13,7 @@ const Profile = async () => {
   return (
     <main className="w-full h-full p-4 mx-auto md:p-10 bg-gray-50 max-w-7xl">
       <h1>Profile Page</h1>
-      {/* 프로필 이미지 업로드 혹은 제거 가능 */}
+
       <ProfileImage />
       {/* 유저 닉네임 -> 링크에서 사용 */}
       <LinkForm />
