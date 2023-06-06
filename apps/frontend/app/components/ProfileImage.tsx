@@ -19,8 +19,6 @@ const ProfileImage = () => {
     }
 
     const fileSizeMB = image.size / 1024 / 1024;
-
-    // 4MB 이상 업로드 불가
     if (fileSizeMB > 4) {
       return;
     }
@@ -60,20 +58,18 @@ const ProfileImage = () => {
   };
 
   return (
-    <div className="container">
-      {/* Image Upload Section */}
-      <section>
+    <section>
+      <div className="relative w-24 h-24">
         <Image
           onClick={handleImageUpload}
           src={profileImageURL || '/profile.png'}
           alt="profile"
-          width={150}
-          height={150}
+          fill
           className="rounded-full cursor-pointer"
           priority
         />
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

@@ -1,0 +1,10 @@
+{
+  "name": "tailwind",
+  "packageManager": "yarn@3.6.0",
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/input.css -o ./src/css/style.css --watch"
+  },
+  "devDependencies": {
+    "prettier-plugin-tailwindcss": "^0.3.0"
+  }
+}
