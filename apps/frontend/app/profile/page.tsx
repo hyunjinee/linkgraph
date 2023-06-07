@@ -11,11 +11,10 @@ const Profile = async () => {
   const links = await getLinks(session?.user.id);
 
   return (
-    <main className="w-full h-full p-4 mx-auto md:p-10 bg-gray-50 max-w-7xl">
+    <main className="mx-auto h-full w-full max-w-7xl bg-gray-50 p-4 md:p-10">
       <h1>Profile Page</h1>
 
       <ProfileImage />
-      {/* 유저 닉네임 -> 링크에서 사용 */}
       <LinkForm />
       {links && <LinkTable links={links} />}
     </main>
