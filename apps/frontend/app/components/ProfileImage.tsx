@@ -3,14 +3,14 @@
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { useUpload } from '~/hooks/useUpload';
-import { useState } from 'react';
 import { cloudFrontURL } from '@linkgraph/site-info';
+import { useState } from 'react';
 
 const ProfileImage = () => {
   const { data: session } = useSession();
+  const [profileImageURL, setProfileImageURL] = useState<string>('');
 
   const upload = useUpload();
-  const [profileImageURL, setProfileImageURL] = useState('');
 
   const handleImageUpload = async () => {
     const image = await upload();
@@ -29,7 +29,7 @@ const ProfileImage = () => {
     };
 
     try {
-      const presignedURLResponse = await fetch('/api/profile-image', {
+      const presignedURLResponse = await fetch('/api/presigned-url', {
         method: 'POST',
         body: JSON.stringify(body),
       });
@@ -44,14 +44,15 @@ const ProfileImage = () => {
       });
       console.log(uploadResponse);
       if (uploadResponse.status === 200) {
-        setProfileImageURL(cloudFrontURL + new URL(presignedURL).pathname);
       }
 
-      // console.log(uploadResponse.url);
-      console.log(new URL(presignedURL).pathname, '?');
-
-      // const upload = await uploadResult.json();
-      // console.log(upload);
+      await fetch('/api/profile-image', {
+        method: 'PATCH',
+        body: JSON.stringify({
+          profileImageURL: cloudFrontURL + new URL(presignedURL).pathname,
+        }),
+      });
+      setProfileImageURL(cloudFrontURL + new URL(presignedURL).pathname);
     } catch (error) {
       console.log(error);
     }
@@ -59,13 +60,13 @@ const ProfileImage = () => {
 
   return (
     <section>
-      <div className="relative w-24 h-24">
+      <div className="relative h-24 w-24">
         <Image
           onClick={handleImageUpload}
-          src={profileImageURL || '/profile.png'}
+          src={profileImageURL || session?.user.profileImage || '/profile.png'}
           alt="profile"
           fill
-          className="rounded-full cursor-pointer"
+          className="cursor-pointer rounded-full"
           priority
         />
       </div>
