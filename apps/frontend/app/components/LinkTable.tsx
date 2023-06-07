@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from '@prisma/client';
+import type { Link } from '@prisma/client';
 
-// prisma model type import 해야함
 interface LinkTableProps {
   links: Link[];
 }
