@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Link } from '@prisma/client';
 
 interface LinkTableProps {

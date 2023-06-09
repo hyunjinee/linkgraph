@@ -15,7 +15,7 @@
     "db": "yarn workspace @linkgraph/db",
     "frontend": "yarn workspace @linkgraph/frontend",
     "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx",
-    "postinstall": "husky install"
+    "postinstall": "husky install && prisma generate"
   },
   "devDependencies": {
     "@types/react": "^18.2.6",
@@ -35,6 +35,7 @@
     "husky": "^8.0.0",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
+    "prisma": "^4.15.0",
     "react": "^18.2.0",
     "typescript": "^5.0.4"
   }

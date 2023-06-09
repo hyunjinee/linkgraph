@@ -30,7 +30,10 @@ export const authOptions: AuthOptions = {
       });
 
       session.user.id = user.id;
-      session.user.profileImage = result?.profileImage;
+
+      if (result?.profileImage) {
+        session.user.profileImage = result?.profileImage;
+      }
 
       return session;
     },
