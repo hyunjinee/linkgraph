@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.18",
     "@linkgraph/db": "workspace:^",
+    "@next-auth/prisma-adapter": "^1.0.7",
     "@tremor/react": "^2.8.2",
     "@types/node": "20.1.4",
     "@types/react": "18.2.6",
