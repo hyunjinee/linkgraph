@@ -1,0 +1,8 @@
+{
+  "name": "@linkgraph/utils",
+  "packageManager": "yarn@3.6.0",
+  "main": "./src/index.ts",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
