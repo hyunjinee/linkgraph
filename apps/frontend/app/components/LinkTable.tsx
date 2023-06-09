@@ -1,7 +1,7 @@
-import type { Link } from '@prisma/client';
+// import type { Link } from '@prisma/client';
 
 interface LinkTableProps {
-  links: Link[];
+  links: any;
 }
 
 const LinkTable: React.FC<LinkTableProps> = ({ links }) => {
@@ -9,7 +9,7 @@ const LinkTable: React.FC<LinkTableProps> = ({ links }) => {
     <div>
       <h2>LinkTable</h2>
 
-      {links.map((link) => {
+      {links.map((link: any) => {
         return (
           <>
             <div>{JSON.stringify(link)}</div>
