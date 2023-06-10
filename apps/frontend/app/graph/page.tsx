@@ -71,6 +71,7 @@ const Graph: NextPage = () => {
         .attr('y2', (link: any) => link.target.y);
     });
   }, []);
+
   return (
     <>
       <div className="h-full w-full">

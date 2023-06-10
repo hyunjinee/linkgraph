@@ -23,8 +23,7 @@ const Graph = async ({ params }: { params: { userId: string[] } }) => {
   // }
 
   return (
-    <div>
-      여기에 그래프가 온다.
+    <div className="flex h-full w-full flex-col items-center justify-center ">
       <LinkGraph links={links} />
     </div>
   );

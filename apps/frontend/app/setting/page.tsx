@@ -1,5 +1,6 @@
 import { getLinks } from '@linkgraph/db';
 import { getServerSession } from 'next-auth';
+
 import { authOptions } from '~/api/auth/[...nextauth]/route';
 import LinkForm from '~/components/LinkForm';
 
@@ -13,7 +14,6 @@ const Setting = async () => {
     <>
       <LinkForm />
 
-      <br />
       <br />
       <br />
       <div>{JSON.stringify(links, null, 2)}</div>
