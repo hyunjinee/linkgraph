@@ -63,10 +63,6 @@ const ImageUpload: NextPage = () => {
           'Content-type': image.type,
         },
       });
-      console.log(uploadResult);
-      // console.log('signedUrl', signedUrl);
-
-      // console.log(signedUrl);
     } catch (error) {}
   };
 

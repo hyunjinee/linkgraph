@@ -1,6 +1,9 @@
 import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { NextResponse } from 'next/server';
+import prisma from '@linkgraph/db';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth/[...nextauth]/route';
 
 const client = new S3Client({
   region: process.env.AWS_REGION,
@@ -42,27 +45,27 @@ export const GET = () => {
   return NextResponse.json({ hi: 'hi' });
 };
 
-export const POST = async (req: Request, context: {}) => {
+export const PATCH = async (req: Request, context: {}) => {
   const data = await req.json();
 
+  const session = await getServerSession(authOptions);
   console.log(data);
+  if (!session) {
+    return NextResponse.json({
+      error: 'You must be signed in to upload a profile image',
+    });
+  }
 
-  const command = new PutObjectCommand({
-    Bucket: process.env.AWS_BUCKET_NAME,
-    Key: data.name,
-    ContentType: data.type,
+  const result = await prisma.user.update({
+    where: {
+      id: session.user.id,
+    },
+    data: {
+      profileImage: data.profileImageURL,
+    },
   });
-  // const preSignedUrl = await getSignedFileUrl(client);
 
-  const signedUrl = await getSignedUrl(client, command, { expiresIn: 3600 });
-  console.log(signedUrl, '?');
-  // console.log(JSON.parse(req.body));
-
-  // const result = await fetch(signedUrl, {
-  //   method: 'PUT',
-  //   body:
-  // })
   return NextResponse.json({
-    url: signedUrl,
+    result,
   });
 };

@@ -23,7 +23,16 @@ export const authOptions: AuthOptions = {
   },
   callbacks: {
     async session({ session, user }) {
+      const result = await prisma.user.findUnique({
+        where: {
+          id: user.id,
+        },
+      });
+
+      console.log(user);
+
       session.user.id = user.id;
+      session.user.profileImage = result?.profileImage;
 
       return session;
     },
