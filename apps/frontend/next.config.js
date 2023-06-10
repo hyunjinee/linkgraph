@@ -11,6 +11,7 @@ const nextConfig = {
       'avatar.vercel.sh',
       'd1wdpf820bqp3t.cloudfront.net',
       'link-graph.s3.ap-northeast-2.amazonaws.com',
+      'lh3.googleusercontent.com',
     ],
   },
   webpack: (config, { isServer }) => {

@@ -2,10 +2,8 @@ import { NextPage } from 'next';
 import { notFound } from 'next/navigation';
 import prisma from '@linkgraph/db';
 
-/*
-  Graph Page
-  서버에서 데이터 페칭 후 그래프 컴포넌트에게 데이터 전달. 그래프 컴포넌트는 클라이언트 컴포넌트
-*/
+import LinkGraph from '~/components/LinkGraph';
+
 const Graph = async ({ params }: { params: { userId: string[] } }) => {
   const userId = params.userId[0];
   const links = await prisma.link.findMany({
@@ -24,7 +22,12 @@ const Graph = async ({ params }: { params: { userId: string[] } }) => {
   //   notFound();
   // }
 
-  return <div>여기에 그래프가 온다.</div>;
+  return (
+    <div>
+      여기에 그래프가 온다.
+      <LinkGraph links={links} />
+    </div>
+  );
 };
 
 export default Graph;

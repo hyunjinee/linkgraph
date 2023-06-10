@@ -95,7 +95,7 @@ const Navbar: React.FC = () => {
                                 active ? 'bg-gray-100' : '',
                                 'flex w-full px-4 py-2 text-sm text-gray-700',
                               )}
-                              onClick={() => signIn('로그인')}
+                              onClick={() => signIn('google')}
                             >
                               로그인
                             </button>

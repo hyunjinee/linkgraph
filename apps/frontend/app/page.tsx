@@ -21,7 +21,7 @@ const Home = async () => {
 
         <h1 className="font-bold text-purple-400 ">서비스 준비중입니다.</h1>
         <Link href="/graph" className="text-purple-500">
-          그래프 구경하기
+          그래프 컨셉 구경하기
         </Link>
       </section>
     </main>
