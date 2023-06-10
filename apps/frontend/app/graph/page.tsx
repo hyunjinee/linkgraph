@@ -6,13 +6,17 @@ import * as d3 from 'd3';
 
 import { nodes, links, MANY_BODY_STRENGTH } from '~/data/forcegraph';
 
-const centerX = 960 / 2;
-const centerY = 500 / 2;
+const centerX = 1000 / 2;
+const centerY = 1000 / 2;
 
 const Graph: NextPage = () => {
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
+    if (!svgRef.current) {
+      return;
+    }
+
     const simulation = d3
       .forceSimulation(nodes as any)
       .force('charge', d3.forceManyBody().strength(MANY_BODY_STRENGTH))
@@ -20,7 +24,7 @@ const Graph: NextPage = () => {
         'link',
         d3.forceLink(links).distance((link: any) => link.distance),
       )
-      .force('center', d3.forceCenter(centerX, centerY));
+      .force('center', d3.forceCenter(svgRef.current.width.baseVal.value / 2, svgRef.current.height.baseVal.value / 2));
 
     const svg = d3.select(svgRef.current);
     const circles = svg
@@ -56,8 +60,8 @@ const Graph: NextPage = () => {
   }, []);
   return (
     <>
-      <div className="w-full h-full bg-red-200">
-        <svg ref={svgRef} className="w-full h-full" />
+      <div className="h-full w-full bg-red-200">
+        <svg ref={svgRef} className="h-full w-full" />
       </div>
     </>
   );
