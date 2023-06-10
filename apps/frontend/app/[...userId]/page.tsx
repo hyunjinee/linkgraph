@@ -24,7 +24,7 @@ const Graph = async ({ params }: { params: { userId: string[] } }) => {
   //   notFound();
   // }
 
-  return <div></div>;
+  return <div>여기에 그래프가 온다.</div>;
 };
 
 export default Graph;
