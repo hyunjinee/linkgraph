@@ -1,4 +1,4 @@
-# LinkGraph
+# <img height="25px" src="https://github.com/hyunjinee/linkgraph/assets/63354527/2612509a-975a-4ee7-a1b8-5be464444a74" /> LinkGraph
 
 ![linkgraph](https://github.com/hyunjinee/linkgraph/assets/63354527/be412ccd-a0bc-451d-8e41-6333525b16bf)
 
