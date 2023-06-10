@@ -48,7 +48,6 @@ const Graph: NextPage = () => {
       .attr('r', (node: any) => node.size)
       .attr('fill', (node: any) => node.color || 'grey')
       .call(dragInteraction as any);
-
     const text = svg
       .selectAll('text')
       .data(nodes)
