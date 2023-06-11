@@ -1,6 +1,4 @@
-# LinkGraph
-
-![linkgraph](https://github.com/hyunjinee/linkgraph/assets/63354527/be412ccd-a0bc-451d-8e41-6333525b16bf)
+# <img height="25px" src="https://github.com/hyunjinee/linkgraph/assets/63354527/2612509a-975a-4ee7-a1b8-5be464444a74" /> LinkGraph
 
 링크들을 그래프 형태로 나타내보자.
 
@@ -30,3 +28,4 @@
 - EsLint 설정 공통 프로젝트
 - tsconfig 설정 공통 프로젝트
 - form에서 링크 업로드 후 업로드 된 링크를 사용자 URL에서 표시하기
+- 로그인 모달

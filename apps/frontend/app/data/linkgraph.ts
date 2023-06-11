@@ -1,5 +1,21 @@
-export const nodes: any = [];
-export const links: any = [];
+import * as d3 from 'd3';
+
+export type Node = {
+  id: string;
+  size?: number;
+  color?: string;
+} & d3.SimulationNodeDatum;
+
+export type Link = {
+  source: Node;
+  target: Node;
+  distance: number;
+  color?: string;
+} & d3.SimulationLinkDatum<d3.SimulationNodeDatum>;
+
+export const nodes: Node[] = [];
+export const links: Link[] = [];
+
 const colors = [
   ['#9D4452', '#E6A6B0', '#BE6B78', '#812836', '#5B0D1A'],
   ['#A76C48', '#F4CAAF', '#C99372', '#884E2A', '#602E0E'],
@@ -13,19 +29,19 @@ const LEAF_NODE_SIZE = 5;
 const DEFAULT_DISTANCE = 20;
 const MAIN_NODE_DISTANCE = 90;
 const LEAF_NODE_DISTANCE = 30;
-export const MANY_BODY_STRENGTH = -20;
+export const MANY_BODY_STRENGTH = -2000;
 
 let i = 0;
 
-const addMainNode = (node: any) => {
+export const addMainNode = (node: Node) => {
   node.size = MAIN_NODE_SIZE;
   node.color = colors[i++][1];
   nodes.push(node);
 };
 
 const addChildNode = (
-  parentNode: any,
-  childNode: any,
+  parentNode: Node,
+  childNode: Node,
   size: number = CHILD_NODE_SIZE,
   distance: number = DEFAULT_DISTANCE,
 ) => {
@@ -88,16 +104,3 @@ connectMainNodes(socialImpactCommons, cast);
 connectMainNodes(ambitioUS, cast);
 connectMainNodes(ambitioUS, socialImpactCommons);
 connectMainNodes(ambitioUS, artsWeb);
-// const parentNode = { id: 'Computer Science' };
-// const childNode = { id: 'Operating Systems' };
-// addMainNode(parentNode);
-// addChildNode(parentNode, childNode);
-
-// for (let i = 0; i < 20; i++) {
-//   addChildNode(childNode, { id: '', distance: LEAF_NODE_DISTANCE });
-// }
-
-// addChildNode(parentNode, { id: 'Programming Languages' });
-// addChildNode(childNode, { id: 'Linux' }, LEAF_NODE_SIZE);
-// addChildNode(childNode, { id: 'Windows' });
-// addChildNode(childNode, { id: 'MacOS' });
