@@ -29,7 +29,7 @@ const LEAF_NODE_SIZE = 5;
 const DEFAULT_DISTANCE = 20;
 const MAIN_NODE_DISTANCE = 90;
 const LEAF_NODE_DISTANCE = 30;
-export const MANY_BODY_STRENGTH = -20;
+export const MANY_BODY_STRENGTH = -2000;
 
 let i = 0;
 
