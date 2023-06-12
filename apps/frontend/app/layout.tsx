@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 
 import SessionProvider from '~/components/SessionProvider';
 import Navbar from '~/components/Navbar';
+// import { RecoilRoot } from 'recoil';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,9 +24,13 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
     <html lang="ko" className="h-full scroll-smooth antialiased">
       <body className={`${inter.className} flex h-full flex-col`}>
         <SessionProvider>
+          {/* <RecoilRoot> */}
           <Navbar />
           {children}
+          {/* </RecoilRoot> */}
         </SessionProvider>
+
+        {/* <LoginModal /> */}
       </body>
     </html>
   );
