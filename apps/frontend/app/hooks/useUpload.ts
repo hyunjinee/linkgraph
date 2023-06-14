@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 export const useUpload = () => {
   const upload = () => {
     const promise = new Promise<File | null>((resolve, reject) => {
