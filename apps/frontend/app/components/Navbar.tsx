@@ -3,12 +3,11 @@
 import Image from 'next/image';
 import { Fragment, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import LinkGraphIcon from '~/components/LinkGraphIcon';
-// import LoginModal from './LoginModal';
 
 const navigation = [
   { name: 'Dashboard', href: '/' },
@@ -23,42 +22,33 @@ const Navbar: React.FC = () => {
   const pathname = usePathname();
   const router = useRouter();
 
+  const closeModal = () => {
+    setIsLoginModalOpen(false);
+  };
+
+  const openModal = () => {
+    setIsLoginModalOpen(true);
+  };
+
   return (
     <>
       <Disclosure as="nav" className="bg-white shadow-sm">
         {({ open }) => (
           <>
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="flex h-16 justify-between">
+            <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+              <div className="flex justify-between h-16">
                 <div className="flex">
-                  <div className="flex flex-shrink-0 cursor-pointer items-center" onClick={() => router.push('/')}>
+                  <div className="flex items-center flex-shrink-0 cursor-pointer" onClick={() => router.push('/')}>
                     <LinkGraphIcon />
                   </div>
-                  {/* <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-                  {navigation.map((item) => (
-                    <a
-                      href={item.href}
-                      key={item.name}
-                      className={classNames(
-                        pathname === item.href
-                          ? 'border-slate-500 text-gray-900'
-                          : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                        'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium',
-                      )}
-                      aria-current={pathname === item.href ? 'page' : undefined}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </div> */}
                 </div>
                 <div className="hidden sm:flex sm:items-center">
                   <Menu as="div" className="relative ml-3">
-                    <div className="fg-white flex rounded-full ">
+                    <div className="flex rounded-full fg-white ">
                       <Menu.Button className="flex rounded-full">
                         <span className="sr-only">Open user menu</span>
                         <Image
-                          className="h-8 w-8 rounded-full"
+                          className="w-8 h-8 rounded-full"
                           src={session?.user?.image || 'https://avatar.vercel.sh/leerob'}
                           height={32}
                           width={32}
@@ -75,7 +65,7 @@ const Navbar: React.FC = () => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="absolute right-0 z-10 w-48 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         {session?.user ? (
                           <Menu.Item>
                             {({ active }) => (
@@ -111,13 +101,13 @@ const Navbar: React.FC = () => {
                     </Transition>
                   </Menu>
                 </div>
-                <div className="-mr-2 flex items-center sm:hidden">
+                <div className="flex items-center -mr-2 sm:hidden">
                   <Disclosure.Button className="inline-flex items-center justify-center">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
-                      <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                      <XMarkIcon className="block w-6 h-6" aria-hidden="true" />
                     ) : (
-                      <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                      <Bars3Icon className="block w-6 h-6" aria-hidden="true" />
                     )}
                   </Disclosure.Button>
                 </div>
@@ -125,7 +115,7 @@ const Navbar: React.FC = () => {
             </div>
 
             <Disclosure.Panel className="sm:hidden">
-              <div className="space-y-1 pb-3 pt-2">
+              <div className="pt-2 pb-3 space-y-1">
                 {navigation.map((item) => (
                   <Disclosure.Button
                     key={item.name}
@@ -143,21 +133,25 @@ const Navbar: React.FC = () => {
                   </Disclosure.Button>
                 ))}
               </div>
-              <div className="border-t border-gray-200 pb-3 pt-4">
+              <div className="pt-4 pb-3 border-t border-gray-200">
                 {session?.user ? (
                   <>
-                    <div>
-                      <div></div>
-                      <div></div>
+                    <div className="mt-3 space-y-1">
+                      <button
+                        onClick={() => signOut()}
+                        className="flex w-full px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                      >
+                        로그아웃
+                      </button>
                     </div>
                   </>
                 ) : (
                   <div className="mt-3 space-y-1">
                     <button
-                      onClick={() => signIn('google')}
+                      onClick={() => openModal()}
                       className="flex w-full px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                     >
-                      로그아웃
+                      로그인
                     </button>
                   </div>
                 )}
@@ -166,6 +160,62 @@ const Navbar: React.FC = () => {
           </>
         )}
       </Disclosure>
+
+      {/* 로그인 모달 */}
+      <Transition appear show={isLoginModalOpen} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex items-center justify-center min-h-full p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                  <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
+                    로그인
+                  </Dialog.Title>
+                  {/* <div className="mt-2">
+                    <p className="text-sm text-gray-500">
+                      Your payment has been successfully submitted. We’ve sent you an email with all of the details of
+                      your order.
+                    </p>
+                  </div> */}
+
+                  <div className="mt-4">
+                    <button
+                      type="button"
+                      className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      onClick={() => {
+                        signIn('google');
+                        closeModal();
+                      }}
+                    >
+                      구글로 로그인
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
     </>
   );
 };
