@@ -1,6 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 
+import type { PropsWithChildren } from 'react';
 import Navbar from '~/components/Navbar';
 import Core from '~/components/Core';
 
@@ -14,11 +15,7 @@ export const metadata = {
   },
 };
 
-interface RootLayoutProps {
-  children: React.ReactNode;
-}
-
-const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
+const RootLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="ko" className="h-full scroll-smooth antialiased">
       <body className={`${inter.className} flex h-full flex-col`} suppressHydrationWarning={true}>
