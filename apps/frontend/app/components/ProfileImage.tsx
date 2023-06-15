@@ -8,6 +8,7 @@ import { useState } from 'react';
 
 const ProfileImage = () => {
   const { data: session } = useSession();
+  // TODO session 없으면 not-found 페이지나 첫 홈으로 리다이렉션
   const [profileImageURL, setProfileImageURL] = useState<string>('');
 
   const upload = useUpload();
@@ -42,7 +43,7 @@ const ProfileImage = () => {
           'Content-type': image.type,
         },
       });
-      console.log(uploadResponse);
+      // console.log(uploadResponse);
       if (uploadResponse.status === 200) {
       }
 
@@ -56,17 +57,21 @@ const ProfileImage = () => {
     } catch (error) {
       console.log(error);
     }
+
+    // await fetch('/api/profile-image' + '?' + 'userId=' + session?.user.id, {
+    //   method: 'DELETE',
+    // });
   };
 
   return (
     <section>
-      <div className="relative h-24 w-24">
+      <div className="relative w-24 h-24">
         <Image
           onClick={handleImageUpload}
           src={profileImageURL || session?.user.profileImage || '/profile.png'}
           alt="profile"
           fill
-          className="cursor-pointer rounded-full"
+          className="rounded-full cursor-pointer"
           priority
         />
       </div>

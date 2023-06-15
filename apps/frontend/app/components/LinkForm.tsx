@@ -12,7 +12,6 @@ const LinkForm: React.FC = () => {
   // TODO if not logged in -> redirect to homepage
 
   const onClick = async () => {
-    console.log(session);
     if (!session?.user.id || URL === '') {
       return;
     }
@@ -38,7 +37,7 @@ const LinkForm: React.FC = () => {
       <input
         value={URL}
         onChange={onChangeURL}
-        className="border rounded border-slate-400 px-2 py-0.5"
+        className="rounded border border-slate-400 px-2 py-0.5"
         type="text"
         name="url"
       />
