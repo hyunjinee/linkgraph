@@ -53,7 +53,7 @@ model User {
   role          Role      @default(USER)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  profileImage  String?
+  profileImage  String?   @db.Text
   accounts      Account[]
   sessions      Session[]
   links         Link[]
