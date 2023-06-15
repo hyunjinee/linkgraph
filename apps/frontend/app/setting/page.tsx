@@ -7,9 +7,7 @@ import LinkForm from '~/components/LinkForm';
 const Setting = async () => {
   const session = await getServerSession(authOptions);
   const links = await getLinks(session?.user.id);
-  //
 
-  console.log(links);
   return (
     <>
       <LinkForm />
