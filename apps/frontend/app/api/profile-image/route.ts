@@ -51,7 +51,7 @@ export const GET = () => {
   return NextResponse.json({ hi: 'hi' });
 };
 
-export const PATCH = async (req: Request, context: {}) => {
+export const PATCH = async (req: Request) => {
   const data = await req.json();
   const session = await getServerSession(authOptions);
 
@@ -83,7 +83,7 @@ export const PATCH = async (req: Request, context: {}) => {
       id: session.user.id,
     },
     data: {
-      profileImage: data.profileImageURL,
+      url: data.url,
     },
   });
 

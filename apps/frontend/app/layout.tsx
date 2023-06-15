@@ -20,8 +20,8 @@ interface RootLayoutProps {
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
-    <html lang="ko" className="h-full antialiased scroll-smooth">
-      <body className={`${inter.className} flex h-full flex-col`}>
+    <html lang="ko" className="h-full scroll-smooth antialiased">
+      <body className={`${inter.className} flex h-full flex-col`} suppressHydrationWarning={true}>
         <Core>
           <Navbar />
           {children}
