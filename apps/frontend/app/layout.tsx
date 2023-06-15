@@ -1,9 +1,8 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 
-import SessionProvider from '~/components/SessionProvider';
 import Navbar from '~/components/Navbar';
-import QueryClientProvider from './components/QueryClientProvider';
+import Core from '~/components/Core';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,16 +20,12 @@ interface RootLayoutProps {
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
-    <html lang="ko" className="h-full scroll-smooth antialiased">
+    <html lang="ko" className="h-full antialiased scroll-smooth">
       <body className={`${inter.className} flex h-full flex-col`}>
-        <SessionProvider>
-          <QueryClientProvider>
-            <Navbar />
-            {children}
-          </QueryClientProvider>
-        </SessionProvider>
-
-        {/* <LoginModal /> */}
+        <Core>
+          <Navbar />
+          {children}
+        </Core>
       </body>
     </html>
   );
