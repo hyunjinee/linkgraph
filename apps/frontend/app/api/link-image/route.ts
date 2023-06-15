@@ -1,1 +1,5 @@
-export const GET = () => {};
+import { NextResponse } from 'next/server';
+
+export const GET = async () => {
+  return NextResponse.json({ hi: 'hi' });
+};
