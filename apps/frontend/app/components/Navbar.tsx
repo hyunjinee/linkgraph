@@ -42,10 +42,10 @@ const Navbar: React.FC = () => {
                     <LinkGraphIcon />
                   </div>
                 </div>
-                <div className="hidden sm:flex sm:items-center">
+                <div className="hidden sm:ml-6 sm:flex sm:items-center">
                   <Menu as="div" className="relative ml-3">
-                    <div className="flex rounded-full fg-white ">
-                      <Menu.Button className="flex rounded-full">
+                    <div>
+                      <Menu.Button className="flex text-sm bg-white rounded-full hover:ring-2 hover:ring-slate-500 hover:ring-offset-2 focus:outline-none ">
                         <span className="sr-only">Open user menu</span>
                         <Image
                           className="w-8 h-8 rounded-full"
@@ -56,6 +56,7 @@ const Navbar: React.FC = () => {
                         />
                       </Menu.Button>
                     </div>
+
                     <Transition
                       as={Fragment}
                       enter="transition ease-out duration-200"
@@ -65,7 +66,7 @@ const Navbar: React.FC = () => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 w-48 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         {session?.user ? (
                           <Menu.Item>
                             {({ active }) => (
@@ -76,7 +77,7 @@ const Navbar: React.FC = () => {
                                 )}
                                 onClick={() => signOut()}
                               >
-                                Sign out
+                                로그아웃
                               </button>
                             )}
                           </Menu.Item>

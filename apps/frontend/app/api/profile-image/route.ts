@@ -1,9 +1,10 @@
+import { getServerSession } from 'next-auth';
+import { NextResponse } from 'next/server';
 import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import { NextResponse } from 'next/server';
 import prisma from '@linkgraph/db';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth/[...nextauth]/route';
+
+import { authOptions } from '~/api/auth/[...nextauth]/route';
 
 const client = new S3Client({
   region: process.env.AWS_REGION,
@@ -50,7 +51,7 @@ export const GET = () => {
   return NextResponse.json({ hi: 'hi' });
 };
 
-export const PATCH = async (req: Request, context: {}) => {
+export const PATCH = async (req: Request) => {
   const data = await req.json();
   const session = await getServerSession(authOptions);
 
@@ -82,7 +83,7 @@ export const PATCH = async (req: Request, context: {}) => {
       id: session.user.id,
     },
     data: {
-      profileImage: data.profileImageURL,
+      profileImage: data.url,
     },
   });
 

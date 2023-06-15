@@ -18,6 +18,7 @@
     "postinstall": "husky install && yarn db prisma generate"
   },
   "devDependencies": {
+    "@tanstack/react-query-devtools": "^4.29.13",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
     "@typescript-eslint/eslint-plugin": "^5.59.7",
