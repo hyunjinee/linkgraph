@@ -18,12 +18,6 @@ export const PATCH = async (req: Request) => {
   const data = await req.json();
   const session = await getServerSession(authOptions);
 
-  // await prisma.user.findMany({
-  //   where: {
-  //    url
-  //   },
-  // });
-
   const result = await prisma.user.update({
     where: {
       id: session?.user.id,
@@ -33,6 +27,5 @@ export const PATCH = async (req: Request) => {
     },
   });
 
-  console.log(data);
   return NextResponse.json({ result });
 };
