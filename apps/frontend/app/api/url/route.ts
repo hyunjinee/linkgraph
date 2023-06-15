@@ -18,12 +18,18 @@ export const PATCH = async (req: Request) => {
   const data = await req.json();
   const session = await getServerSession(authOptions);
 
+  // await prisma.user.findMany({
+  //   where: {
+  //    url
+  //   },
+  // });
+
   const result = await prisma.user.update({
     where: {
       id: session?.user.id,
     },
     data: {
-      url: data.url,
+      url: data.url as string,
     },
   });
 

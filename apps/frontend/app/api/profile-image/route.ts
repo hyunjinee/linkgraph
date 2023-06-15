@@ -83,7 +83,7 @@ export const PATCH = async (req: Request) => {
       id: session.user.id,
     },
     data: {
-      url: data.url,
+      profileImage: data.url,
     },
   });
 
