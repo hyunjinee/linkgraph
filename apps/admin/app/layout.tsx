@@ -14,7 +14,7 @@ export const metadata = {
 const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <html lang="ko" className="h-full bg-gray-50">
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <SessionProvider>
           <Navbar />
           {children}
