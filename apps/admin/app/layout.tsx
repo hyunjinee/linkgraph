@@ -15,7 +15,7 @@ export const metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="ko" className="h-full">
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body className={`${inter.className} h-full`} suppressHydrationWarning={true}>
         <Core>{children}</Core>
       </body>
     </html>
