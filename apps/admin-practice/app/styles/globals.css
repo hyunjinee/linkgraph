@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    font-size: 14px;
+  }
+}
+
+@layer components {
+  .enable-transition {
+    @apply transition-all duration-300;
+  }
+
+  .btn {
+    @apply enable-transition hover:border-brand cursor-pointer rounded-lg border border-gray-300;
+  }
+}

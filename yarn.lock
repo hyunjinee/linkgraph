@@ -9749,6 +9749,7 @@ __metadata:
     framer-motion: ^10.12.16
     ky: ^0.33.3
     ky-universal: ^0.11.0
+    lucide-react: ^0.244.0
     next: 13.4.6
     postcss: 8.4.24
     qs: ^6.11.2
@@ -18038,6 +18039,15 @@ __metadata:
   version: 7.18.3
   resolution: "lru-cache@npm:7.18.3"
   checksum: e550d772384709deea3f141af34b6d4fa392e2e418c1498c078de0ee63670f1f46f5eee746e8ef7e69e1c895af0d4224e62ee33e66a543a14763b0f2e74c1356
+  languageName: node
+  linkType: hard
+
+"lucide-react@npm:^0.244.0":
+  version: 0.244.0
+  resolution: "lucide-react@npm:0.244.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0
+  checksum: 5a7eb6df017b37482aec829aadc83ac15c3e75da40ac9d5a8bf1b29d0c449266b6bc617fada5f5c82b48929734129d8541dd37c8742cbf35528b53883a7744a9
   languageName: node
   linkType: hard
 
