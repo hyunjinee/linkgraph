@@ -22,6 +22,10 @@ const Home = () => {
 
   // const { data: session } = useSession();
   // console.log(session);
+  const dataSource = data?.map((d: any) => ({
+    ...d,
+    key: d.id,
+  }));
 
   const columns = [
     {
@@ -49,7 +53,7 @@ const Home = () => {
       {/* <Card className="mt-6">
         <UserTable />
       </Card> */}
-      <Table dataSource={data} columns={columns} />
+      <Table dataSource={dataSource} columns={columns} />
     </main>
   );
 };
