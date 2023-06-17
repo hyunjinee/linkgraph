@@ -23,3 +23,4 @@
 
 - 모노레포
 - 서버사이드렌더링으로 UX 개선하기(Navbar)
+- React Props. Type or Interface?
