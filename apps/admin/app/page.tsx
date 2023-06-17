@@ -8,17 +8,11 @@ import UserTable from './components/UserTable';
 
 const Home = () => {
   const { data } = useQuery(['users'], async () => {
-    const res = await fetch('http://localhost:3000/api/users');
+    const res = await fetch('/api/users');
     const data = await res.json();
 
     return data;
   });
-
-  console.log(data);
-  // const res = await fetch('http://localhost:3000/api/users');
-  // const data = await res.json();
-
-  // console.log(data);
 
   // const { data: session } = useSession();
   // console.log(session);
