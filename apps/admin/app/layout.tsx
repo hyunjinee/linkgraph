@@ -1,8 +1,9 @@
 import './globals.css';
 
 import { Inter } from 'next/font/google';
-import Navbar from '~/app/components/Navbar';
-import SessionProvider from '~/app/components/SessionProvider';
+import type { PropsWithChildren } from 'react';
+
+import Core from '~/app/components/Core';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -11,14 +12,11 @@ export const metadata = {
   description: 'Admin Dashboard for LinkGraph',
 };
 
-const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
+const RootLayout = ({ children }: PropsWithChildren) => {
   return (
-    <html lang="ko" className="h-full bg-gray-50">
+    <html lang="ko" className="h-full">
       <body className={inter.className} suppressHydrationWarning={true}>
-        <SessionProvider>
-          <Navbar />
-          {children}
-        </SessionProvider>
+        <Core>{children}</Core>
       </body>
     </html>
   );
