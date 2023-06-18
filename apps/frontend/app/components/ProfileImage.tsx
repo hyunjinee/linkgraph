@@ -63,18 +63,23 @@ const ProfileImage = () => {
     // });
   };
 
+  console.log(profileImageURL, session?.user);
+
   return (
-    <section>
-      <div className="relative w-24 h-24">
+    <section className="flex">
+      <div className="relative h-32 w-32">
         <Image
           onClick={handleImageUpload}
-          src={profileImageURL || session?.user.profileImage || '/profile.png'}
+          src={profileImageURL || session?.user.profileImage || session?.user.image || '/profile.png'}
           alt="profile"
           fill
-          className="rounded-full cursor-pointer"
+          className="cursor-pointer rounded-full"
           priority
+          quality={100}
         />
       </div>
+
+      <div>{session?.user.name}</div>
     </section>
   );
 };

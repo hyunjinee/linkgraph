@@ -30,7 +30,7 @@ export const GET = async () => {
       userId: user.id,
     },
   });
-  console.log(data);
+
   return NextResponse.json(data);
 };
 

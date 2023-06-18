@@ -1,5 +1,9 @@
+'use client';
+
 import { getServerSession } from 'next-auth';
 import { getLinks } from '@linkgraph/db';
+import type { NextPage } from 'next';
+import { useQuery } from '@tanstack/react-query';
 
 import { authOptions } from '~/api/auth/[...nextauth]/route';
 import LinkForm from '~/components/LinkForm';
@@ -7,17 +11,23 @@ import ProfileImage from '~/components/ProfileImage';
 import LinkTable from '~/components/LinkTable';
 import ProfileURL from '~/components/ProfileURL';
 
-const Profile = async () => {
-  const session = await getServerSession(authOptions);
-  const links = await getLinks(session?.user.id);
+const Profile: NextPage = () => {
+  // const session = await getServerSession(authOptions);
+  // const links = await getLinks(session?.user.id);
+
+  const { data: links } = useQuery(['links'], async () => {
+    const res = await fetch('/api/link');
+    return await res.json();
+  });
+
+  console.log(links);
 
   return (
-    <main className="w-full h-full p-4 mx-auto max-w-7xl bg-gray-50 md:p-10">
-      <h1>Profile Page</h1>
+    <main className="mx-auto h-full w-full max-w-7xl bg-gray-50 p-4 md:p-10">
       <ProfileImage />
       <ProfileURL />
       <LinkForm />
-      {links && <LinkTable links={links} />}
+      {/* {links && <LinkTable links={links} />} */}
     </main>
   );
 };
