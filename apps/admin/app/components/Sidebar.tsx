@@ -10,7 +10,7 @@ type SidebarProps = {
 const Sidebar = ({ isSidebarOpened, setSidebarOpened }: SidebarProps) => {
   return (
     <aside
-      className={` hidden h-full w-72 overflow-hidden bg-gray-100 p-4 shadow-[inset_-7px_0_9px_-7px_rgba(0,0,0,0.1)] sm:block ${
+      className={`hidden h-full w-72 shrink-0 overflow-hidden bg-gray-100 p-4 shadow-[inset_-7px_0_9px_-7px_rgba(0,0,0,0.1)] sm:block ${
         !isSidebarOpened && 'sm:hidden'
       }`}
     >

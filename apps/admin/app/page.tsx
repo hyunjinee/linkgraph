@@ -1,15 +1,17 @@
 'use client';
 
-import { Title, Text, Card } from '@tremor/react';
+import { useState } from 'react';
+import { useSession } from 'next-auth/react';
 import { useQuery } from '@tanstack/react-query';
 import { Table } from 'antd';
 import { ChevronRight, MenuIcon } from 'lucide-react';
 
-import UserTable from './components/UserTable';
-import Sidebar from './components/Sidebar';
-import { useState } from 'react';
+import Sidebar from '~/app/components/Sidebar';
+import Statistic from '~/app/components/Statistic';
+import { useDashboard } from './queries/dashboard';
 
 const Home = () => {
+  const { data: session } = useSession();
   const { data } = useQuery(['users'], async () => {
     const res = await fetch('/api/users');
     const data = await res.json();
@@ -17,10 +19,10 @@ const Home = () => {
     return data;
   });
 
+  const { data: dashboardData } = useDashboard();
+
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
 
-  // const { data: session } = useSession();
-  // console.log(session);
   const dataSource = data?.map((d: any) => ({
     ...d,
     key: d.id,
@@ -44,23 +46,11 @@ const Home = () => {
     },
   ];
 
-  console.log(data);
-
+  console.log(session);
   return (
-    <div className="flex h-full bg-red-50 ">
+    <div className="flex h-full">
+      {/* 사이드바 */}
       <Sidebar isSidebarOpened={isSidebarOpened} setSidebarOpened={setIsSidebarOpened} />
-      {/* <main className="p-4 mx-auto max-w-7xl md:p-10"> */}
-
-      <div className="flex w-full flex-col">
-        <Title>Users</Title>
-        <Text className="mb-2">A list of users retrieved from a MySQL database (PlanetScale).</Text>
-
-        {/* <main></main>
-   
-    */}
-        <Table dataSource={dataSource} columns={columns} />
-      </div>
-
       {!isSidebarOpened && (
         <div className="fixed bottom-5 left-5">
           <button
@@ -72,6 +62,15 @@ const Home = () => {
           </button>
         </div>
       )}
+
+      {/* 메인 섹션 */}
+      <div className="flex w-full flex-col px-5 pb-5 sm:px-10">
+        <h2 className="my-5 text-xl">👋 {session?.user.name || '관리자'}님 안녕하세요!</h2>
+
+        <Statistic data={dashboardData} />
+
+        <Table dataSource={dataSource} columns={columns} />
+      </div>
     </div>
   );
 };

@@ -68,7 +68,7 @@ const categories: {
 
 export default function PlaygroundPage() {
   return (
-    <main className="p-4 mx-auto md:p-10 max-w-7xl">
+    <main className="mx-auto max-w-7xl p-4 md:p-10">
       {/* <Grid className="gap-6" numColsSm={2} numColsLg={3}>
         {categories.map((item) => (
           <Card key={item.title}>
