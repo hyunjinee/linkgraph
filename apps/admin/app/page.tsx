@@ -8,6 +8,7 @@ import { ChevronRight, MenuIcon } from 'lucide-react';
 
 import Sidebar from '~/app/components/Sidebar';
 import Statistic from '~/app/components/Statistic';
+import { useDashboard } from './queries/dashboard';
 
 const Home = () => {
   const { data: session } = useSession();
@@ -17,6 +18,8 @@ const Home = () => {
 
     return data;
   });
+
+  const { data: dashboardData } = useDashboard();
 
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
 
@@ -64,7 +67,7 @@ const Home = () => {
       <div className="flex w-full flex-col px-5 pb-5 sm:px-10">
         <h2 className="my-5 text-xl">👋 {session?.user.name || '관리자'}님 안녕하세요!</h2>
 
-        <Statistic />
+        <Statistic data={dashboardData} />
 
         <Table dataSource={dataSource} columns={columns} />
       </div>
