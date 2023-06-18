@@ -5670,8 +5670,11 @@ __metadata:
     "@types/swagger-ui-react": ^4.18.0
     autoprefixer: 10.4.14
     aws-crt: ^1.15.17
+    class-variance-authority: ^0.6.0
+    clsx: ^1.2.1
     d3: ^7.8.5
     limiter: ^2.1.0
+    lucide-react: ^0.244.0
     next: ^13.4.6
     next-auth: ^4.22.1
     next-swagger-doc: ^0.4.0
@@ -5681,7 +5684,9 @@ __metadata:
     react-dom: 18.2.0
     recoil: ^0.7.7
     swagger-ui-react: ^4.19.0
+    tailwind-merge: ^1.13.2
     tailwindcss: 3.3.2
+    tailwindcss-animate: ^1.0.6
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -11309,6 +11314,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"class-variance-authority@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "class-variance-authority@npm:0.6.0"
+  dependencies:
+    clsx: 1.2.1
+  peerDependencies:
+    typescript: ">= 4.5.5 < 6"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: c86fe9d208b33afbd82e3349739f8be9bfceb17e78f2ee689039029de016c5547883b41ac8ab69630f433cf4d4c9159a3c82072e9d8b7225f63cd31c01d6c9b8
+  languageName: node
+  linkType: hard
+
 "classnames@npm:2.x, classnames@npm:^2.2.1, classnames@npm:^2.2.3, classnames@npm:^2.2.5, classnames@npm:^2.2.6, classnames@npm:^2.3.1, classnames@npm:^2.3.2":
   version: 2.3.2
   resolution: "classnames@npm:2.3.2"
@@ -11465,7 +11484,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^1.2.1":
+"clsx@npm:1.2.1, clsx@npm:^1.2.1":
   version: 1.2.1
   resolution: "clsx@npm:1.2.1"
   checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
@@ -24164,6 +24183,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tailwind-merge@npm:^1.13.2":
+  version: 1.13.2
+  resolution: "tailwind-merge@npm:1.13.2"
+  checksum: 8f9de3bd1e6271f5980f863ab85e0103f062bf84d814d3188bf6870af7eb43725ea40493ef0693dedd652b668cbdfcd6544235b16b70d438ed20bca6118a9066
+  languageName: node
+  linkType: hard
+
 "tailwind-merge@npm:^1.9.1":
   version: 1.12.0
   resolution: "tailwind-merge@npm:1.12.0"
@@ -24178,6 +24204,15 @@ __metadata:
     prettier-plugin-tailwindcss: ^0.3.0
   languageName: unknown
   linkType: soft
+
+"tailwindcss-animate@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "tailwindcss-animate@npm:1.0.6"
+  peerDependencies:
+    tailwindcss: "*"
+  checksum: 01471cb5e64d0936b3dc90bdb1d4b379e8b73b3d285553337d8576e5d458e868ddff99c6db0ae454c1be69ce8f88dc0eed44ea62e4d7bca10d7d2479fc4c8ee0
+  languageName: node
+  linkType: hard
 
 "tailwindcss@npm:3.3.2, tailwindcss@npm:^3":
   version: 3.3.2

@@ -24,8 +24,11 @@
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
     "aws-crt": "^1.15.17",
+    "class-variance-authority": "^0.6.0",
+    "clsx": "^1.2.1",
     "d3": "^7.8.5",
     "limiter": "^2.1.0",
+    "lucide-react": "^0.244.0",
     "next": "^13.4.6",
     "next-auth": "^4.22.1",
     "next-swagger-doc": "^0.4.0",
@@ -34,7 +37,9 @@
     "react-dom": "18.2.0",
     "recoil": "^0.7.7",
     "swagger-ui-react": "^4.19.0",
+    "tailwind-merge": "^1.13.2",
     "tailwindcss": "3.3.2",
+    "tailwindcss-animate": "^1.0.6",
     "typescript": "5.0.4"
   },
   "devDependencies": {
