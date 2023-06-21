@@ -18,10 +18,8 @@ const Home = () => {
 
     return data;
   });
-
-  const { data: dashboardData } = useDashboard();
-
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
+  const { data: dashboardData } = useDashboard();
 
   const dataSource = data?.map((d: any) => ({
     ...d,
@@ -46,7 +44,6 @@ const Home = () => {
     },
   ];
 
-  console.log(session);
   return (
     <div className="flex h-full">
       {/* 사이드바 */}
