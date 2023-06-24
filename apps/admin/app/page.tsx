@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Table } from 'antd';
 import { ChevronRight, MenuIcon } from 'lucide-react';
 
-import Sidebar from '~/app/components/Sidebar';
+import Sidebar from '~/app/components/sidebar/Sidebar';
 import Statistic from '~/app/components/Statistic';
 import { useDashboard } from './queries/dashboard';
 

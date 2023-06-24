@@ -2,9 +2,9 @@
 
 import type { MenuProps } from 'antd';
 import { Dropdown } from 'antd';
+import Link from 'next/link';
 import { ChevronDown, LogOut, User } from 'lucide-react';
 import { signOut, useSession } from 'next-auth/react';
-import Link from 'next/link';
 
 const items: MenuProps['items'] = [
   {
@@ -34,11 +34,11 @@ const Profile = () => {
     <>
       <div className="ml-2">관리자</div>
       <Dropdown menu={{ items }} trigger={['click']}>
-        <button className="flex items-center px-2 text-gray-600 transition-all duration-300 rounded hover:bg-gray-200">
+        <button className="flex items-center rounded px-2 text-gray-600 transition-all duration-300 hover:bg-gray-200">
           <span className="overflow-hidden overflow-ellipsis whitespace-nowrap sm:max-w-[12rem]">
             leehj0110@kakao.com
           </span>
-          <ChevronDown className="w-5 h-5" />
+          <ChevronDown className="h-5 w-5" />
         </button>
       </Dropdown>
     </>

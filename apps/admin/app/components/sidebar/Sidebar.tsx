@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { ChevronLeft, MenuIcon } from 'lucide-react';
-import Profile from './Profile';
 import { useSession } from 'next-auth/react';
+
+import Profile from './Profile';
+import MainMenu from './MainMenu';
 
 type SidebarProps = {
   isSidebarOpened: boolean;
@@ -11,7 +13,6 @@ type SidebarProps = {
 const Sidebar = ({ isSidebarOpened, setSidebarOpened }: SidebarProps) => {
   const session = useSession();
 
-  console.log(session);
   return (
     <aside
       className={`hidden h-full w-72 shrink-0 overflow-hidden bg-gray-100 p-4 shadow-[inset_-7px_0_9px_-7px_rgba(0,0,0,0.1)] sm:block ${
@@ -29,7 +30,9 @@ const Sidebar = ({ isSidebarOpened, setSidebarOpened }: SidebarProps) => {
             <Profile />
           </div>
         </div>
-        <div className="grow">mainmenu</div>
+        <div className="grow">
+          <MainMenu />
+        </div>
         <div>
           <div className="flex justify-end">
             <button
