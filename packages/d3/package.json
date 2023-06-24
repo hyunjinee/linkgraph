@@ -3,21 +3,25 @@
   "packageManager": "yarn@3.5.1",
   "main": "src/index.ts",
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.12",
-    "@storybook/addon-interactions": "^7.0.12",
-    "@storybook/addon-links": "^7.0.12",
-    "@storybook/blocks": "^7.0.12",
-    "@storybook/nextjs": "^7.0.12",
-    "@storybook/react": "^7.0.12",
-    "@storybook/testing-library": "^0.0.14-next.2",
+    "@storybook/addon-essentials": "^7.0.23",
+    "@storybook/addon-interactions": "^7.0.23",
+    "@storybook/addon-links": "^7.0.23",
+    "@storybook/blocks": "^7.0.23",
+    "@storybook/nextjs": "^7.0.23",
+    "@storybook/react": "^7.0.23",
+    "@storybook/testing-library": "^0.2.0",
+    "@types/d3": "^7.4.0",
     "next": "^13.4.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.0.12",
+    "storybook": "^7.0.23",
     "typescript": "^5.0.4"
   },
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "d3": "^7.8.5"
   }
 }
