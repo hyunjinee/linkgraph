@@ -5625,7 +5625,7 @@ __metadata:
     "@storybook/nextjs": ^7.0.12
     "@storybook/react": ^7.0.12
     "@storybook/testing-library": ^0.0.14-next.2
-    next: ^13.4.4
+    next: ^13.4.7
     react: ^18.2.0
     react-dom: ^18.2.0
     storybook: ^7.0.12
@@ -19142,7 +19142,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:13.4.4, next@npm:^13.4.4":
+"next@npm:13.4.4":
   version: 13.4.4
   resolution: "next@npm:13.4.4"
   dependencies:
