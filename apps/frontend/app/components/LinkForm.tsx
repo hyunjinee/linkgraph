@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 interface LinkFromProps {}
 
-const LinkForm: React.FC = () => {
+const LinkForm = () => {
   const [URL, setURL] = useState('');
   const { data: session } = useSession();
 

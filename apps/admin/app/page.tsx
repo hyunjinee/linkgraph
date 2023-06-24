@@ -2,13 +2,14 @@
 
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Table } from 'antd';
 import { ChevronRight, MenuIcon } from 'lucide-react';
 
-import Sidebar from '~/app/components/Sidebar';
+import Sidebar from '~/app/components/sidebar/Sidebar';
 import Statistic from '~/app/components/Statistic';
 import { useDashboard } from './queries/dashboard';
+import { ColumnsType } from 'antd/es/table';
 
 const Home = () => {
   const { data: session } = useSession();
@@ -19,14 +20,29 @@ const Home = () => {
     return data;
   });
 
-  const { data: dashboardData } = useDashboard();
+  const { mutate } = useMutation(async (userId: string) => {
+    const res = await fetch('/api/users', {
+      method: 'POST',
+      body: JSON.stringify({
+        userId,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await res.json();
+    return data;
+  });
 
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);
+  const { data: dashboardData } = useDashboard();
 
-  const dataSource = data?.map((d: any) => ({
-    ...d,
-    key: d.id,
-  }));
+  const dataSource =
+    data &&
+    data?.map((d: any) => ({
+      ...d,
+      key: d.id,
+    }));
 
   const columns = [
     {
@@ -44,9 +60,16 @@ const Home = () => {
       dataIndex: 'role',
       key: 'role',
     },
+    {
+      key: 'action',
+      dataIndex: '액션',
+      title: '액션',
+      width: 120,
+      align: 'center',
+      render: () => <div onClick={() => mutate('clil17f5k00002n12wyecc24g')}>삭제</div>,
+    },
   ];
 
-  console.log(session);
   return (
     <div className="flex h-full">
       {/* 사이드바 */}
@@ -69,7 +92,7 @@ const Home = () => {
 
         <Statistic data={dashboardData} />
 
-        <Table dataSource={dataSource} columns={columns} />
+        <Table dataSource={dataSource} columns={columns as any} />
       </div>
     </div>
   );

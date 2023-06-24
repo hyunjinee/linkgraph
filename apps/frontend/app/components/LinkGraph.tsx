@@ -13,7 +13,7 @@ interface LinkGraphProps {
   // links: Link[];
 }
 
-const LinkGraph: React.FC<LinkGraphProps> = ({ links: userLinks }) => {
+const LinkGraph = ({ links: userLinks }: LinkGraphProps) => {
   const svgRef = useRef<SVGSVGElement>(null);
   // const mainNode = { id: 'userID가 여기로 와야함.', size: 40 };
   // TODO: Put User ID to main Node
@@ -137,7 +137,7 @@ const LinkGraph: React.FC<LinkGraphProps> = ({ links: userLinks }) => {
     });
   }, []);
 
-  return <svg ref={svgRef} className="h-full w-full bg-red-50" />;
+  return <svg ref={svgRef} className="w-full h-full bg-red-50" />;
 };
 
 export default LinkGraph;

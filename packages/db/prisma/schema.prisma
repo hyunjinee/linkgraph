@@ -54,7 +54,7 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   profileImage  String?   @db.Text
-  url           String?   
+  url           String?   @unique
 
   accounts      Account[]
   sessions      Session[]

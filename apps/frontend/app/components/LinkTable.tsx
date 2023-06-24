@@ -4,7 +4,7 @@ interface LinkTableProps {
   links: any;
 }
 
-const LinkTable: React.FC<LinkTableProps> = ({ links }) => {
+const LinkTable = ({ links }: LinkTableProps) => {
   return (
     <div>
       <h2>LinkTable</h2>

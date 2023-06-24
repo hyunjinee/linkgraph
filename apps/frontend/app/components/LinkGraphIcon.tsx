@@ -1,4 +1,4 @@
-const LinkGraphIcon: React.FC = () => {
+const LinkGraphIcon = () => {
   return (
     <svg width="33" height="31" viewBox="0 0 33 31" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
