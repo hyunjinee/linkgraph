@@ -12,6 +12,7 @@ import { useDashboard } from './queries/dashboard';
 import { ColumnsType } from 'antd/es/table';
 
 const Home = () => {
+  const [isSidebarOpened, setIsSidebarOpened] = useState(true);
   const { data: session } = useSession();
   const { data } = useQuery(['users'], async () => {
     const res = await fetch('/api/users');
@@ -34,7 +35,6 @@ const Home = () => {
     return data;
   });
 
-  const [isSidebarOpened, setIsSidebarOpened] = useState(true);
   const { data: dashboardData } = useDashboard();
 
   const dataSource =
