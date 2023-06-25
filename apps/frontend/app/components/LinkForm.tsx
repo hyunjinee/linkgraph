@@ -24,7 +24,6 @@ const LinkForm = () => {
       }),
     });
     const data = await res.json();
-    console.log(data);
   };
 
   const onChangeURL = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +40,7 @@ const LinkForm = () => {
         type="text"
         name="url"
       />
-      <button onClick={onClick} className="px-2 py-1 ml-2 text-sm text-white rounded bg-slate-700">
+      <button onClick={onClick} className="ml-2 rounded bg-slate-700 px-2 py-1 text-sm text-white">
         Add Link
       </button>
     </>

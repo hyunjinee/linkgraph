@@ -59,7 +59,6 @@ const ProfileURL = () => {
 
             const data = await res.json();
 
-            console.log(data);
           }}
         >
           <Input type="text" value={URL} onChange={(e) => setURL(e.target.value)} />

@@ -52,8 +52,6 @@ const ImageUpload: NextPage = () => {
       });
       const data = await urlRes.json();
 
-      console.log(data);
-
       const signedUrl = data.url;
 
       const uploadResult = await fetch(signedUrl, {

@@ -20,8 +20,6 @@ const Profile: NextPage = () => {
     return await res.json();
   });
 
-  console.log(links);
-
   return (
     <main className="mx-auto h-full w-full max-w-7xl bg-gray-50 p-4 md:p-10">
       <ProfileImage />
