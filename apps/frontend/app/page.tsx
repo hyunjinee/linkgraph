@@ -8,7 +8,7 @@ import Link from 'next/link';
 const Home = async () => {
   const session = await getServerSession(authOptions);
   const count = await countLink(session?.user.id);
-  console.log(count);
+  // console.log(count);
 
   return (
     <main className="flex h-full w-full flex-col items-center justify-center p-24">

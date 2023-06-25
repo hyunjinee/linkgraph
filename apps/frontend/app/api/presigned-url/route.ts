@@ -41,8 +41,6 @@ async function uploadFile(fileBuffer: any, fileName: any, mimetype: any) {
 export const POST = async (req: Request, context: {}) => {
   const data = await req.json();
 
-  console.log(data);
-
   const command = new PutObjectCommand({
     Bucket: process.env.AWS_BUCKET_NAME,
     Key: data.name,

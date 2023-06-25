@@ -17,12 +17,12 @@ export const POST = async (req: Request) => {
         id: data.userId,
       },
     });
-    console.log(result);
+    // console.log(result);
 
     return NextResponse.json({ result });
-    console.log(data);
+    // console.log(data);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 
   return NextResponse.json({});
