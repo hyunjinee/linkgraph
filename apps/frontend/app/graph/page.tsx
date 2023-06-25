@@ -1,16 +1,20 @@
 'use client';
 
 import { NextPage } from 'next';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
 import { nodes, links, MANY_BODY_STRENGTH } from '~/data/forcegraph';
+import { AuthContext } from '~/components/Core';
 
 const centerX = 1000 / 2;
 const centerY = 1000 / 2;
 
 const Graph: NextPage = () => {
   const svgRef = useRef<SVGSVGElement>(null);
+
+  const session = useContext(AuthContext);
+  console.log(session, 'from graph page');
 
   useEffect(() => {
     if (!svgRef.current) {
