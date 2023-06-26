@@ -25,8 +25,9 @@ const Graph: NextPage = () => {
         'link',
         d3.forceLink(links).distance((link: any) => link.distance),
       )
-      .force('center', d3.forceCenter(svgRef.current.width.baseVal.value / 2, svgRef.current.height.baseVal.value / 2));
-    // .force('center', d3.forceCenter(+svg.attr('width') / 2, +svg.attr('height') / 2));
+      // .force('center', d3.forceCenter(svgRef.current.width.baseVal.value / 2, svgRef.current.height.baseVal.value / 2));
+      .force('center', d3.forceCenter(+svg.attr('width') / 2, +svg.attr('height') / 2));
+
     const dragInteraction = d3.drag().on('drag', (event, node: any) => {
       node.fx = event.x;
       node.fy = event.y;
@@ -47,7 +48,10 @@ const Graph: NextPage = () => {
       .append('circle')
       .attr('r', (node: any) => node.size)
       .attr('fill', (node: any) => node.color || 'grey')
-      .call(dragInteraction as any);
+      .call(dragInteraction as any)
+      .attr('xlink:href', function () {
+        return 'https://github.com/favicon.ico';
+      });
     const text = svg
       .selectAll('text')
       .data(nodes)
@@ -72,11 +76,9 @@ const Graph: NextPage = () => {
     });
   }, []);
   return (
-    <>
-      <div className="h-full w-full">
-        <svg ref={svgRef} className="h-full w-full" />
-      </div>
-    </>
+    <div className="min-h-screen w-full bg-red-50">
+      <svg ref={svgRef} className="h-full w-full" />
+    </div>
   );
 };
 

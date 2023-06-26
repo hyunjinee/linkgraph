@@ -21,8 +21,6 @@ const LinkGraph = ({ links: userLinks }: LinkGraphProps) => {
   const nodes: d3.SimulationNodeDatum[] = [];
   // const links: d3.SimulationLinkDatum<d3.SimulationNodeDatum>[] = [];
   const links: any = [];
-  console.log(nodes);
-  console.log(links);
 
   const MAIN_NODE_SIZE = 40;
   const CHILD_NODE_SIZE = 15;
@@ -99,12 +97,14 @@ const LinkGraph = ({ links: userLinks }: LinkGraphProps) => {
       simulation.alpha(1);
       simulation.restart();
     });
+
     const lines = svg
       .selectAll('line')
       .data(links)
       .enter()
       .append('line')
       .attr('stroke', (link: any) => link.color || 'black');
+
     const circles = svg
       .selectAll('circle')
       .data(nodes)
@@ -113,6 +113,22 @@ const LinkGraph = ({ links: userLinks }: LinkGraphProps) => {
       .attr('r', (node: any) => node.size)
       .attr('fill', (node: any) => node.color || 'grey')
       .call(dragInteraction as any);
+
+    // .attr('width', 80)
+    // .attr('height', 80)
+    // .append('xhtml:img')
+    // .attr('src', () => './vercel.svg' || 'https://github.com/favicon.ico');
+
+    // .append('svg:image')
+    // .attr('xlink:xlink:href', function (d) {
+    //   return 'https://github.com/favicon.ico';
+    // })
+    // .attr('height', 1)
+    // .attr('width', 1);
+
+    // .append('xhtml:img')
+    // .attr('src', () => 'https://github.com/favicon.ico' || '');
+
     const text = svg
       .selectAll('text')
       .data(nodes)
@@ -137,7 +153,7 @@ const LinkGraph = ({ links: userLinks }: LinkGraphProps) => {
     });
   }, []);
 
-  return <svg ref={svgRef} className="w-full h-full bg-red-50" />;
+  return <svg ref={svgRef} className="h-full w-full bg-red-50" />;
 };
 
 export default LinkGraph;
