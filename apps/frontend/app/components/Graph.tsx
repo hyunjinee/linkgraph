@@ -74,6 +74,10 @@ const Graph = () => {
         .attr('x2', (link: any) => link.target.x)
         .attr('y2', (link: any) => link.target.y);
     });
+
+    return () => {
+      simulation.stop();
+    };
   }, []);
 
   return (
