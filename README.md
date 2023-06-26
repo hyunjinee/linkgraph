@@ -19,14 +19,11 @@
 - 사용자는 마이페이지에서 자신의 링크를 삭제할 수 있다.
 - react hot toast
 - Admin. 유저 테이블 -> 유서 수정 폼
-- Admin. 유저 테이블 -> 유저 삭제 (세션 등 연관 정보 Cascading 삭제)
 - 그래프 고도화 (각 노드에 이미지 추가)
-- profile 페이지 고도화
-- React.FC 제거
-- Admin 에서 유저 삭제 API 만들기 및 호출
 
 ## 블로그 적고싶은거
 
 - 모노레포
 - 서버사이드렌더링으로 UX 개선하기(Navbar)
 - React Props. Type or Interface?
+- 서버 컴포넌트
