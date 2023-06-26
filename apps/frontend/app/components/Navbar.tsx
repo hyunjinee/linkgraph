@@ -9,7 +9,6 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import LinkGraphIcon from '~/components/LinkGraphIcon';
-import { Session } from 'next-auth';
 import { AuthContext } from './Core';
 
 const navigation = [
@@ -26,8 +25,6 @@ const Navbar = () => {
   const router = useRouter();
 
   const session = useContext(AuthContext);
-
-  console.log('session', session);
 
   const closeModal = () => {
     setIsLoginModalOpen(false);
@@ -60,6 +57,7 @@ const Navbar = () => {
                           height={32}
                           width={32}
                           alt={session?.user?.name || 'avatar'}
+                          priority
                         />
                       </Menu.Button>
                     </div>

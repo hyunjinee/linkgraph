@@ -29,7 +29,7 @@ export const authOptions: AuthOptions = {
         },
       });
 
-      console.log(user);
+      // console.log(user);
 
       session.user.id = user.id;
       session.user.profileImage = result?.profileImage;
