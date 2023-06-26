@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import prisma from '@linkgraph/db';
 
 import LinkGraph from '~/components/LinkGraph';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '~/api/auth/[...nextauth]/route';
 
 const Graph = async ({ params }: { params: { userId: string[] } }) => {
   const userId = params.userId[0];
@@ -11,6 +13,9 @@ const Graph = async ({ params }: { params: { userId: string[] } }) => {
       userId,
     },
   });
+
+  const session = await getServerSession(authOptions);
+  console.log(session);
 
   // const user = await prisma.user.findUnique({
   //   where: {
