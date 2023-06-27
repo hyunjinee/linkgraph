@@ -76,8 +76,6 @@ export const PATCH = async (req: Request) => {
     );
   }
 
-  console.log('hi', data.profileImageURL);
-
   const result = await prisma.user.update({
     where: {
       id: session.user.id,

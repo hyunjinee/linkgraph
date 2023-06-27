@@ -1,50 +1,173 @@
 'use client';
 
-import { useSession } from 'next-auth/react';
-import { useState } from 'react';
-
-interface LinkFromProps {}
+import Image from 'next/image';
+import { useContext, useState } from 'react';
+import { AuthContext } from './Core';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useUpload } from '~/hooks/useUpload';
+import { cloudFrontURL } from '@linkgraph/site-info';
 
 const LinkForm = () => {
-  const [URL, setURL] = useState('');
-  const { data: session } = useSession();
+  const [title, setTitle] = useState('');
+  const [linkURL, setLinkURL] = useState('');
+  const session = useContext(AuthContext);
+  const queryClient = useQueryClient();
+  const upload = useUpload();
 
-  // TODO if not logged in -> redirect to homepage
+  const onChangeURL = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLinkURL(e.target.value);
+  };
 
-  const onClick = async () => {
-    if (!session?.user.id || URL === '') {
+  const { mutateAsync } = useMutation({
+    mutationFn: async () => {
+      const res = await fetch('/api/link', {
+        method: 'POST',
+        body: JSON.stringify({
+          url: linkURL,
+          title: title,
+          userId: session?.user.id,
+        }),
+      });
+
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['links'], { exact: true });
+    },
+  });
+
+  const onAddLinkClick = async () => {
+    if (!session?.user.id || linkURL === '') {
       return;
     }
 
-    const res = await fetch('/api/link', {
-      method: 'POST',
-      body: JSON.stringify({
-        url: URL,
-        userId: session.user.id,
-      }),
-    });
-    const data = await res.json();
+    await mutateAsync();
+
+    setTitle('');
+    setLinkURL('');
   };
 
-  const onChangeURL = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setURL(e.target.value);
+  const handleImageUpload = async () => {
+    const image = await upload();
+
+    if (!image) {
+      return;
+    }
+
+    const fileSizeMB = image.size / 1024 / 1024;
+    if (fileSizeMB > 4) {
+      return;
+    }
+
+    const body = {
+      name: 'link/' + getCurrentDateTime() + '-' + image.name,
+      type: image.type,
+    };
+
+    try {
+      const presignedURLResponse = await fetch('/api/presigned-url', {
+        method: 'POST',
+        body: JSON.stringify(body),
+      });
+      const { url: presignedURL } = await presignedURLResponse.json();
+
+      const uploadResponse = await fetch(presignedURL, {
+        method: 'PUT',
+        body: image,
+        headers: {
+          'Content-type': image.type,
+        },
+      });
+      // console.log(uploadResponse);
+      if (uploadResponse.status === 200) {
+      }
+
+      await fetch('/api/link-image', {
+        method: 'POST',
+        body: JSON.stringify({
+          linkImageURL: cloudFrontURL + new URL(presignedURL).pathname,
+        }),
+      });
+
+      // await fetch('/api/profile-image', {
+      //   method: 'PATCH',
+      //   body: JSON.stringify({
+      //     profileImageURL: cloudFrontURL + new URL(presignedURL).pathname,
+      //   }),
+      // });
+      // setProfileImageURL(cloudFrontURL + new URL(presignedURL).pathname);
+    } catch (error) {
+      console.log(error);
+    }
+
+    // await fetch('/api/profile-image' + '?' + 'userId=' + session?.user.id, {
+    //   method: 'DELETE',
+    // });
   };
 
   return (
     <>
-      <h2 className="mb-2 font-medium">Create New Link</h2>
-      <input
-        value={URL}
-        onChange={onChangeURL}
-        className="rounded border border-slate-400 px-2 py-0.5"
-        type="text"
-        name="url"
-      />
-      <button onClick={onClick} className="ml-2 rounded bg-slate-700 px-2 py-1 text-sm text-white">
-        Add Link
-      </button>
+      <div className="flex flex-col">
+        <label htmlFor="linkTitle" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+          Link
+        </label>
+        <div className="flex w-full">
+          <div className="relative mr-4 h-36 w-40">
+            <Image
+              src={'/profile.png'}
+              alt="profile"
+              fill
+              className="cursor-pointer rounded-full object-cover"
+              priority
+              quality={100}
+            />
+          </div>
+
+          <div className="flex w-full flex-col justify-evenly">
+            <input
+              type="text"
+              id="linkTitle"
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              placeholder="링크 제목을 입력해주세요."
+              required
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <input
+              type="text"
+              id="linkURL"
+              className=" block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              placeholder="추가하고 싶은 링크를 입력해주세요."
+              required
+              value={linkURL}
+              onChange={onChangeURL}
+            />
+          </div>
+        </div>
+        <button
+          type="button"
+          className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+          onClick={onAddLinkClick}
+        >
+          링크 추가하기
+        </button>
+      </div>
     </>
   );
 };
 
 export default LinkForm;
+
+// 현재 날짜와 시간을 포맷팅하는 함수
+const getCurrentDateTime = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+
+  const dateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  return dateTime;
+};

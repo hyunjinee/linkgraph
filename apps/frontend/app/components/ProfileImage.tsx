@@ -63,23 +63,34 @@ const ProfileImage = () => {
     // });
   };
 
-  console.log(profileImageURL, session?.user);
-
   return (
-    <section className="flex">
-      <div className="relative h-32 w-32">
+    <section className="flex items-center gap-4">
+      <div className="relative w-32 h-32">
         <Image
           onClick={handleImageUpload}
           src={profileImageURL || session?.user.profileImage || session?.user.image || '/profile.png'}
           alt="profile"
           fill
-          className="cursor-pointer rounded-full"
+          className="rounded-full cursor-pointer"
           priority
           quality={100}
         />
       </div>
 
       <div>{session?.user.name}</div>
+
+      <button
+        type="button"
+        className="inline-flex justify-center w-32 px-4 py-2 mt-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+      >
+        이미지 업로드
+      </button>
+      <button
+        type="button"
+        className="inline-flex justify-center w-32 px-4 py-2 mt-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+      >
+        이미지 삭제
+      </button>
     </section>
   );
 };
