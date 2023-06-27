@@ -64,21 +64,15 @@ export const POST = async (req: Request) => {
   return NextResponse.json(link);
 };
 
-// export const POST = async ({ body }: { body: any }) => {
-// const data = await prisma.link.create({
-// data: {
-// url: body.url,
-// title: body.title,
-// description: body.description,
-// image: body.image,
-// user: {
-//   connect: {
-//     id: body.userId,
-//   },
-// },
-// },
-// });
-// return NextResponse.json(data);
-// };
+export const DELETE = async (req: Request) => {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get('id') || '';
 
-// export const DELETE = async ({ body }: { body: any }) => {};
+  const link = await prisma.link.delete({
+    where: {
+      id,
+    },
+  });
+
+  return NextResponse.json(link);
+};

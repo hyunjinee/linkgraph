@@ -27,3 +27,4 @@
 - 서버사이드렌더링으로 UX 개선하기(Navbar)
 - React Props. Type or Interface?
 - 서버 컴포넌트
+- HTTP Method 멱등성 (DELETE)
