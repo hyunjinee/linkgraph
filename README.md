@@ -19,7 +19,7 @@
 - 사용자는 마이페이지에서 자신의 링크를 삭제할 수 있다.
 - react hot toast
 - Admin. 유저 테이블 -> 유서 수정 폼
-- 그래프 고도화 (각 노드에 이미지 추가)
+- react-hook-form, zod로 form validation
 
 ## 블로그 적고싶은거
 

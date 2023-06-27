@@ -1,31 +1,33 @@
 'use client';
 
-import { getServerSession } from 'next-auth';
-import { getLinks } from '@linkgraph/db';
 import type { NextPage } from 'next';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { authOptions } from '~/api/auth/[...nextauth]/route';
 import LinkForm from '~/components/LinkForm';
 import ProfileImage from '~/components/ProfileImage';
-import LinkTable from '~/components/LinkTable';
 import ProfileURL from '~/components/ProfileURL';
+import { useContext, useState } from 'react';
+import { AuthContext } from '~/components/Core';
+import LinkList from '~/components/LinkList';
+
+// TODO if not logged in -> redirect to homepage
 
 const Profile: NextPage = () => {
-  // const session = await getServerSession(authOptions);
-  // const links = await getLinks(session?.user.id);
-
+  const [URL, setURL] = useState('');
+  const queryClient = useQueryClient();
+  const session = useContext(AuthContext);
   const { data: links } = useQuery(['links'], async () => {
     const res = await fetch('/api/link');
     return await res.json();
   });
 
   return (
-    <main className="mx-auto h-full w-full max-w-7xl bg-gray-50 p-4 md:p-10">
+    <main className="w-full h-full p-4 mx-auto max-w-7xl md:p-10">
       <ProfileImage />
       <ProfileURL />
+
       <LinkForm />
-      {/* {links && <LinkTable links={links} />} */}
+      <LinkList links={links} />
     </main>
   );
 };

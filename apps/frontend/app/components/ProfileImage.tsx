@@ -63,10 +63,8 @@ const ProfileImage = () => {
     // });
   };
 
-  console.log(profileImageURL, session?.user);
-
   return (
-    <section className="flex">
+    <section className="flex items-center gap-4">
       <div className="relative h-32 w-32">
         <Image
           onClick={handleImageUpload}
@@ -80,6 +78,19 @@ const ProfileImage = () => {
       </div>
 
       <div>{session?.user.name}</div>
+
+      <button
+        type="button"
+        className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+      >
+        이미지 업로드
+      </button>
+      <button
+        type="button"
+        className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+      >
+        이미지 삭제
+      </button>
     </section>
   );
 };
