@@ -57,6 +57,7 @@ export const POST = async (req: Request) => {
       userId: data.userId,
       url: data.url,
       title: data.title,
+      image: data.image,
     },
   });
 

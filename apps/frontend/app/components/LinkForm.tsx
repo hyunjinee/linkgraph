@@ -10,6 +10,8 @@ import { cloudFrontURL } from '@linkgraph/site-info';
 const LinkForm = () => {
   const [title, setTitle] = useState('');
   const [linkURL, setLinkURL] = useState('');
+  const [imageBlobURL, setImageBlobURL] = useState('');
+  const [image, setImage] = useState<File>();
   const session = useContext(AuthContext);
   const queryClient = useQueryClient();
   const upload = useUpload();
@@ -20,19 +22,59 @@ const LinkForm = () => {
 
   const { mutateAsync } = useMutation({
     mutationFn: async () => {
+      if (!image) {
+        const res = await fetch('/api/link', {
+          method: 'POST',
+          body: JSON.stringify({
+            url: linkURL,
+            title: title,
+            userId: session?.user.id,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        return res.json();
+      }
+
+      const presignedURLResponse = await fetch('/api/presigned-url', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: 'link/' + getCurrentDateTime() + '-' + image.name,
+          type: image.type,
+        }),
+      });
+      const { url: presignedURL } = await presignedURLResponse.json();
+
+      const uploadResponse = await fetch(presignedURL, {
+        method: 'PUT',
+        body: image,
+        headers: {
+          'Content-type': image.type,
+        },
+      });
+
       const res = await fetch('/api/link', {
         method: 'POST',
         body: JSON.stringify({
           url: linkURL,
           title: title,
           userId: session?.user.id,
+          image: cloudFrontURL + new URL(presignedURL).pathname,
         }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
 
       return res.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries(['links'], { exact: true });
+      setTitle('');
+      setLinkURL('');
+      setImageBlobURL('');
     },
   });
 
@@ -42,9 +84,6 @@ const LinkForm = () => {
     }
 
     await mutateAsync();
-
-    setTitle('');
-    setLinkURL('');
   };
 
   const handleImageUpload = async () => {
@@ -59,50 +98,8 @@ const LinkForm = () => {
       return;
     }
 
-    const body = {
-      name: 'link/' + getCurrentDateTime() + '-' + image.name,
-      type: image.type,
-    };
-
-    try {
-      const presignedURLResponse = await fetch('/api/presigned-url', {
-        method: 'POST',
-        body: JSON.stringify(body),
-      });
-      const { url: presignedURL } = await presignedURLResponse.json();
-
-      const uploadResponse = await fetch(presignedURL, {
-        method: 'PUT',
-        body: image,
-        headers: {
-          'Content-type': image.type,
-        },
-      });
-      // console.log(uploadResponse);
-      if (uploadResponse.status === 200) {
-      }
-
-      await fetch('/api/link-image', {
-        method: 'POST',
-        body: JSON.stringify({
-          linkImageURL: cloudFrontURL + new URL(presignedURL).pathname,
-        }),
-      });
-
-      // await fetch('/api/profile-image', {
-      //   method: 'PATCH',
-      //   body: JSON.stringify({
-      //     profileImageURL: cloudFrontURL + new URL(presignedURL).pathname,
-      //   }),
-      // });
-      // setProfileImageURL(cloudFrontURL + new URL(presignedURL).pathname);
-    } catch (error) {
-      console.log(error);
-    }
-
-    // await fetch('/api/profile-image' + '?' + 'userId=' + session?.user.id, {
-    //   method: 'DELETE',
-    // });
+    setImageBlobURL(URL.createObjectURL(image));
+    setImage(image);
   };
 
   return (
@@ -114,12 +111,13 @@ const LinkForm = () => {
         <div className="flex w-full">
           <div className="relative mr-4 h-36 w-40">
             <Image
-              src={'/profile.png'}
+              src={imageBlobURL || '/profile.png'}
               alt="profile"
               fill
               className="cursor-pointer rounded-full object-cover"
               priority
               quality={100}
+              onClick={handleImageUpload}
             />
           </div>
 
