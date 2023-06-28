@@ -73,6 +73,7 @@ model Link {
   id          String   @id @default(cuid())
   url         String
   title       String?
+  name        String?
   description String?
   image       String?
   userId      String
