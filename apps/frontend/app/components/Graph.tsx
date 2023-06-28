@@ -47,11 +47,11 @@ const Graph = ({ nodes, links }: GraphProps) => {
 
   useEffect(() => {
     const simulation = d3
-      .forceSimulation(dataset.nodes as any)
+      .forceSimulation(nodes as any)
       .force(
         'link',
         d3
-          .forceLink(dataset.links)
+          .forceLink(links)
           .id((d: any) => d.id)
           .distance(() => 100),
       )
@@ -63,9 +63,9 @@ const Graph = ({ nodes, links }: GraphProps) => {
     const linkGroup = svg.append('g').attr('id', 'links');
     const nodeGroup = svg.append('g').attr('id', 'nodes');
 
-    const nodeList = nodeGroup.selectAll('g').data(dataset.nodes).join('g');
+    const nodeList = nodeGroup.selectAll('g').data(nodes).join('g');
 
-    nodeList.each(function (d) {
+    nodeList.each(function (d: any) {
       if (d.img) {
         d3.select(this as any)
           .append('image')
@@ -87,7 +87,7 @@ const Graph = ({ nodes, links }: GraphProps) => {
     });
     const link = linkGroup
       .selectAll('line')
-      .data(dataset.links)
+      .data(links)
       .join('line')
       .style('stroke-width', 2.5)
       .attr('stroke', (link: any) => link.color || 'black');
@@ -176,58 +176,3 @@ const Graph = ({ nodes, links }: GraphProps) => {
 };
 
 export default Graph;
-
-// const dataset = {
-//   nodes: [
-//     {
-//       id: 1,
-//       img: 'https://raw.githubusercontent.com/jienagu/Picture_gif_Personal_Web/master/network_pic1.png',
-//       size: 50,
-//     },
-//     {
-//       id: 2,
-//       img: 'https://raw.githubusercontent.com/jienagu/Picture_gif_Personal_Web/master/network_pic2.png',
-//       size: 35,
-//     },
-//     {
-//       id: 3,
-//       img: 'https://raw.githubusercontent.com/jienagu/Picture_gif_Personal_Web/master/network_pic3.png',
-//       size: 55,
-//     },
-//     {
-//       id: 4,
-//       img: 'https://raw.githubusercontent.com/jienagu/Picture_gif_Personal_Web/master/network_pic4.png',
-//       size: 45,
-//     },
-//     {
-//       id: 5,
-//       img: 'https://raw.githubusercontent.com/jienagu/Picture_gif_Personal_Web/master/network_pic5.png',
-//       size: 52,
-//     },
-//     {
-//       id: 6,
-//       img: 'https://raw.githubusercontent.com/jienagu/Picture_gif_Personal_Web/master/network_pic6.png',
-//       size: 51,
-//     },
-//     {
-//       id: 7,
-//       img: 'https://raw.githubusercontent.com/jienagu/Picture_gif_Personal_Web/master/network_pic9.png',
-//       size: 60,
-//     },
-//     {
-//       id: 8,
-//       img: 'https://raw.githubusercontent.com/jienagu/Picture_gif_Personal_Web/master/network_pic10.png',
-//       size: 60,
-//     },
-//   ],
-//   links: [
-//     { source: 7, target: 1 },
-//     { source: 7, target: 6 },
-//     { source: 7, target: 2 },
-//     { source: 7, target: 3 },
-//     { source: 7, target: 8 },
-//     { source: 8, target: 4 },
-//     { source: 8, target: 5 },
-//     { source: 8, target: 6 },
-//   ],
-// };
