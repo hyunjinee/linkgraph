@@ -1,10 +1,5 @@
 # <img height="25px" src="https://github.com/hyunjinee/linkgraph/assets/63354527/2612509a-975a-4ee7-a1b8-5be464444a74" /> LinkGraph
 
-링크들을 그래프 형태로 나타내보자.
-
-1. 사람과 연결된 링크를 그래프형태로 표현한다.
-2. 사람들과의 관계를 그래프형태로 표현한다.
-
 ## 서비스 아키텍처
 
 ![service architecture](https://github.com/hyunjinee/linkgraph/assets/63354527/36ca1fcb-d4bd-4298-b09c-6219a78a8c47)
@@ -23,7 +18,10 @@
 ## 블로그 적고싶은거
 
 - 모노레포
-- 서버사이드렌더링으로 UX 개선하기(Navbar)
 - React Props. Type or Interface?
 - 서버 컴포넌트
 - HTTP Method 멱등성 (DELETE)
+
+## 프로젝트에서 배운 것
+
+- [서버 사이드 렌더링으로 UX 개선하기](https://www.youtube.com/watch?v=wxxNS6hEptE)
