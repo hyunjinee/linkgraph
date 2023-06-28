@@ -10,7 +10,6 @@ import { MANY_BODY_STRENGTH } from '~/data/linkgraph';
 interface LinkGraphProps {
   links: any;
   // links: Link[];
-  // links: Link[];
 }
 
 const LinkGraph = ({ links: userLinks }: LinkGraphProps) => {
@@ -153,7 +152,7 @@ const LinkGraph = ({ links: userLinks }: LinkGraphProps) => {
     });
   }, []);
 
-  return <svg ref={svgRef} className="h-full w-full bg-red-50" />;
+  return <svg ref={svgRef} className="w-full h-full bg-red-50" />;
 };
 
 export default LinkGraph;
