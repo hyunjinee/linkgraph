@@ -17,7 +17,7 @@ const dataset = {
   nodes: [
     {
       id: 'hyunjin',
-      img: './vercel.svg',
+      // img: './vercel.svg',
       size: 50,
     },
     {
@@ -55,32 +55,33 @@ const Graph = ({ links }: GraphProps) => {
       .force('charge', d3.forceManyBody().strength(-500))
       .force('center', d3.forceCenter(width / 2, height / 2));
 
-    const svg = d3
-      .select(containerRef.current)
-      .append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.bottom + margin.top)
-      .append('g')
-      .attr('transform', `translate(${margin.left}, ${margin.top})`);
+    const svg = d3.select(containerRef.current).append('svg').attr('width', width).attr('height', height);
 
     const linkGroup = svg.append('g').attr('id', 'links');
     const nodeGroup = svg.append('g').attr('id', 'nodes');
 
-    const nodeList = nodeGroup.selectAll('image').data(dataset.nodes).join('image');
+    const nodeList = nodeGroup.selectAll('g').data(dataset.nodes).join('g');
 
     nodeList.each(function (d) {
-      // d3.select(this)
-      //   // .append('circle')
-      //   .attr('r', 30)
-      //   .attr('fill', 'white')
-      //   .attr('stroke', 'black')
-      //   .attr('stroke-width', 2);
+      console.log(d.img, '?');
+      if (d.img) {
+        d3.select(this as any)
+          .append('image')
+          .attr('xlink:href', d.img)
+          .attr('width', 60)
+          .attr('height', 60)
+          .attr('class', 'node');
+      } else {
+        d3.select(this).append('circle').attr('r', 20).attr('opacity', 0.5).attr('class', 'node');
+      }
 
-      d3.select(this as any)
-        // .append('image')
-        .attr('xlink:href', d.img)
-        .attr('width', 60)
-        .attr('height', 60);
+      // .attr('r', 20)
+      // .attr('opacity', 0.5)
+      // // .attr('fill', 'transparent')
+      // .append('image')
+      // .attr('xlink:href', d.img)
+      // .attr('width', 60)
+      // .attr('height', 60);
     });
     const link = linkGroup
       .selectAll('line')
@@ -89,7 +90,8 @@ const Graph = ({ links }: GraphProps) => {
       .style('stroke-width', 2.5)
       .attr('stroke', (link: any) => link.color || 'black');
 
-    const node = svg.selectAll('image');
+    const node = nodeList.selectAll('.node');
+
     // const node = nodeList.selectAll('circle').join('circle');
 
     // const circles = svg
@@ -100,6 +102,7 @@ const Graph = ({ links }: GraphProps) => {
     // .attr('r', (node: any) => node.size)
     // .attr('fill', (node: any) => node.color || 'grey')
     // .call(dragInteraction as any);
+    console.log(node);
     console.log(link);
 
     // const link = svg
@@ -148,7 +151,10 @@ const Graph = ({ links }: GraphProps) => {
     //   });
 
     simulation.on('tick', () => {
-      node.attr('x', (d: any) => d.x - 25).attr('y', (d: any) => d.y - 25);
+      // node.attr('x', (d: any) => d.x - 25).attr('y', (d: any) => d.y - 25);
+      node.attr('x', (d: any) => d.x - 30).attr('y', (d: any) => d.y - 30);
+      node.attr('cx', (node: any) => node.x);
+      node.attr('cy', (node: any) => node.y);
       link
         .attr('x1', (link: any) => link.source.x)
         .attr('y1', (link: any) => link.source.y)
