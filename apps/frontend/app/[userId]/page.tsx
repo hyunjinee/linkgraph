@@ -10,7 +10,7 @@ const Graph = async ({ params: { userId } }: { params: { userId: string } }) => 
       id: userId,
     },
   });
-
+  // 해당 유저를 찾을 수 없으면 not-found 페이지로 리다이렉션
   if (!user) {
     notFound();
   }

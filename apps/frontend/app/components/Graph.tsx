@@ -47,9 +47,11 @@ const Graph = () => {
         return d.img;
       })
       .attr('width', function (d) {
+        return 50;
         return d.size + 5;
       })
       .attr('height', function (d) {
+        return 50;
         return d.size + 5;
       });
 
