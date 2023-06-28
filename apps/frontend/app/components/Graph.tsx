@@ -13,85 +13,6 @@ const margin = {
   left: 30,
 };
 
-const Graph = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const svgRef = useRef<SVGSVGElement>(null);
-
-  useEffect(() => {
-    const svg = d3
-      .select(containerRef.current)
-      .append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.bottom + margin.top)
-      .append('g')
-      .attr('transform', `translate(${margin.left}, ${margin.top})`);
-
-    const link = svg
-      .append('g')
-      .attr('class', 'links')
-      .selectAll('line')
-      .data(dataset.links)
-      .enter()
-      .append('line')
-      .style('stroke-width', 2.5)
-      .attr('stroke', (link: any) => link.color || 'black');
-
-    const node = svg
-      .append('g')
-      .attr('class', 'nodes')
-      .selectAll('image')
-      .data(dataset.nodes)
-      .enter()
-      .append('image')
-      .attr('xlink:href', function (d) {
-        return d.img;
-      })
-      .attr('width', function (d) {
-        return 50;
-        return d.size + 5;
-      })
-      .attr('height', function (d) {
-        return 50;
-        return d.size + 5;
-      });
-
-    const simulation = d3
-      .forceSimulation(dataset.nodes as any)
-      .force(
-        'link',
-        d3
-          .forceLink(dataset.links)
-          .id((d: any) => d.id)
-          .distance(() => 100),
-      )
-      .force('charge', d3.forceManyBody().strength(-500))
-      .force('center', d3.forceCenter(width / 2, height / 2));
-
-    simulation.on('tick', () => {
-      node.attr('x', (d: any) => d.x - 25).attr('y', (d: any) => d.y - 25);
-
-      link
-        .attr('x1', (link: any) => link.source.x)
-        .attr('y1', (link: any) => link.source.y)
-        .attr('x2', (link: any) => link.target.x)
-        .attr('y2', (link: any) => link.target.y);
-    });
-
-    return () => {
-      simulation.stop();
-    };
-  }, []);
-
-  return (
-    // <svg ref={svgRef} className="w-full h-full bg-pink-300" />
-    <div ref={containerRef} className="bg-red-50"></div>
-  );
-};
-
-export default Graph;
-
-//create dummy data
-
 const dataset = {
   nodes: [
     {
@@ -112,6 +33,142 @@ const dataset = {
     },
   ],
 };
+
+type GraphProps = {
+  links: Link[];
+};
+
+const Graph = ({ links }: GraphProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    const simulation = d3
+      .forceSimulation(dataset.nodes as any)
+      .force(
+        'link',
+        d3
+          .forceLink(dataset.links)
+          .id((d: any) => d.id)
+          .distance(() => 100),
+      )
+      .force('charge', d3.forceManyBody().strength(-500))
+      .force('center', d3.forceCenter(width / 2, height / 2));
+
+    const svg = d3
+      .select(containerRef.current)
+      .append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.bottom + margin.top)
+      .append('g')
+      .attr('transform', `translate(${margin.left}, ${margin.top})`);
+
+    const linkGroup = svg.append('g').attr('id', 'links');
+    const nodeGroup = svg.append('g').attr('id', 'nodes');
+
+    const nodeList = nodeGroup.selectAll('image').data(dataset.nodes).join('image');
+
+    nodeList.each(function (d) {
+      // d3.select(this)
+      //   // .append('circle')
+      //   .attr('r', 30)
+      //   .attr('fill', 'white')
+      //   .attr('stroke', 'black')
+      //   .attr('stroke-width', 2);
+
+      d3.select(this as any)
+        // .append('image')
+        .attr('xlink:href', d.img)
+        .attr('width', 60)
+        .attr('height', 60);
+    });
+    const link = linkGroup
+      .selectAll('line')
+      .data(dataset.links)
+      .join('line')
+      .style('stroke-width', 2.5)
+      .attr('stroke', (link: any) => link.color || 'black');
+
+    const node = svg.selectAll('image');
+    // const node = nodeList.selectAll('circle').join('circle');
+
+    // const circles = svg
+    // .selectAll('circle')
+    // .data(nodes)
+    // .enter()
+    // .append('circle')
+    // .attr('r', (node: any) => node.size)
+    // .attr('fill', (node: any) => node.color || 'grey')
+    // .call(dragInteraction as any);
+    console.log(link);
+
+    // const link = svg
+    //   .append('g')
+    //   .attr('class', 'links')
+    //   .selectAll('line')
+    //   .data(dataset.links)
+    //   .enter()
+    //   .append('line')
+    //   .style('stroke-width', 2.5)
+    //   .attr('stroke', (link: any) => link.color || 'black');
+    // const node = svg
+    //   .append('g')
+    //   .attr('class', 'nodes')
+    //   .selectAll('image')
+    //   .data(dataset.nodes)
+    //   .enter()
+    //   .append('image')
+    //   .attr('xlink:href', function (d) {
+    //     return d.img;
+    //   })
+    //   .attr('width', function (d) {
+    //     return 50;
+    //     return d.size + 5;
+    //   })
+    //   .attr('height', function (d) {
+    //     return 50;
+    //     return d.size + 5;
+    //   });
+
+    // const node2 = svg.selectAll();
+
+    // const node2 = svg
+    //   .append('g')
+    //   .selectAll('circle')
+    //   .data(dataset.nodes)
+    //   .enter()
+    //   .append(() => document.createElementNS('http://www.w3.org/2000/svg', 'circle'))
+    //   .attr('width', function (d) {
+    //     return 50;
+    //     return d.size + 5;
+    //   })
+    //   .attr('height', function (d) {
+    //     return 50;
+    //     return d.size + 5;
+    //   });
+
+    simulation.on('tick', () => {
+      node.attr('x', (d: any) => d.x - 25).attr('y', (d: any) => d.y - 25);
+      link
+        .attr('x1', (link: any) => link.source.x)
+        .attr('y1', (link: any) => link.source.y)
+        .attr('x2', (link: any) => link.target.x)
+        .attr('y2', (link: any) => link.target.y);
+    });
+
+    return () => {
+      simulation.stop();
+    };
+  }, []);
+
+  return (
+    // <svg ref={svgRef} className="w-full h-full bg-pink-300" />
+    <div ref={containerRef} className="bg-red-50"></div>
+  );
+};
+
+export default Graph;
+
 // const dataset = {
 //   nodes: [
 //     {

@@ -15,17 +15,17 @@ const Graph = async ({ params: { userId } }: { params: { userId: string } }) => 
     notFound();
   }
 
-  const links = await prisma.link.findMany({
+  const links = (await prisma.link.findMany({
     where: {
       userId,
     },
-  });
+  })) as Link[];
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full ">
       {/* <LinkGraph links={links} /> */}
 
-      <GraphTest />
+      <GraphTest links={links} />
     </div>
   );
 };
