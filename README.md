@@ -25,3 +25,7 @@
 ## 프로젝트에서 배운 것
 
 - [서버 사이드 렌더링으로 UX 개선하기](https://www.youtube.com/watch?v=wxxNS6hEptE)
+
+## 전달할꺼
+
+- not-found 페이지
