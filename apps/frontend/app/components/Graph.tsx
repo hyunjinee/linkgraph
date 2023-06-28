@@ -6,13 +6,6 @@ import * as d3 from 'd3';
 const width = 600;
 const height = 400;
 
-const margin = {
-  top: 30,
-  right: 80,
-  bottom: 30,
-  left: 30,
-};
-
 const dataset = {
   nodes: [
     {
@@ -67,12 +60,17 @@ const Graph = ({ nodes, links }: GraphProps) => {
 
     nodeList.each(function (d: any) {
       if (d.img) {
-        d3.select(this as any)
-          .append('image')
-          .attr('xlink:href', d.img)
-          .attr('width', 60)
-          .attr('height', 60)
-          .attr('class', 'node');
+        d3.select(this)
+          .append('foreignObject')
+          .attr('width', '80px')
+          .attr('height', '80px')
+          .attr('class', 'node')
+          .append('xhtml:img')
+          .attr('src', () => d.img || '')
+          .style('width', '80px')
+          .style('height', '80px')
+          .style('object-fit', 'cover')
+          .style('border-radius', '50%');
       } else {
         d3.select(this).append('circle').attr('r', 20).attr('class', 'node');
       }
