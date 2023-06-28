@@ -15,17 +15,23 @@ const Graph = async ({ params: { userId } }: { params: { userId: string } }) => 
     notFound();
   }
 
-  const links = (await prisma.link.findMany({
+  const userLinks = (await prisma.link.findMany({
     where: {
       userId,
     },
   })) as Link[];
 
+  const nodes: any = [{ id: userId, img: user.image, size: 60 }];
+  const links = userLinks.map((link) => ({ source: userId, target: link.id }));
+
+  userLinks.forEach((link) => {
+    nodes.push({ id: link.id, img: link.image || '', size: 40 });
+  });
+
   return (
     <div className="flex flex-col items-center justify-center w-full h-full ">
       {/* <LinkGraph links={links} /> */}
-
-      <GraphTest links={links} />
+      <GraphTest nodes={nodes} links={links} />
     </div>
   );
 };

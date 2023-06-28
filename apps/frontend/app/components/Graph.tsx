@@ -35,12 +35,15 @@ const dataset = {
 };
 
 type GraphProps = {
-  links: Link[];
+  links: any;
+  nodes: any;
 };
 
-const Graph = ({ links }: GraphProps) => {
+const Graph = ({ nodes, links }: GraphProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
+
+  console.log(nodes, links);
 
   useEffect(() => {
     const simulation = d3
@@ -63,7 +66,6 @@ const Graph = ({ links }: GraphProps) => {
     const nodeList = nodeGroup.selectAll('g').data(dataset.nodes).join('g');
 
     nodeList.each(function (d) {
-      console.log(d.img, '?');
       if (d.img) {
         d3.select(this as any)
           .append('image')
