@@ -72,7 +72,7 @@ const Graph = ({ links }: GraphProps) => {
           .attr('height', 60)
           .attr('class', 'node');
       } else {
-        d3.select(this).append('circle').attr('r', 20).attr('opacity', 0.5).attr('class', 'node');
+        d3.select(this).append('circle').attr('r', 20).attr('class', 'node');
       }
 
       // .attr('r', 20)
