@@ -65,6 +65,9 @@ const Graph = ({ nodes, links }: GraphProps) => {
           .attr('width', '80px')
           .attr('height', '80px')
           .attr('class', 'node')
+          .on('click', () => {
+            window.open('https://github.com/hyunjinee');
+          })
           .append('xhtml:img')
           .attr('src', () => d.img || '')
           .style('width', '80px')
