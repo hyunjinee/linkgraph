@@ -3,30 +3,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
-const width = 600;
-const height = 400;
-
-const dataset = {
-  nodes: [
-    {
-      id: 'hyunjin',
-      // img: './vercel.svg',
-      size: 50,
-    },
-    {
-      id: 'hyunjin2',
-      img: 'https://github.com/favicon.ico',
-      size: 50,
-    },
-  ],
-  links: [
-    {
-      source: 'hyunjin',
-      target: 'hyunjin2',
-    },
-  ],
-};
-
 type GraphProps = {
   links: any;
   nodes: any;
@@ -205,3 +181,26 @@ const Graph = ({ nodes, links }: GraphProps) => {
 };
 
 export default Graph;
+
+// sample dataset
+
+// const dataset = {
+//   nodes: [
+//     {
+//       id: 'hyunjin',
+//       // img: './vercel.svg',
+//       size: 50,
+//     },
+//     {
+//       id: 'hyunjin2',
+//       img: 'https://github.com/favicon.ico',
+//       size: 50,
+//     },
+//   ],
+//   links: [
+//     {
+//       source: 'hyunjin',
+//       target: 'hyunjin2',
+//     },
+//   ],
+// };
