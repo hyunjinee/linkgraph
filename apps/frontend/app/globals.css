@@ -10,3 +10,20 @@ img {
   -webkit-user-select: none;
   -ms-user-select: none;
 }
+
+.tooltip {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif,
+    'Apple   Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background: rgba(69, 77, 93, 0.9);
+  border-radius: 0.1rem;
+  color: #fff;
+  display: block;
+  font-size: 11px;
+  max-width: 320px;
+  padding: 0.2rem 0.4rem;
+  position: absolute;
+  text-overflow: ellipsis;
+  white-space: pre;
+  z-index: 300;
+  visibility: hidden;
+}

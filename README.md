@@ -13,7 +13,6 @@
 - react hot toast
 - Admin. 유저 테이블 -> 유서 수정 폼
 - react-hook-form, zod로 form validation
-- 링크 업로드후 업로드된거 리스트로 보여주기
 - 사용자가 각 노드의 사이즈를 조절할 수 있도록 할까?
 
 ## 블로그 적고싶은거
