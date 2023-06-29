@@ -6,13 +6,6 @@ import * as d3 from 'd3';
 const width = 600;
 const height = 400;
 
-const margin = {
-  top: 30,
-  right: 80,
-  bottom: 30,
-  left: 30,
-};
-
 const dataset = {
   nodes: [
     {
@@ -46,6 +39,14 @@ const Graph = ({ nodes, links }: GraphProps) => {
   console.log(nodes, links);
 
   useEffect(() => {
+    const tooltip = d3
+      .select('body')
+      .append('div')
+      .attr('class', 'tooltip')
+      .style('position', 'absolute')
+      .style('visibility', 'hidden')
+      .text('hi');
+
     const simulation = d3
       .forceSimulation(nodes as any)
       .force(
@@ -67,23 +68,45 @@ const Graph = ({ nodes, links }: GraphProps) => {
 
     nodeList.each(function (d: any) {
       if (d.img) {
-        d3.select(this as any)
-          .append('image')
-          .attr('xlink:href', d.img)
-          .attr('width', 60)
-          .attr('height', 60)
-          .attr('class', 'node');
-      } else {
-        d3.select(this).append('circle').attr('r', 20).attr('class', 'node');
-      }
+        d3.select(this)
+          .append('foreignObject')
+          .attr('width', '80px')
+          .attr('height', '80px')
+          .attr('class', 'node')
+          .on('click', () => {
+            if (d.url.startsWith('https')) {
+              window.open('https://github.com/hyunjinee');
+            }
+          })
+          .on('mouseover.tooltip', function (d, e) {
+            // d3.select(this).transition().duration(300).style('opacity', 1);
+            // tooltip.html('ID: hi');
+            return tooltip.style('visibility', 'visible');
+            // console.log('hi');
 
-      // .attr('r', 20)
-      // .attr('opacity', 0.5)
-      // // .attr('fill', 'transparent')
-      // .append('image')
-      // .attr('xlink:href', d.img)
-      // .attr('width', 60)
-      // .attr('height', 60);
+            // .style('left', e.pageX + 'px')
+            // .style('top', (e.pageY as any) + 10 + 'px');
+          })
+          .on('mousemove.tooltip', function (e) {
+            // console.log(d);
+            // console.log(e);
+            return tooltip.style('top', e.pageY - 10 + 'px').style('left', e.pageX + 10 + 'px');
+          })
+          .on('mouseout', function () {
+            return tooltip.style('visibility', 'hidden');
+          })
+          .style('user-select', 'none')
+
+          .append('xhtml:img')
+          .attr('src', () => d.img || '')
+          .style('width', '80px')
+          .style('height', '80px')
+          .style('object-fit', 'cover')
+          .style('border-radius', '50%')
+          .style('cursor', 'pointer');
+      } else {
+        d3.select(this).append('circle').attr('r', 30).attr('class', 'node').attr('fill', 'grey');
+      }
     });
     const link = linkGroup
       .selectAll('line')
@@ -135,26 +158,9 @@ const Graph = ({ nodes, links }: GraphProps) => {
     //     return d.size + 5;
     //   });
 
-    // const node2 = svg.selectAll();
-
-    // const node2 = svg
-    //   .append('g')
-    //   .selectAll('circle')
-    //   .data(dataset.nodes)
-    //   .enter()
-    //   .append(() => document.createElementNS('http://www.w3.org/2000/svg', 'circle'))
-    //   .attr('width', function (d) {
-    //     return 50;
-    //     return d.size + 5;
-    //   })
-    //   .attr('height', function (d) {
-    //     return 50;
-    //     return d.size + 5;
-    //   });
-
     simulation.on('tick', () => {
       // node.attr('x', (d: any) => d.x - 25).attr('y', (d: any) => d.y - 25);
-      node.attr('x', (d: any) => d.x - 30).attr('y', (d: any) => d.y - 30);
+      node.attr('x', (d: any) => d.x - 40).attr('y', (d: any) => d.y - 40);
       node.attr('cx', (node: any) => node.x);
       node.attr('cy', (node: any) => node.y);
       link
