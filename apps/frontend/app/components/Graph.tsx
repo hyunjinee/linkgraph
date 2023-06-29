@@ -1,31 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
-
-const width = 600;
-const height = 400;
-
-const dataset = {
-  nodes: [
-    {
-      id: 'hyunjin',
-      // img: './vercel.svg',
-      size: 50,
-    },
-    {
-      id: 'hyunjin2',
-      img: 'https://github.com/favicon.ico',
-      size: 50,
-    },
-  ],
-  links: [
-    {
-      source: 'hyunjin',
-      target: 'hyunjin2',
-    },
-  ],
-};
 
 type GraphProps = {
   links: any;
@@ -36,7 +12,8 @@ const Graph = ({ nodes, links }: GraphProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
-  console.log(nodes, links);
+  const width = window.innerWidth;
+  const height = window.innerHeight;
 
   useEffect(() => {
     const tooltip = d3
@@ -59,6 +36,14 @@ const Graph = ({ nodes, links }: GraphProps) => {
       .force('charge', d3.forceManyBody().strength(-500))
       .force('center', d3.forceCenter(width / 2, height / 2));
 
+    const dragInteraction = d3.drag().on('drag', (event, node: any) => {
+      node.fx = event.x;
+      node.fy = event.y;
+
+      simulation.alpha(1);
+      simulation.restart();
+    });
+
     const svg = d3.select(containerRef.current).append('svg').attr('width', width).attr('height', height);
 
     const linkGroup = svg.append('g').attr('id', 'links');
@@ -73,6 +58,7 @@ const Graph = ({ nodes, links }: GraphProps) => {
           .attr('width', '80px')
           .attr('height', '80px')
           .attr('class', 'node')
+          .call(dragInteraction as any)
           .on('click', () => {
             if (d.url.startsWith('https')) {
               window.open('https://github.com/hyunjinee');
@@ -105,7 +91,12 @@ const Graph = ({ nodes, links }: GraphProps) => {
           .style('border-radius', '50%')
           .style('cursor', 'pointer');
       } else {
-        d3.select(this).append('circle').attr('r', 30).attr('class', 'node').attr('fill', 'grey');
+        d3.select(this)
+          .append('circle')
+          .attr('r', 30)
+          .attr('class', 'node')
+          .attr('fill', 'grey')
+          .call(dragInteraction as any);
       }
     });
     const link = linkGroup
@@ -170,8 +161,16 @@ const Graph = ({ nodes, links }: GraphProps) => {
         .attr('y2', (link: any) => link.target.y);
     });
 
+    // const updateDimensions = () => {
+    //   setWidth(window.innerWidth);
+    //   setHeight(window.innerHeight);
+    // };
+
+    // window.addEventListener('resize', updateDimensions);
+
     return () => {
       simulation.stop();
+      // window.removeEventListener('resize', updateDimensions);
     };
   }, []);
 
@@ -182,3 +181,26 @@ const Graph = ({ nodes, links }: GraphProps) => {
 };
 
 export default Graph;
+
+// sample dataset
+
+// const dataset = {
+//   nodes: [
+//     {
+//       id: 'hyunjin',
+//       // img: './vercel.svg',
+//       size: 50,
+//     },
+//     {
+//       id: 'hyunjin2',
+//       img: 'https://github.com/favicon.ico',
+//       size: 50,
+//     },
+//   ],
+//   links: [
+//     {
+//       source: 'hyunjin',
+//       target: 'hyunjin2',
+//     },
+//   ],
+// };
