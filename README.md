@@ -14,6 +14,7 @@
 - Admin. 유저 테이블 -> 유서 수정 폼
 - react-hook-form, zod로 form validation
 - 사용자가 각 노드의 사이즈를 조절할 수 있도록 할까?
+- 그래프에 Drag Interaction 추가
 
 ## 블로그 적고싶은거
 
@@ -29,4 +30,5 @@
 ## 전달할꺼
 
 - not-found 페이지
+- 메인 페이지 (검색창, 문구)
 -
