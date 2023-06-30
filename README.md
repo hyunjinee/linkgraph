@@ -25,6 +25,6 @@
 - 서버 컴포넌트
 - HTTP Method 멱등성 (DELETE)
 
-## 프로젝트에서 배운 것
+## 프로젝트에서 배운 것 기록
 
 - [서버 사이드 렌더링으로 UX 개선하기](https://www.youtube.com/watch?v=wxxNS6hEptE)
