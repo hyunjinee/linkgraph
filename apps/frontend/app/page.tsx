@@ -1,9 +1,10 @@
 import { getServerSession } from 'next-auth';
 import Image from 'next/image';
+import Link from 'next/link';
+import CountUp from 'react-countup';
 
 import { countLink } from '@linkgraph/db';
 import { authOptions } from '~/api/auth/[...nextauth]/route';
-import Link from 'next/link';
 
 /* ISR. Incremental Static Regeneration
   
@@ -29,8 +30,22 @@ const Home = async () => {
       </section>
       <section className="flex flex-col items-center justify-center w-full h-full">
         <div className="flex gap-5">
-          <div className="h-[35rem] w-[21rem] bg-red-500"></div>
-          <div className="h-[35rem] w-[21rem] bg-red-500"></div>
+          <div className=" h-[35rem] w-[21rem] rounded-2xl bg-gray-50 shadow-lg">
+            <Image className="mx-auto pt-28" src="/connect.png" width={60} height={60} alt="연결" />
+
+            <div className="flex items-center justify-center mt-10 text-lg font-semibold">
+              140,293명이
+              <br /> 가입했습니다.
+            </div>
+          </div>
+          <div className=" h-[35rem] w-[21rem] rounded-2xl bg-gray-50 shadow-lg">
+            <Image className="mx-auto pt-28" src="/connect.png" width={60} height={60} alt="연결" />
+            {/* <CountUp end={140293} separator="," /> -> 클라이언트 컴포넌트에서 동작 */}
+            <div className="flex items-center justify-center mt-10 text-lg font-semibold">
+              123,123개의
+              <br /> 링크를 연결합니다.
+            </div>
+          </div>
         </div>
       </section>
     </main>
