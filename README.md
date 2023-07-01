@@ -16,6 +16,8 @@
 - Admin. 유저 테이블 -> 유서 수정 폼
 - react-hook-form, zod로 form validation
 - 그래프 사용자가 커스터마이징(노드 사이즈)
+- ISR
+- Profile Page
 
 ## 블로그 적고싶은거
 
