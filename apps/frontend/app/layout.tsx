@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'LinkGraph',
-  description: '링크를 연결하다.',
+  description: '소개하고 싶은 링크를 연결해보세요!',
   icons: {
     icon: 'favicon.ico',
   },
