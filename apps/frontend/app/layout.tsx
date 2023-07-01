@@ -1,11 +1,13 @@
 import './globals.css';
+
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
+import { Inter } from 'next/font/google';
+import { getServerSession } from 'next-auth';
+
 import Navbar from '~/components/Navbar';
 import Core from '~/components/Core';
-import { getServerSession } from 'next-auth';
-import { authOptions } from './api/auth/[...nextauth]/route';
+import { authOptions } from '~/api/auth/[...nextauth]/route';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,7 +23,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
   const session = await getServerSession(authOptions);
 
   return (
-    <html lang="ko" className="h-full scroll-smooth antialiased">
+    <html lang="ko" className="h-full antialiased scroll-smooth">
       <body className={`${inter.className} flex h-full flex-col`} suppressHydrationWarning={true}>
         <Core session={session}>
           <Navbar />

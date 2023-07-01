@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
+import styles from './Graph.module.css';
 
 type GraphProps = {
   links: any;
@@ -13,7 +14,7 @@ const Graph = ({ nodes, links }: GraphProps) => {
   const svgRef = useRef<SVGSVGElement>(null);
 
   const width = window.innerWidth;
-  const height = window.innerHeight;
+  const height = window.innerHeight - 64;
 
   useEffect(() => {
     const tooltip = d3
@@ -174,10 +175,7 @@ const Graph = ({ nodes, links }: GraphProps) => {
     };
   }, []);
 
-  return (
-    // <svg ref={svgRef} className="w-full h-full bg-pink-300" />
-    <div ref={containerRef} className="bg-red-50"></div>
-  );
+  return <div ref={containerRef} className={`${styles.background}`}></div>;
 };
 
 export default Graph;
