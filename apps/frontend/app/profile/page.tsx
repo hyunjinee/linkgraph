@@ -24,10 +24,11 @@ const Profile: NextPage = () => {
     <main className="mx-auto h-full w-full max-w-7xl p-4 md:p-10">
       <ProfileImage />
 
-      <ProfileURL />
-
-      <LinkForm />
-      <LinkList links={links} />
+      {/* <ProfileURL /> */}
+      <div className="flex gap-4">
+        <LinkForm />
+        <LinkList links={links} />
+      </div>
     </main>
   );
 };

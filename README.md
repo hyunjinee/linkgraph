@@ -8,7 +8,11 @@
 
 ![service architecture](https://github.com/hyunjinee/linkgraph/assets/63354527/36ca1fcb-d4bd-4298-b09c-6219a78a8c47)
 
-## TODO
+## 프로젝트에서 배운 것 기록
+
+- [서버 사이드 렌더링으로 UX 개선하기](https://www.youtube.com/watch?v=wxxNS6hEptE)
+<!-- ## TODO
+
 
 - EsLint 설정 공통 프로젝트
 - form에서 링크 업로드 후 업로드 된 링크를 사용자 URL에서 표시하기
@@ -23,8 +27,12 @@
 - 모노레포
 - React Props. Type or Interface?
 - 서버 컴포넌트
-- HTTP Method 멱등성 (DELETE)
+- HTTP Method 멱등성 (DELETE) -->
 
-## 프로젝트에서 배운 것 기록
+<!-- ## 왜 이 기술을 선택했는가?
 
-- [서버 사이드 렌더링으로 UX 개선하기](https://www.youtube.com/watch?v=wxxNS6hEptE)
+- Next.js
+  - React 기반 프로젝트에서 ISR, SSR, CSR 다양한 렌더링 패턴을 적용할 수 있다.
+  - 서버 컴포넌트를 적절히 사용하여 번들 사이즈를 줄일 수 있다.
+  - Vercel을 활용한 쉽고 빠른 CD
+- -->
