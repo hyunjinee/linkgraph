@@ -1,17 +1,19 @@
 import './globals.css';
+
 import type { Metadata } from 'next';
+import { Suspense, type PropsWithChildren } from 'react';
 import { Inter } from 'next/font/google';
-import type { PropsWithChildren } from 'react';
+import { getServerSession } from 'next-auth';
+
 import Navbar from '~/components/Navbar';
 import Core from '~/components/Core';
-import { getServerSession } from 'next-auth';
-import { authOptions } from './api/auth/[...nextauth]/route';
+import { authOptions } from '~/api/auth/[...nextauth]/route';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'LinkGraph',
-  description: '링크를 연결하다.',
+  description: '소개하고 싶은 링크를 연결해보세요!',
   icons: {
     icon: 'favicon.ico',
   },
@@ -25,7 +27,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
       <body className={`${inter.className} flex h-full flex-col`} suppressHydrationWarning={true}>
         <Core session={session}>
           <Navbar />
-          {children}
+          <Suspense fallback="로딩">{children}</Suspense>
         </Core>
       </body>
     </html>

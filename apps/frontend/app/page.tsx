@@ -1,19 +1,25 @@
-import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import Link from 'next/link';
-import CountUp from 'react-countup';
-
-import { countLink } from '@linkgraph/db';
-import { authOptions } from '~/api/auth/[...nextauth]/route';
+import prisma from '@linkgraph/db';
 
 /* ISR. Incremental Static Regeneration
   
    유저수, 연결된 링크 수를 5분마다 갱신한다.
 */
-const Home = async () => {
-  const session = await getServerSession(authOptions);
-  const count = await countLink(session?.user.id);
 
+export const revalidate = 60 * 5;
+const getStatistics = async () => {
+  const [userCount, linkCount] = await Promise.all([prisma.user.count(), prisma.link.count()]);
+
+  return {
+    userCount,
+    linkCount,
+  };
+};
+
+const Home = async () => {
+  const { userCount, linkCount } = await getStatistics();
+  // console.log(userCount, linkCount);
   return (
     <main className="flex items-center justify-between w-full h-full px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
       <section className="flex flex-col justify-center h-full gap-3 shrink-0">
@@ -34,7 +40,7 @@ const Home = async () => {
             <Image className="mx-auto pt-28" src="/connect.png" width={60} height={60} alt="연결" />
 
             <div className="flex items-center justify-center mt-10 text-lg font-semibold">
-              140,293명이
+              {userCount}명이
               <br /> 가입했습니다.
             </div>
           </div>
@@ -42,7 +48,7 @@ const Home = async () => {
             <Image className="mx-auto pt-28" src="/connect.png" width={60} height={60} alt="연결" />
             {/* <CountUp end={140293} separator="," /> -> 클라이언트 컴포넌트에서 동작 */}
             <div className="flex items-center justify-center mt-10 text-lg font-semibold">
-              123,123개의
+              {linkCount}개의
               <br /> 링크를 연결합니다.
             </div>
           </div>

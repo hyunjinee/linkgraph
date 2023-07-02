@@ -6,7 +6,7 @@ const TempArea = () => {
     <>
       {/* Logo */}
       <div className="relative w-200px h-200px">
-        <Image src="/linkgraph.svg" alt="hi" priority width={200} height={200} />
+        <Image src="/linkgraph.svg" alt="logo" priority width={200} height={200} />
       </div>
 
       {/* 임시 영역 */}
