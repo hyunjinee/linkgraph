@@ -17,11 +17,13 @@ const Profile: NextPage = () => {
       const res = await fetch('/api/link');
       return res.json();
     },
+    suspense: true,
   });
 
   return (
-    <main className="w-full h-full p-4 mx-auto max-w-7xl md:p-10">
+    <main className="mx-auto h-full w-full max-w-7xl p-4 md:p-10">
       <ProfileImage />
+
       <ProfileURL />
 
       <LinkForm />

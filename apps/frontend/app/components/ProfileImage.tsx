@@ -2,13 +2,13 @@
 
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
-import { useUpload } from '~/hooks/useUpload';
-import { cloudFrontURL } from '@linkgraph/site-info';
 import { useState } from 'react';
+import { cloudFrontURL } from '@linkgraph/site-info';
+
+import { useUpload } from '~/hooks/useUpload';
 
 const ProfileImage = () => {
   const { data: session } = useSession();
-  // TODO session 없으면 not-found 페이지나 첫 홈으로 리다이렉션
   const [profileImageURL, setProfileImageURL] = useState<string>('');
 
   const upload = useUpload();
@@ -57,14 +57,10 @@ const ProfileImage = () => {
     } catch (error) {
       console.log(error);
     }
-
-    // await fetch('/api/profile-image' + '?' + 'userId=' + session?.user.id, {
-    //   method: 'DELETE',
-    // });
   };
 
   return (
-    <section className="flex items-center gap-4">
+    <section className="flex w-full items-center gap-4 rounded-md p-4 shadow-md">
       <div className="relative h-32 w-32">
         <Image
           onClick={handleImageUpload}
@@ -77,20 +73,29 @@ const ProfileImage = () => {
         />
       </div>
 
-      <div>{session?.user.name}</div>
+      <div className="flex flex-col">
+        <button
+          type="button"
+          className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+        >
+          이미지 업로드
+        </button>
+        <button
+          type="button"
+          className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+        >
+          이미지 삭제
+        </button>
+      </div>
 
-      <button
-        type="button"
-        className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-      >
-        이미지 업로드
-      </button>
-      <button
-        type="button"
-        className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-      >
-        이미지 삭제
-      </button>
+      <div className="h-28 w-[2px] bg-gray-100" />
+      <div>
+        <div>{session?.user.name}님 안녕하세요. URL을 설정해보세요!</div>
+
+        <input type="text" defaultValue={session?.user.id} className="w-[400px] border-2 border-pink-500" />
+
+        <div>https://link-graph.vercel.app/{session?.user.url ?? session?.user.id}</div>
+      </div>
     </section>
   );
 };
