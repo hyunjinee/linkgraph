@@ -103,25 +103,23 @@ const LinkForm = () => {
   };
 
   return (
-    <>
+    <section className="flex-1 rounded-md p-4 shadow-md ">
       <div className="flex flex-col">
-        <label htmlFor="linkTitle" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Link
-        </label>
+        <h2 className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">링크 업로드</h2>
         <div className="flex w-full">
-          <div className="relative w-40 mr-4 h-36">
+          <div className="relative mr-4 h-36 w-40">
             <Image
               src={imageBlobURL || '/profile.png'}
               alt="profile"
               fill
-              className="object-cover rounded-full cursor-pointer"
+              className="cursor-pointer rounded-full object-cover"
               priority
               quality={100}
               onClick={handleImageUpload}
             />
           </div>
 
-          <div className="flex flex-col w-full justify-evenly">
+          <div className="flex w-full flex-col justify-evenly">
             <input
               type="text"
               id="linkTitle"
@@ -144,13 +142,13 @@ const LinkForm = () => {
         </div>
         <button
           type="button"
-          className="inline-flex justify-center w-32 px-4 py-2 mt-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+          className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           onClick={onAddLinkClick}
         >
           링크 추가하기
         </button>
       </div>
-    </>
+    </section>
   );
 };
 

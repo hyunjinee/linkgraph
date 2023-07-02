@@ -21,8 +21,8 @@ const LinkList = ({ links }: LinkListProps) => {
   });
 
   return (
-    <div>
-      LinkList
+    <section className="flex-1 rounded-md shadow-md ">
+      <h2>링크 목록</h2>
       <ul>
         {links?.map((link: any) => (
           <li key={link.id} className="flex items-center gap-5">
@@ -41,7 +41,7 @@ const LinkList = ({ links }: LinkListProps) => {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 
