@@ -6,15 +6,9 @@ import { Fragment, useContext, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import LinkGraphIcon from '~/components/LinkGraphIcon';
 import { AuthContext } from './Core';
-
-const navigation = [
-  { name: 'Dashboard', href: '/' },
-  { name: 'Playground', href: '/playground' },
-];
 
 const classNames = (...classes: string[]) => classes.filter(Boolean).join(' ');
 
@@ -39,20 +33,20 @@ const Navbar = () => {
       <Disclosure as="nav" className="bg-white shadow-sm">
         {({ open }) => (
           <>
-            <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-              <div className="flex justify-between h-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="flex h-16 justify-between">
                 <div className="flex">
-                  <div className="flex items-center flex-shrink-0 cursor-pointer" onClick={() => router.push('/')}>
+                  <div className="flex flex-shrink-0 cursor-pointer items-center" onClick={() => router.push('/')}>
                     <LinkGraphIcon />
                   </div>
                 </div>
-                <div className="hidden sm:ml-6 sm:flex sm:items-center">
+                <div className="flex items-center sm:ml-6">
                   <Menu as="div" className="relative ml-3">
                     <div>
-                      <Menu.Button className="flex text-sm bg-white rounded-full hover:ring-2 hover:ring-slate-500 hover:ring-offset-2 focus:outline-none ">
+                      <Menu.Button className="flex rounded-full bg-white text-sm hover:ring-2 hover:ring-slate-500 hover:ring-offset-2 focus:outline-none ">
                         <span className="sr-only">Open user menu</span>
                         <Image
-                          className="w-8 h-8 rounded-full"
+                          className="h-8 w-8 rounded-full"
                           src={session?.user?.image || 'https://avatar.vercel.sh/leerob'}
                           height={32}
                           width={32}
@@ -71,7 +65,7 @@ const Navbar = () => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         {session?.user ? (
                           <>
                             <Menu.Item>
@@ -135,62 +129,8 @@ const Navbar = () => {
                     </Transition>
                   </Menu>
                 </div>
-                <div className="flex items-center -mr-2 sm:hidden">
-                  <Disclosure.Button className="inline-flex items-center justify-center">
-                    <span className="sr-only">Open main menu</span>
-                    {open ? (
-                      <XMarkIcon className="block w-6 h-6" aria-hidden="true" />
-                    ) : (
-                      <Bars3Icon className="block w-6 h-6" aria-hidden="true" />
-                    )}
-                  </Disclosure.Button>
-                </div>
               </div>
             </div>
-
-            <Disclosure.Panel className="sm:hidden">
-              <div className="pt-2 pb-3 space-y-1">
-                {navigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    className={classNames(
-                      pathname === item.href
-                        ? 'border-slate-500 bg-slate-50 text-slate-700'
-                        : 'border-transparent text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800',
-                      'block border-l-4 py-2 pl-3 pr-4 text-base font-medium',
-                    )}
-                    aria-current={pathname === item.href ? 'page' : undefined}
-                  >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
-              </div>
-              <div className="pt-4 pb-3 border-t border-gray-200">
-                {session?.user ? (
-                  <>
-                    <div className="mt-3 space-y-1">
-                      <button
-                        onClick={() => signOut()}
-                        className="flex w-full px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
-                      >
-                        로그아웃
-                      </button>
-                    </div>
-                  </>
-                ) : (
-                  <div className="mt-3 space-y-1">
-                    <button
-                      onClick={() => openModal()}
-                      className="flex w-full px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
-                    >
-                      로그인
-                    </button>
-                  </div>
-                )}
-              </div>
-            </Disclosure.Panel>
           </>
         )}
       </Disclosure>
@@ -211,7 +151,7 @@ const Navbar = () => {
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex items-center justify-center min-h-full p-4 text-center">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -221,7 +161,7 @@ const Navbar = () => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
                     로그인
                   </Dialog.Title>
@@ -235,7 +175,7 @@ const Navbar = () => {
                   <div className="mt-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={() => {
                         signIn('google');
                         closeModal();
