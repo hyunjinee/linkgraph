@@ -11,6 +11,7 @@
 ## 프로젝트에서 배운 것 기록
 
 - [서버 사이드 렌더링으로 UX 개선하기](https://www.youtube.com/watch?v=wxxNS6hEptE)
+
 <!-- ## TODO
 
 
@@ -21,6 +22,7 @@
 - Admin. 유저 테이블 -> 유서 수정 폼
 - react-hook-form, zod로 form validation
 - 그래프 사용자가 커스터마이징(노드 사이즈)
+
 
 ## 블로그 적고싶은거
 
