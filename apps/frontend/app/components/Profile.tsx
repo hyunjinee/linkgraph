@@ -6,10 +6,20 @@ import { useState } from 'react';
 import { cloudFrontURL } from '@linkgraph/site-info';
 
 import { useUpload } from '~/hooks/useUpload';
+import { useMutation } from '@tanstack/react-query';
 
-const ProfileImage = () => {
+const Profile = () => {
   const { data: session } = useSession();
   const [profileImageURL, setProfileImageURL] = useState<string>('');
+
+  const { mutate: deleteProfileImage } = useMutation({
+    mutationFn: async (id) => {
+      const res = await fetch('/api/profile-image?id=' + id, {
+        method: 'DELETE',
+      });
+      return res.json();
+    },
+  });
 
   const upload = useUpload();
 
@@ -59,38 +69,51 @@ const ProfileImage = () => {
     }
   };
 
+  const handleImageDelete = () => {
+    deleteProfileImage(session?.user.id);
+    setProfileImageURL('');
+  };
+
   return (
-    <section className="flex w-full items-center gap-4 rounded-md p-4 shadow-md">
-      <div className="relative h-32 w-32">
-        <Image
-          onClick={handleImageUpload}
-          src={profileImageURL || session?.user.profileImage || session?.user.image || '/profile.png'}
-          alt="profile"
-          fill
-          className="cursor-pointer rounded-full"
-          priority
-          quality={100}
-        />
+    <section className="flex w-full flex-col items-center gap-4 rounded-md p-4 sm:flex-row">
+      <div className="flex flex-col items-center">
+        <div className="relative h-40 w-40 flex-shrink-0">
+          <Image
+            onClick={handleImageUpload}
+            src={profileImageURL || session?.user.profileImage || session?.user.image || '/profile.png'}
+            alt="profile"
+            fill
+            className="cursor-pointer rounded-full "
+            priority
+            quality="100"
+            // width={320}
+            // height={320}
+            // placeholder="blur"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <button
+            onClick={handleImageUpload}
+            type="button"
+            className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+          >
+            이미지 업로드
+          </button>
+          <button
+            onClick={handleImageDelete}
+            type="button"
+            className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+          >
+            이미지 삭제
+          </button>
+        </div>
       </div>
 
-      <div className="flex flex-col">
-        <button
-          type="button"
-          className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-        >
-          이미지 업로드
-        </button>
-        <button
-          type="button"
-          className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-        >
-          이미지 삭제
-        </button>
-      </div>
+      <div className="h-[2px] w-60 bg-gray-100 sm:h-60 sm:w-[2px]" />
 
-      <div className="h-28 w-[2px] bg-gray-100" />
-      <div>
-        <div>{session?.user.name}님 안녕하세요. URL을 설정해보세요!</div>
+      <div className="mt-2 self-start">
+        <div className="text-3xl">{session?.user.name}님 안녕하세요. URL을 설정해보세요!</div>
 
         <input type="text" defaultValue={session?.user.id} className="w-[400px] border-2 border-pink-500" />
 
@@ -100,7 +123,7 @@ const ProfileImage = () => {
   );
 };
 
-export default ProfileImage;
+export default Profile;
 
 // 현재 날짜와 시간을 포맷팅하는 함수
 const getCurrentDateTime = () => {

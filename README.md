@@ -1,4 +1,4 @@
-# <img height="25px" src="https://github.com/hyunjinee/linkgraph/assets/63354527/2612509a-975a-4ee7-a1b8-5be464444a74" /> LinkGraph
+# <img height="25px" src="https://github.com/hyunjinee/linkgraph/assets/63354527/2612509a-975a-4ee7-a1b8-5be464444a74" /> LinkGraph(WIP🔨)
 
 유저가 자신을 소개하는 링크를 업로드하면 그래프 형태로 시각화해서 공유할 수 있는 서비스입니다.
 
