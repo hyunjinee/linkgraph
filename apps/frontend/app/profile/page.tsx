@@ -5,13 +5,13 @@ import Image from 'next/image';
 import { useQuery } from '@tanstack/react-query';
 
 import LinkForm from '~/components/LinkForm';
-import ProfileImage from '~/components/ProfileImage';
+import Profile from '~/components/Profile';
 import ProfileURL from '~/components/ProfileURL';
 import LinkList from '~/components/LinkList';
 
 // TODO if not logged in -> redirect to homepage
 
-const Profile: NextPage = () => {
+const ProfilePage: NextPage = () => {
   // change to ssr
   const { data: links } = useQuery<Link[]>({
     queryKey: ['links'],
@@ -25,7 +25,7 @@ const Profile: NextPage = () => {
   return (
     <main className="mx-auto h-full w-full max-w-7xl p-4 md:p-10">
       <div>
-        <ProfileImage />
+        <Profile />
 
         {/* <ProfileURL /> */}
         {/* <div className="flex gap-4">
@@ -56,4 +56,4 @@ const Profile: NextPage = () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;

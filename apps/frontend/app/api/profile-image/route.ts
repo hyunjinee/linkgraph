@@ -100,11 +100,26 @@ export const DELETE = async (req: Request) => {
     });
   }
 
-  const user = await prisma.user.findUnique({
+  const result = await prisma.user.update({
     where: {
       id: userId,
     },
+    data: {
+      profileImage: null,
+    },
   });
 
-  return NextResponse.json({ test: 'test' });
+  return NextResponse.json(result);
 };
+// export const DELETE = async (req: Request) => {
+//   const { searchParams } = new URL(req.url);
+//   const id = searchParams.get('id') || '';
+
+//   const link = await prisma.link.delete({
+//     where: {
+//       id,
+//     },
+//   });
+
+//   return NextResponse.json(link);
+// };
