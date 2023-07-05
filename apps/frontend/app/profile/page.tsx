@@ -28,29 +28,29 @@ const Profile: NextPage = () => {
         <ProfileImage />
 
         {/* <ProfileURL /> */}
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <LinkForm />
           <LinkList links={links} />
         </div>
 
-        <section className="w-1/2 rounded-xl p-4 shadow-md">
+        <section className="w-1/2 p-4 shadow-md rounded-xl">
           <h2>링크 업로드</h2>
-          <div className="flex w-full items-center justify-center gap-4">
-            <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+          <div className="flex items-center justify-center w-full gap-4">
+            <div className="flex items-center justify-center w-24 h-24 rounded-full shrink-0 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
               <Image src="/icons/palette.svg" width={48} height={48} alt="palette" />
             </div>
-            <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+            <div className="flex items-center justify-center w-24 h-24 rounded-full shrink-0 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
               <Image src="/icons/clip.svg" width={48} height={48} alt="palette" />
             </div>
-            <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+            <div className="flex items-center justify-center w-24 h-24 rounded-full shrink-0 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
               <Image src="/icons/palette.svg" width={48} height={48} alt="palette" />
             </div>
-            <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+            <div className="flex items-center justify-center w-24 h-24 rounded-full shrink-0 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
               <Image src="/icons/palette.svg" width={48} height={48} alt="palette" />
             </div>
           </div>
           <div>이미지를 선택해주세요.</div>
-        </section>
+        </section> */}
       </div>
     </main>
   );
