@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  // output = "../../../node_modules/.prisma/client"
+  output = "../../../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -47,6 +47,7 @@ model Session {
 model User {
   id            String    @id @default(cuid())
   name          String?
+  description   String?   @db.Text
   email         String?   @unique
   emailVerified DateTime?
   image         String?
