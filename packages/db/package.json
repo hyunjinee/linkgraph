@@ -1,7 +1,6 @@
 {
   "name": "@linkgraph/db",
   "packageManager": "yarn@3.5.1",
-  "version": "0.0.1",
   "main": "./src/index.ts",
   "type": "module",
   "scripts": {
