@@ -31,6 +31,7 @@ export const authOptions: AuthOptions = {
       // console.log(user);
       session.user.id = user.id;
       session.user.profileImage = result?.profileImage;
+      session.user.url = result?.url;
 
       return session;
     },

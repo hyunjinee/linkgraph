@@ -11,12 +11,29 @@ import { useMutation } from '@tanstack/react-query';
 const Profile = () => {
   const { data: session } = useSession();
   const [profileImageURL, setProfileImageURL] = useState<string>('');
+  const [userURL, setUserURL] = useState('');
+
+  console.log(session);
 
   const { mutate: deleteProfileImage } = useMutation({
     mutationFn: async (id) => {
       const res = await fetch('/api/profile-image?id=' + id, {
         method: 'DELETE',
       });
+      return res.json();
+    },
+  });
+
+  const { mutate } = useMutation({
+    mutationFn: async () => {
+      const res = await fetch('/api/profile-url', {
+        method: 'PATCH',
+        body: JSON.stringify({
+          userId: session?.user.id,
+          url: userURL,
+        }),
+      });
+
       return res.json();
     },
   });
@@ -115,9 +132,17 @@ const Profile = () => {
       <div className="mt-2 self-start">
         <div className="text-3xl">{session?.user.name}님 안녕하세요. URL을 설정해보세요!</div>
 
-        <input type="text" defaultValue={session?.user.id} className="w-[400px] border-2 border-pink-500" />
+        <input
+          type="text"
+          // defaultValue={session?.user.id}
+          value={userURL}
+          onChange={(e) => setUserURL(e.target.value)}
+          className="w-[400px] border-2 border-pink-500"
+        />
 
         <div>https://link-graph.vercel.app/{session?.user.url ?? session?.user.id}</div>
+
+        <button onClick={() => mutate()}>수정</button>
       </div>
     </section>
   );
