@@ -4,7 +4,7 @@ const { PrismaPlugin } = require('@prisma/nextjs-monorepo-workaround-plugin');
 const nextConfig = {
   experimental: {
     // serverActions: true,
-    esmExternals: 'loose',
+    // esmExternals: 'loose',
   },
   images: {
     domains: [

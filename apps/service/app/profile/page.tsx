@@ -16,14 +16,22 @@ const ProfilePage: NextPage = () => {
         <Profile />
 
         {/* <ProfileURL /> */}
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <LinkForm />
           <LinkList />
-        </div>
+        </div> */}
 
-        <div className="w-1/2 h-32 bg-red-50">
-          <h3>링크 업로드</h3>
-          <Image src="/icons/clip.svg" width={48} height={48} alt="link" />
+        <div className="w-full lg:w-1/2 bg-red-50">
+          <h3 className="mb-4 text-xl font-semibold">링크 업로드</h3>
+
+          <div className="flex justify-center gap-10">
+            <div className="flex items-center justify-center w-24 h-24 rounded-full shrink-0 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+              <Image src="/icons/clip.svg" width={48} height={48} alt="link" />
+            </div>
+            <div className="flex items-center justify-center w-24 h-24 rounded-full shrink-0 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+              <Image src="/icons/palette.svg" width={48} height={48} alt="palette" />
+            </div>
+          </div>
         </div>
 
         {/* <section className="w-1/2 p-4 shadow-md rounded-xl">
