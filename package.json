@@ -13,7 +13,7 @@
     "docs": "yarn workspace @linkgraph/docs",
     "d3": "yarn workspace @linkgraph/d3",
     "db": "yarn workspace @linkgraph/db",
-    "frontend": "yarn workspace @linkgraph/service",
+    "service": "yarn workspace @linkgraph/service",
     "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx",
     "postinstall": "husky install && yarn db prisma generate"
   },
