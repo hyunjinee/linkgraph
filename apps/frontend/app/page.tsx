@@ -50,27 +50,6 @@ const Home = async () => {
           <span className="text-sky-500">개</span>의 링크를 연결하고 있습니다.
         </h2>
       </section>
-
-      {/* <section className="flex flex-col items-center justify-center w-full h-full">
-        <div className="flex gap-5">
-          <div className=" h-[35rem] w-[21rem] rounded-2xl bg-gray-50 shadow-lg">
-            <Image className="mx-auto pt-28" src="/connect.png" width={60} height={60} alt="연결" />
-
-            <div className="flex items-center justify-center mt-10 text-lg font-semibold">
-              {userCount}명이
-              <br /> 가입했습니다.
-            </div>
-          </div>
-          <div className=" h-[35rem] w-[21rem] rounded-2xl bg-gray-50 shadow-lg">
-            <Image className="mx-auto pt-28" src="/connect.png" width={60} height={60} alt="연결" />
-           
-            <div className="flex items-center justify-center mt-10 text-lg font-semibold">
-              {linkCount}개의
-              <br /> 링크를 연결합니다.
-            </div>
-          </div>
-        </div>
-      </section> */}
     </main>
   );
 };
