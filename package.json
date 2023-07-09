@@ -1,6 +1,6 @@
 {
   "name": "linkgraph",
-  "packageManager": "yarn@3.6.0",
+  "packageManager": "yarn@3.6.1",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -13,14 +13,14 @@
     "docs": "yarn workspace @linkgraph/docs",
     "d3": "yarn workspace @linkgraph/d3",
     "db": "yarn workspace @linkgraph/db",
-    "frontend": "yarn workspace @linkgraph/service",
+    "service": "yarn workspace @linkgraph/service",
     "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx",
     "postinstall": "husky install && yarn db prisma generate"
   },
   "devDependencies": {
     "@tanstack/react-query-devtools": "^4.29.13",
-    "@types/react": "^18.2.6",
-    "@types/react-dom": "^18.2.4",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.59.7",
     "@typescript-eslint/parser": "^5.59.7",
     "eslint": "^8.41.0",

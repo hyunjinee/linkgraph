@@ -2,7 +2,7 @@ import type { NextRouter } from 'next/router';
 import type { ParsedUrlQueryInput } from 'querystring';
 import Link from 'next/link';
 import { Divider } from 'antd';
-import { ChevronRight, Home, Monitor, Package2 } from 'lucide-react';
+import { ChevronRight, Home, Package2 } from 'lucide-react';
 import styles from './menu.module.css';
 
 export type Menu = {
@@ -21,7 +21,7 @@ const mainMenuData: Menu[] = [
   {
     id: 'home',
     name: '홈',
-    icon: <Home className="h-5 w-5" />,
+    icon: <Home className="w-5 h-5" />,
     link: {
       path: '/',
     },
@@ -29,7 +29,7 @@ const mainMenuData: Menu[] = [
   {
     id: 'product',
     name: '유저 관리',
-    icon: <Package2 className="h-5 w-5" />,
+    icon: <Package2 className="w-5 h-5" />,
     submenu: [
       {
         id: 'productList',
