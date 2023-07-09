@@ -10,10 +10,8 @@ import { useMutation } from '@tanstack/react-query';
 
 const Profile = () => {
   const { data: session } = useSession();
-  const [profileImageURL, setProfileImageURL] = useState<string>('');
+  const [profileImageURL, setProfileImageURL] = useState('');
   const [userURL, setUserURL] = useState('');
-
-  console.log(session);
 
   const { mutate: deleteProfileImage } = useMutation({
     mutationFn: async (id) => {
@@ -143,6 +141,9 @@ const Profile = () => {
         <div>https://link-graph.vercel.app/{session?.user.url ?? session?.user.id}</div>
 
         <button onClick={() => mutate()}>수정</button>
+
+        <div>이름: {session?.user.name}</div>
+        <div>소개: </div>
       </div>
     </section>
   );

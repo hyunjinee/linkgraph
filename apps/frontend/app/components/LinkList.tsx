@@ -1,12 +1,20 @@
 import React from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
 
-type LinkListProps = {
-  links?: Link[];
-};
+// type LinkListProps = {
+//   links?: Link[];
+// };
 
-const LinkList = ({ links }: LinkListProps) => {
+const LinkList = () => {
+  const { data: links } = useQuery<Link[]>({
+    queryKey: ['links'],
+    queryFn: async () => {
+      const res = await fetch('/api/link');
+      return res.json();
+    },
+    suspense: true,
+  });
   const queryClient = useQueryClient();
   const { mutateAsync } = useMutation({
     mutationFn: async (id: string) => {
