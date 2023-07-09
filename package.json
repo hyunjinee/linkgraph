@@ -7,13 +7,13 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "yarn workspace @linkgraph/frontend dev",
+    "dev": "yarn workspace @linkgraph/service dev",
     "d3-poc": "yarn workspace @linkgraph/d3-poc",
     "admin": "yarn workspace @linkgraph/admin",
     "docs": "yarn workspace @linkgraph/docs",
     "d3": "yarn workspace @linkgraph/d3",
     "db": "yarn workspace @linkgraph/db",
-    "frontend": "yarn workspace @linkgraph/frontend",
+    "frontend": "yarn workspace @linkgraph/service",
     "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx",
     "postinstall": "husky install && yarn db prisma generate"
   },
