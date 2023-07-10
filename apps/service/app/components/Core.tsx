@@ -6,6 +6,7 @@ import type { Session } from 'next-auth';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { SessionProvider } from 'next-auth/react';
+import { Toaster } from 'react-hot-toast';
 
 const client = new QueryClient();
 
@@ -17,6 +18,7 @@ const Core = ({ children, session }: PropsWithChildren<{ session: Session | null
       <SessionProvider>
         <QueryClientProvider client={client}>
           {children}
+          <Toaster />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </SessionProvider>

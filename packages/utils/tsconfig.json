@@ -3,5 +3,5 @@
     "baseUrl": ".",
     "types": ["node", "jest"]
   },
-  "include": ["jest.setup.ts"]
+  "include": ["src", "jest.setup.ts"]
 }
