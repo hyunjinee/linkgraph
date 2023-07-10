@@ -50,6 +50,9 @@ const Home = async () => {
           <span className="text-sky-500">개</span>의 링크를 연결하고 있습니다.
         </h2>
       </section>
+
+      {/* TODO delete this */}
+      <h1 className="w-full text-3xl font-bold text-center text-purple-400">서비스 준비중입니다.</h1>
     </main>
   );
 };
