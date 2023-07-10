@@ -4497,6 +4497,7 @@ __metadata:
     postcss: 8.4.23
     prisma: ^4.14.1
     react: ^18.2.0
+    react-colorful: ^5.6.1
     react-countup: ^6.4.2
     react-dom: ^18.2.0
     react-hook-form: ^7.44.3
@@ -20373,7 +20374,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-colorful@npm:^5.1.2":
+"react-colorful@npm:^5.1.2, react-colorful@npm:^5.6.1":
   version: 5.6.1
   resolution: "react-colorful@npm:5.6.1"
   peerDependencies:

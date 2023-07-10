@@ -73,7 +73,6 @@ export const useCreateLink = (
         throw new Error('서버에 이미지 업로드를 실패했습니다.');
       }
 
-      console.log('이까진옴');
       // 서버에 업로드를 완료했다면 링크를 생성한다.
       const res = await fetch('/api/link', {
         method: 'POST',

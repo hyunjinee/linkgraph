@@ -1,9 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { HexColorPicker } from 'react-colorful';
 
 import { useAuth } from '~/hooks/useAuth';
+import { useOnClickOutside } from '~/hooks/useOnClickOutside';
 import { useUpload } from '~/hooks/useUpload';
 import { useCreateLink } from '~/queries/link';
 
@@ -12,6 +14,8 @@ const LinkUploadForm = () => {
   const [linkURL, setLinkURL] = useState('');
   const [imageBlobURL, setImageBlobURL] = useState('');
   const [color, setColor] = useState('');
+  const [isPaletteOpen, setIsPaletteOpen] = useState(false);
+  const paletteRef = useRef<HTMLDivElement>(null);
 
   const [file, upload] = useUpload();
   const session = useAuth();
@@ -20,6 +24,8 @@ const LinkUploadForm = () => {
     url: linkURL,
     image: file,
   });
+
+  useOnClickOutside(paletteRef, () => setIsPaletteOpen(false));
 
   const handleClear = () => {
     setLinkTitle('');
@@ -62,11 +68,22 @@ const LinkUploadForm = () => {
           {imageBlobURL ? (
             <Image src={imageBlobURL} alt="link image" fill />
           ) : (
-            <Image src={imageBlobURL || '/icons/clip.svg'} alt="link" width={48} height={48} />
+            <Image src={'/icons/clip.svg'} alt="link" width={48} height={48} />
           )}
         </div>
-        <div className="flex items-center justify-center w-24 h-24 rounded-full shrink-0 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
-          <Image src="/icons/palette.svg" width={48} height={48} alt="palette" />
+        <div
+          onClick={() => setIsPaletteOpen(true)}
+          className={`relative flex items-center justify-center w-24 h-24 rounded-full cursor-pointer shrink-0 ${
+            !color && 'bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500'
+          }`}
+          style={{ backgroundColor: color }}
+        >
+          {!color && <Image src="/icons/palette.svg" width={48} height={48} alt="palette" />}
+          {isPaletteOpen && (
+            <div ref={paletteRef} className="absolute" style={{ top: '-200px' }}>
+              <HexColorPicker color={color} onChange={setColor} />
+            </div>
+          )}
         </div>
       </div>
 
@@ -90,6 +107,8 @@ const LinkUploadForm = () => {
           value={linkURL}
           onChange={(e) => setLinkURL(e.target.value)}
         />
+
+        {/* <input type="color" /> */}
       </div>
 
       {/* submit & clear button */}
