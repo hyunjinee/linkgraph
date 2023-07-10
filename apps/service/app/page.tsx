@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import prisma from '@linkgraph/db';
 
-import { Search, CountUp } from './components';
+import { CountUp } from './components';
 
 /* ISR. Incremental Static Regeneration
   
@@ -40,10 +40,6 @@ const Home = async () => {
         <div className="flex items-center justify-center w-full">
           <Image src="linkgraph.svg" width={300} height={300} alt="temp" />
         </div>
-      </section>
-
-      <section className="mt-10">
-        <Search />
       </section>
 
       <section className="flex items-center justify-center mt-32">
