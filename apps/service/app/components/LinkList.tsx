@@ -20,7 +20,7 @@ const LinkList = () => {
       return res.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['links'], { exact: true });
+      queryClient.invalidateQueries(['links', session?.user.id], { exact: true });
     },
   });
 

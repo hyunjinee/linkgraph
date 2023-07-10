@@ -1,8 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-
 import prisma, { countLink } from '@linkgraph/db';
-import { authOptions } from '~/api/auth/[...nextauth]/route';
 
 export const GET = async (req: Request) => {
   const { searchParams } = new URL(req.url);
@@ -25,14 +22,6 @@ export const GET = async (req: Request) => {
 
 export const POST = async (req: Request) => {
   const { userId, title, color, image, url } = await req.json();
-  const session = await getServerSession(authOptions);
-
-  if (!session || !session.user) {
-    return NextResponse.json({
-      message: '로그인을 해주세요.',
-    });
-  }
-
   const linkCount = await countLink(userId);
 
   if (linkCount > 30) {
@@ -40,7 +29,7 @@ export const POST = async (req: Request) => {
       message: '링크는 30개까지만 등록할 수 있습니다.',
     });
   }
-  console.log(userId, url, title, image, color);
+
   const link = await prisma.link.create({
     data: {
       userId,
@@ -50,8 +39,6 @@ export const POST = async (req: Request) => {
       color,
     },
   });
-
-  console.log(link, '?@?!');
 
   return NextResponse.json(link);
 };

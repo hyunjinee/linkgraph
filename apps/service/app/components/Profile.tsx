@@ -36,7 +36,7 @@ const Profile = () => {
     },
   });
 
-  const upload = useUpload();
+  const [, upload] = useUpload();
 
   const handleImageUpload = async () => {
     const image = await upload();

@@ -4471,7 +4471,7 @@ __metadata:
     "@hookform/resolvers": ^3.1.1
     "@linkgraph/db": "*"
     "@linkgraph/site-info": "*"
-    "@linkgraph/utils": "workspace:^"
+    "@linkgraph/utils": "*"
     "@next-auth/prisma-adapter": ^1.0.6
     "@prisma/client": ^4.14.1
     "@prisma/nextjs-monorepo-workaround-plugin": ^4.14.1
@@ -4516,7 +4516,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@linkgraph/utils@workspace:^, @linkgraph/utils@workspace:packages/utils":
+"@linkgraph/utils@*, @linkgraph/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@linkgraph/utils@workspace:packages/utils"
   dependencies:

@@ -1,5 +1,7 @@
 {
   "name": "@linkgraph/utils",
+  "private": true,
+  "version": "0.0.1",
   "packageManager": "yarn@3.6.0",
   "main": "./src/index.ts",
   "scripts": {
