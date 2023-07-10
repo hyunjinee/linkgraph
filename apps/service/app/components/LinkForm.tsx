@@ -113,7 +113,7 @@ const LinkForm = () => {
               alt="profile"
               fill
               className="object-cover rounded-full cursor-pointer"
-              priority
+              loading="eager"
               quality={100}
               onClick={handleImageUpload}
             />
