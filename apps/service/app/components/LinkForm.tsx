@@ -2,10 +2,12 @@
 
 import Image from 'next/image';
 import { useContext, useState } from 'react';
-import { AuthContext } from './Core';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useUpload } from '~/hooks/useUpload';
 import { cloudFrontURL } from '@linkgraph/site-info';
+import { getCurrentDateTime } from '@linkgraph/utils';
+
+import { AuthContext } from './Core';
+import { useUpload } from '~/hooks/useUpload';
 
 const LinkForm = () => {
   const [title, setTitle] = useState('');
@@ -14,7 +16,7 @@ const LinkForm = () => {
   const [image, setImage] = useState<File>();
   const session = useContext(AuthContext);
   const queryClient = useQueryClient();
-  const upload = useUpload();
+  const [, upload] = useUpload();
 
   const onChangeURL = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLinkURL(e.target.value);
@@ -153,17 +155,3 @@ const LinkForm = () => {
 };
 
 export default LinkForm;
-
-// 현재 날짜와 시간을 포맷팅하는 함수
-const getCurrentDateTime = () => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const seconds = String(now.getSeconds()).padStart(2, '0');
-
-  const dateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  return dateTime;
-};

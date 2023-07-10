@@ -24,7 +24,7 @@ export const GET = async (req: Request) => {
 };
 
 export const POST = async (req: Request) => {
-  const data = await req.json();
+  const { userId, title, color, image, url } = await req.json();
   const session = await getServerSession(authOptions);
 
   if (!session || !session.user) {
@@ -33,22 +33,25 @@ export const POST = async (req: Request) => {
     });
   }
 
-  const linkCount = await countLink(data.userId);
+  const linkCount = await countLink(userId);
 
   if (linkCount > 30) {
     return NextResponse.json({
       message: '링크는 30개까지만 등록할 수 있습니다.',
     });
   }
-
+  console.log(userId, url, title, image, color);
   const link = await prisma.link.create({
     data: {
-      userId: data.userId,
-      url: data.url,
-      title: data.title,
-      image: data.image,
+      userId,
+      url,
+      title,
+      image,
+      color,
     },
   });
+
+  console.log(link, '?@?!');
 
   return NextResponse.json(link);
 };

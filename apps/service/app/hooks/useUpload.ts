@@ -1,11 +1,15 @@
+import { useState } from 'react';
+
 export const useUpload = () => {
+  const [file, setFile] = useState<File>();
+
   const upload = () => {
-    const promise = new Promise<File | null>((resolve, reject) => {
+    return new Promise<File | null>((resolve, reject) => {
       const input = document.createElement('input');
       input.accept = 'image/*';
+      input.type = 'file';
 
       const timeout = setTimeout(reject, 1000 * 60 * 3);
-      input.type = 'file';
       input.onchange = () => {
         clearTimeout(timeout);
 
@@ -14,11 +18,13 @@ export const useUpload = () => {
         }
 
         const file = input.files[0];
+        setFile(file);
         resolve(file);
       };
+
       input.click();
     });
-    return promise;
   };
-  return upload;
+
+  return [file, upload] as [typeof file, typeof upload];
 };
