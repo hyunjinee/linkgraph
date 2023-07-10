@@ -1,20 +1,16 @@
 'use client';
 
 import React from 'react';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
 import { useAuth } from '~/hooks/useAuth';
+import { useLink } from '~/queries/link';
 
 const LinkList = () => {
   const session = useAuth();
-  const { data: links } = useQuery<Link[]>({
-    queryKey: ['links'],
-    queryFn: async () => {
-      const res = await fetch('/api/link');
-      return res.json();
-    },
-    suspense: true,
-  });
+  const { links } = useLink(session?.user.id);
+
   const queryClient = useQueryClient();
   const { mutateAsync } = useMutation({
     mutationFn: async (id: string) => {
@@ -29,14 +25,16 @@ const LinkList = () => {
   });
 
   return (
-    <section className="flex-1 rounded-md shadow-md ">
-      <h2>링크 목록</h2>
-      <ul>
-        {links?.map((link: any) => (
+    <section className="w-full lg:w-1/2">
+      <h2 className="mb-4 text-xl font-semibold">링크 목록</h2>
+      <ul className="w-ful">
+        {links?.map((link: Link) => (
           <li key={link.id} className="flex items-center gap-5">
-            <Image src={link.image || '/profile.png'} alt="링크" width={40} height={40} />
+            <div className="w-[80px] h-[80px] flex items-center justify-center bg-red-50 rounded-full overflow-hidden">
+              <Image className="object-cover" src={link.image || '/profile.png'} alt="링크" width={80} height={80} />
+            </div>
+            <div>{link.title}</div>
             <div>{link.url}</div>
-
             <button
               onClick={() => {
                 mutateAsync(link.id);
@@ -44,8 +42,6 @@ const LinkList = () => {
             >
               삭제
             </button>
-            {/* <div>{link.title} : title</div>
-            <div>{link.image} : image</div> */}
           </li>
         ))}
       </ul>

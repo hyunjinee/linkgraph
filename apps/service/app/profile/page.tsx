@@ -13,8 +13,14 @@ const ProfilePage = async () => {
   return (
     <main className="w-full h-full p-4 mx-auto max-w-7xl md:p-10">
       <Profile />
-      <LinkUploadForm />
-      <LinkList />
+
+      <div className="lg:flex">
+        <LinkUploadForm />
+
+        <div className="mb-4 " />
+
+        <LinkList />
+      </div>
     </main>
   );
 };

@@ -5,7 +5,7 @@ import Image from 'next/image';
 const LinkUploadForm = () => {
   return (
     <section className="w-full lg:w-1/2">
-      <h3 className="mb-4 text-xl font-semibold">링크 업로드</h3>
+      <h2 className="mb-4 text-xl font-semibold">링크 업로드</h2>
       {/* link images, colors */}
       <div className="flex justify-center gap-10 mb-4">
         <div className="flex items-center justify-center w-24 h-24 rounded-full shrink-0 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
