@@ -90,15 +90,16 @@ const Profile = () => {
   };
 
   return (
-    <section className="flex w-full flex-col items-center gap-4 rounded-md p-4 sm:flex-row">
+    <section className="flex flex-col items-center w-full gap-4 p-4 rounded-md sm:flex-row">
+      {/* Image Upload */}
       <div className="flex flex-col items-center">
-        <div className="relative h-40 w-40 flex-shrink-0">
+        <div className="relative flex-shrink-0 w-40 h-40">
           <Image
             onClick={handleImageUpload}
             src={profileImageURL || session?.user.profileImage || session?.user.image || '/profile.png'}
             alt="profile"
             fill
-            className="cursor-pointer rounded-full "
+            className="object-cover rounded-full cursor-pointer"
             priority
             quality="100"
             // width={320}
@@ -111,24 +112,32 @@ const Profile = () => {
           <button
             onClick={handleImageUpload}
             type="button"
-            className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+            className="inline-flex justify-center w-32 px-4 py-2 mt-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           >
             이미지 업로드
           </button>
           <button
             onClick={handleImageDelete}
             type="button"
-            className="mt-2 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+            className="inline-flex justify-center w-32 px-4 py-2 mt-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           >
             이미지 삭제
           </button>
         </div>
       </div>
 
+      {/* Divider */}
       <div className="h-[2px] w-60 bg-gray-100 sm:h-60 sm:w-[2px]" />
 
-      <div className="mt-2 self-start">
-        <div className="text-3xl">{session?.user.name}님 안녕하세요. URL을 설정해보세요!</div>
+      {/* 소개 */}
+      <div className="self-start mt-2">
+        <div className="text-3xl font-semibold">{session?.user.name}님 안녕하세요.😊</div>
+
+        <div className="mt-4">
+          <div>이름: {session?.user.name}</div>
+          <div>소개: </div>
+          <button onClick={() => mutate()}>수정</button>
+        </div>
 
         <input
           type="text"
@@ -139,11 +148,6 @@ const Profile = () => {
         />
 
         <div>https://link-graph.vercel.app/{session?.user.url ?? session?.user.id}</div>
-
-        <button onClick={() => mutate()}>수정</button>
-
-        <div>이름: {session?.user.name}</div>
-        <div>소개: </div>
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
 'use client';
 
 import { select } from 'd3';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
