@@ -14,16 +14,6 @@
 
 <!-- ## TODO
 
-
-- EsLint 설정 공통 프로젝트
-- form에서 링크 업로드 후 업로드 된 링크를 사용자 URL에서 표시하기
-- useUpload 리팩토링 (상태를 사용하는 것이 아니라면 훅에서 제외)
-- react hot toast
-- Admin. 유저 테이블 -> 유서 수정 폼
-- react-hook-form, zod로 form validation
-- 그래프 사용자가 커스터마이징(노드 사이즈)
-
-
 ## 블로그 적고싶은거
 
 - 모노레포
