@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import prisma from '@linkgraph/db';
 
-import CountUp from '~/components/CountUp';
+import { CountUp } from './components';
 
 /* ISR. Incremental Static Regeneration
   
@@ -22,8 +22,8 @@ const Home = async () => {
   const { userCount, linkCount } = await getStatistics();
 
   return (
-    <main className="mx-auto h-full w-full max-w-7xl">
-      <section className="mt-8 grid grid-cols-1 px-8 md:grid-cols-2 lg:mt-24">
+    <main className="w-full h-full mx-auto max-w-7xl">
+      <section className="grid grid-cols-1 px-8 mt-8 md:grid-cols-2 lg:mt-24">
         <div className="mb-12 md:mb-0 lg:mt-24">
           <h1 className="mt-10 text-5xl font-bold sm:mt-0 sm:text-6xl">
             나를 소개하는
@@ -32,17 +32,17 @@ const Home = async () => {
           <p>프로필 페이지에서 나를 소개하는 링크를 생성하면 그래프 형태로 보여집니다.</p>
           <button
             type="button"
-            className="mt-4 inline-flex w-32 justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+            className="inline-flex justify-center w-32 px-4 py-2 mt-4 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           >
             <Link href="/profile">그래프 만들기</Link>
           </button>
         </div>
-        <div className="flex w-full items-center justify-center">
+        <div className="flex items-center justify-center w-full">
           <Image src="linkgraph.svg" width={300} height={300} alt="temp" />
         </div>
       </section>
 
-      <section className="mt-32 flex items-center justify-center">
+      <section className="flex items-center justify-center mt-32">
         <h2 className="text-xl font-semibold ">
           <CountUp number={userCount} className="text-3xl text-pink-500" />
           <span className="text-pink-500">명</span>의 유저가{' '}
@@ -50,6 +50,9 @@ const Home = async () => {
           <span className="text-sky-500">개</span>의 링크를 연결하고 있습니다.
         </h2>
       </section>
+
+      {/* TODO delete this */}
+      <h1 className="w-full text-3xl font-bold text-center text-purple-400">서비스 준비중입니다.</h1>
     </main>
   );
 };

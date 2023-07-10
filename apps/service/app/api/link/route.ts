@@ -4,22 +4,11 @@ import { getServerSession } from 'next-auth';
 import prisma, { countLink } from '@linkgraph/db';
 import { authOptions } from '~/api/auth/[...nextauth]/route';
 
-export const GET = async () => {
-  const session = await getServerSession(authOptions);
+export const GET = async (req: Request) => {
+  const { searchParams } = new URL(req.url);
+  const userId = searchParams.get('userId');
 
-  if (!session || !session.user) {
-    return NextResponse.json({
-      message: '로그인을 해주세요.',
-    });
-  }
-
-  const user = await prisma.user.findUnique({
-    where: {
-      email: session.user.email!,
-    },
-  });
-
-  if (!user) {
+  if (!userId) {
     return NextResponse.json({
       message: '유저를 찾을 수 없습니다.',
     });
@@ -27,7 +16,7 @@ export const GET = async () => {
 
   const data = await prisma.link.findMany({
     where: {
-      userId: user.id,
+      userId: userId,
     },
   });
 
