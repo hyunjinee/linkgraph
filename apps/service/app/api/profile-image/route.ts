@@ -52,18 +52,11 @@ export const GET = () => {
 };
 
 export const PATCH = async (req: Request) => {
-  const data = await req.json();
-  const session = await getServerSession(authOptions);
-
-  if (!session) {
-    return NextResponse.json({
-      error: 'You must be signed in to upload a profile image',
-    });
-  }
+  const { userId, profileImage } = await req.json();
 
   const user = await prisma.user.findUnique({
     where: {
-      id: session.user.id,
+      id: userId,
     },
   });
 
@@ -78,10 +71,10 @@ export const PATCH = async (req: Request) => {
 
   const result = await prisma.user.update({
     where: {
-      id: session.user.id,
+      id: userId,
     },
     data: {
-      profileImage: data.url,
+      profileImage,
     },
   });
 
@@ -92,7 +85,7 @@ export const PATCH = async (req: Request) => {
 
 export const DELETE = async (req: Request) => {
   const { searchParams } = new URL(req.url);
-  const userId = searchParams.get('id');
+  const userId = searchParams.get('userId');
 
   if (!userId) {
     return NextResponse.json({

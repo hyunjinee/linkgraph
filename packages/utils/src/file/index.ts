@@ -20,3 +20,9 @@ export const upload = () => {
     input.click();
   });
 };
+
+// export const calculateFileSizeToMB = (file: File) => {
+//   const mb = file.size / 1024 / 1024;
+
+//   return mb;
+// };

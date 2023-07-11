@@ -1,5 +1,5 @@
 import { cloudFrontURL } from '@linkgraph/site-info';
-import { getCurrentDateTime, upload } from '@linkgraph/utils';
+import { getCurrentDateTime } from '@linkgraph/utils';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 
@@ -100,3 +100,5 @@ export const useCreateLink = (
 
   return { createLink: mutateAsync };
 };
+
+export const useDeleteLink = () => {};

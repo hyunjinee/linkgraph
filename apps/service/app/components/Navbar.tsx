@@ -2,23 +2,20 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Fragment, useContext, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
 import LinkGraphIcon from '~/components/LinkGraphIcon';
-import { AuthContext } from './Core';
 
 const classNames = (...classes: string[]) => classes.filter(Boolean).join(' ');
 
 const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  // const { data: session } = useSession();
   const pathname = usePathname();
   const router = useRouter();
-
-  const session = useContext(AuthContext);
+  const { data: session } = useSession();
 
   const closeModal = () => {
     setIsLoginModalOpen(false);
@@ -33,21 +30,21 @@ const Navbar = () => {
       <Disclosure as="nav" className="bg-white shadow-sm">
         {({ open }) => (
           <>
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="flex h-16 justify-between">
+            <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+              <div className="flex justify-between h-16">
                 <div className="flex">
-                  <div className="flex flex-shrink-0 cursor-pointer items-center" onClick={() => router.push('/')}>
+                  <div className="flex items-center flex-shrink-0 cursor-pointer" onClick={() => router.push('/')}>
                     <LinkGraphIcon />
                   </div>
                 </div>
                 <div className="flex items-center sm:ml-6">
                   <Menu as="div" className="relative ml-3">
                     <div>
-                      <Menu.Button className="flex rounded-full bg-white text-sm hover:ring-2 hover:ring-slate-500 hover:ring-offset-2 focus:outline-none ">
+                      <Menu.Button className="flex text-sm bg-white rounded-full hover:ring-2 hover:ring-slate-500 hover:ring-offset-2 focus:outline-none ">
                         <span className="sr-only">Open user menu</span>
                         <Image
-                          className="h-8 w-8 rounded-full"
-                          src={session?.user?.image || 'https://avatar.vercel.sh/leerob'}
+                          className="w-8 h-8 rounded-full"
+                          src={session?.user?.profileImage || 'https://avatar.vercel.sh/leerob'}
                           height={32}
                           width={32}
                           alt={session?.user?.name || 'avatar'}
@@ -65,7 +62,7 @@ const Navbar = () => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         {session?.user ? (
                           <>
                             <Menu.Item>
@@ -151,7 +148,7 @@ const Navbar = () => {
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <div className="flex items-center justify-center min-h-full p-4 text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -161,7 +158,7 @@ const Navbar = () => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                   <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
                     로그인
                   </Dialog.Title>
@@ -175,7 +172,7 @@ const Navbar = () => {
                   <div className="mt-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={() => {
                         signIn('google');
                         closeModal();
