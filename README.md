@@ -14,8 +14,6 @@
 
 <!-- ## TODO
 
-## 블로그 적고싶은거
-
 - 모노레포
 - React Props. Type or Interface?
 - 서버 컴포넌트
