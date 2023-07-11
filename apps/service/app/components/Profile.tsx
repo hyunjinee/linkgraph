@@ -149,9 +149,11 @@ const Profile = () => {
       <div className="self-start mt-2">
         <div className="text-3xl font-semibold">{session?.user.name}님 안녕하세요.😊</div>
 
+        {/* 이부분 수정 */}
         <div className="mt-4">
           <div>이름: {session?.user.name}</div>
-          <div>소개: </div>
+          <div>{session?.user.description}</div>
+          <div>{session?.user.url}</div>
           <button onClick={() => mutate()}>수정</button>
         </div>
 
