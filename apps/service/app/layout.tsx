@@ -23,7 +23,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
       <body className={`flex h-full flex-col`} suppressHydrationWarning={true}>
         <Core session={session}>
           <Navbar />
-          <Suspense fallback="로딩">{children}</Suspense>
+          {children}
         </Core>
       </body>
     </html>

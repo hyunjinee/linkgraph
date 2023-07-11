@@ -3,24 +3,21 @@
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { useMutation } from '@tanstack/react-query';
 import { cloudFrontURL } from '@linkgraph/site-info';
+import { getCurrentDateTime } from '@linkgraph/utils';
 
 import { useUpload } from '~/hooks/useUpload';
-import { useMutation } from '@tanstack/react-query';
+import { useDeleteProfileImage } from '~/queries/profile';
 
 const Profile = () => {
-  const { data: session } = useSession();
-  const [profileImageURL, setProfileImageURL] = useState('');
+  const [imageBlobURL, setImageBlobURL] = useState('');
   const [userURL, setUserURL] = useState('');
 
-  const { mutate: deleteProfileImage } = useMutation({
-    mutationFn: async (id) => {
-      const res = await fetch('/api/profile-image?id=' + id, {
-        method: 'DELETE',
-      });
-      return res.json();
-    },
-  });
+  const { data: session, update } = useSession();
+  const [file, upload] = useUpload();
+  const { deleteProfileImage } = useDeleteProfileImage();
 
   const { mutate } = useMutation({
     mutationFn: async () => {
@@ -36,8 +33,6 @@ const Profile = () => {
     },
   });
 
-  const [, upload] = useUpload();
-
   const handleImageUpload = async () => {
     const image = await upload();
     if (!image) {
@@ -46,8 +41,11 @@ const Profile = () => {
 
     const fileSizeMB = image.size / 1024 / 1024;
     if (fileSizeMB > 4) {
+      toast.error('이미지 용량이 너무 큽니다. 4MB 이하의 이미지를 업로드해주세요.');
       return;
     }
+
+    setImageBlobURL(URL.createObjectURL(image));
 
     const body = {
       name: 'profile/' + getCurrentDateTime() + '-' + image.name,
@@ -68,25 +66,45 @@ const Profile = () => {
           'Content-type': image.type,
         },
       });
-      // console.log(uploadResponse);
-      if (uploadResponse.status === 200) {
-      }
 
-      await fetch('/api/profile-image', {
-        method: 'PATCH',
-        body: JSON.stringify({
-          profileImageURL: cloudFrontURL + new URL(presignedURL).pathname,
-        }),
-      });
-      setProfileImageURL(cloudFrontURL + new URL(presignedURL).pathname);
+      if (uploadResponse.ok) {
+        await fetch('/api/profile-image', {
+          method: 'PATCH',
+          body: JSON.stringify({
+            userId: session?.user.id,
+            profileImage: cloudFrontURL + new URL(presignedURL).pathname,
+          }),
+        });
+        await update({
+          ...session,
+          user: {
+            ...session?.user,
+            profileImage: cloudFrontURL + new URL(presignedURL).pathname,
+          },
+        });
+
+        toast.success('이미지 업로드에 성공했습니다.');
+      }
     } catch (error) {
+      setImageBlobURL('');
+      toast.error('이미지 업로드에 실패했습니다.');
       console.log(error);
     }
   };
 
-  const handleImageDelete = () => {
-    deleteProfileImage(session?.user.id);
-    setProfileImageURL('');
+  const handleImageDelete = async () => {
+    await Promise.all([
+      deleteProfileImage(session?.user.id),
+      update({
+        ...session,
+        user: {
+          ...session?.user,
+          profileImage: '',
+        },
+      }),
+    ]);
+    setImageBlobURL('');
+    toast.success('이미지 삭제에 성공했습니다.');
   };
 
   return (
@@ -96,15 +114,13 @@ const Profile = () => {
         <div className="relative flex-shrink-0 w-40 h-40">
           <Image
             onClick={handleImageUpload}
-            src={profileImageURL || session?.user.profileImage || session?.user.image || '/profile.png'}
+            src={session?.user.profileImage || imageBlobURL || '/profile.png'}
             alt="profile"
             fill
             className="object-cover rounded-full cursor-pointer"
             priority
+            loading="eager"
             quality="100"
-            // width={320}
-            // height={320}
-            // placeholder="blur"
           />
         </div>
 
@@ -154,17 +170,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-// 현재 날짜와 시간을 포맷팅하는 함수
-const getCurrentDateTime = () => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const seconds = String(now.getSeconds()).padStart(2, '0');
-
-  const dateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  return dateTime;
-};

@@ -1,9 +1,9 @@
 import { useMutation } from '@tanstack/react-query';
 
 export const useDeleteProfileImage = () => {
-  const { mutate: deleteProfileImage, isLoading } = useMutation({
-    mutationFn: async (id) => {
-      const res = await fetch('/api/profile-image?id=' + id, {
+  const { mutateAsync: deleteProfileImage, isLoading } = useMutation({
+    mutationFn: async (userId: string) => {
+      const res = await fetch('/api/profile-image?userId=' + userId, {
         method: 'DELETE',
       });
       return res.json();
