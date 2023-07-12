@@ -6,9 +6,6 @@ import * as d3 from 'd3';
 
 import { nodes, links, MANY_BODY_STRENGTH } from '~/data/forcegraph';
 
-const centerX = 1000 / 2;
-const centerY = 1000 / 2;
-
 const Graph: NextPage = () => {
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -74,8 +71,8 @@ const Graph: NextPage = () => {
 
   return (
     <>
-      <div className="h-full w-full bg-red-50">
-        <svg ref={svgRef} className="h-full w-full" />
+      <div className="w-full h-full bg-red-50">
+        <svg ref={svgRef} className="w-full h-full" />
       </div>
     </>
   );

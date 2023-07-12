@@ -2,26 +2,32 @@ import { notFound } from 'next/navigation';
 import prisma from '@linkgraph/db';
 
 import GraphTest from '~/components/Graph';
-import LinkGraph from '~/components/LinkGraph';
 
 const Graph = async ({ params: { userId } }: { params: { userId: string } }) => {
-  const user = await prisma.user.findUnique({
+  // 유저의 Id로 넘어오는 값이 uuid 일수도 있지만 유저가 설정한 URL이 올 수도 있다.
+  const user = await prisma.user.findFirst({
     where: {
-      id: userId,
+      OR: [
+        {
+          id: userId,
+        },
+        {
+          url: userId,
+        },
+      ],
+    },
+    include: {
+      links: true,
     },
   });
-  // 해당 유저를 찾을 수 없으면 not-found 페이지로 리다이렉션
+
   if (!user) {
     notFound();
   }
 
-  const userLinks = (await prisma.link.findMany({
-    where: {
-      userId,
-    },
-  })) as Link[];
+  const userLinks = user.links;
 
-  const nodes: any = [{ id: userId, img: user.image, size: 60 }];
+  const nodes: any = [{ id: userId, img: user.image, size: 80 }];
   const links = userLinks.map((link) => ({ source: userId, target: link.id }));
 
   userLinks.forEach((link) => {
