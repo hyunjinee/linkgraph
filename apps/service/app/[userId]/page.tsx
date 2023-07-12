@@ -5,42 +5,29 @@ import GraphTest from '~/components/Graph';
 
 const Graph = async ({ params: { userId } }: { params: { userId: string } }) => {
   // 유저의 Id로 넘어오는 값이 uuid 일수도 있지만 유저가 설정한 URL이 올 수도 있다.
-  // 이를 구분하기 위해 먼저 uuid로 유저를 찾고, 없으면 url로 유저를 찾는다.
-  let isUUID = true;
-
-  let user = await prisma.user.findUnique({
+  const user = await prisma.user.findFirst({
     where: {
-      id: userId,
+      OR: [
+        {
+          id: userId,
+        },
+        {
+          url: userId,
+        },
+      ],
+    },
+    include: {
+      links: true,
     },
   });
 
   if (!user) {
-    isUUID = false;
-    user = await prisma.user.findUnique({
-      where: {
-        url: userId,
-      },
-    });
-  }
-
-  // 해당 유저를 찾을 수 없으면 not-found 페이지로 리다이렉션
-  if (!user) {
     notFound();
   }
 
-  const userLinks = isUUID
-    ? ((await prisma.link.findMany({
-        where: {
-          userId,
-        },
-      })) as Link[])
-    : ((await prisma.link.findMany({
-        where: {
-          userId: user.id,
-        },
-      })) as Link[]);
+  const userLinks = user.links;
 
-  const nodes: any = [{ id: userId, img: user.image, size: 60 }];
+  const nodes: any = [{ id: userId, img: user.image, size: 80 }];
   const links = userLinks.map((link) => ({ source: userId, target: link.id }));
 
   userLinks.forEach((link) => {
