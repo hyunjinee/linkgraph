@@ -12,6 +12,6 @@
     "prisma": "^4.16.2"
   },
   "dependencies": {
-    "@prisma/client": "latest"
+    "@prisma/client": "4.16.2"
   }
 }
