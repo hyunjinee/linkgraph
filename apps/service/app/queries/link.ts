@@ -101,4 +101,19 @@ export const useCreateLink = (
   return { createLink: mutateAsync };
 };
 
-export const useDeleteLink = () => {};
+export const useDeleteLink = () => {
+  const queryClient = useQueryClient();
+  const { mutateAsync } = useMutation({
+    mutationFn: async (id: string) => {
+      const res = await fetch('/api/link?id=' + id, {
+        method: 'DELETE',
+      });
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['links']);
+    },
+  });
+
+  return { deleteLink: mutateAsync };
+};

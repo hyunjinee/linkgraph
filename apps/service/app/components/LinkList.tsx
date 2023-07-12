@@ -2,27 +2,14 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { useAuth } from '~/hooks/useAuth';
-import { useLink } from '~/queries/link';
+import { useDeleteLink, useLink } from '~/queries/link';
 
 const LinkList = () => {
   const session = useAuth();
   const { links } = useLink(session?.user.id);
-
-  const queryClient = useQueryClient();
-  const { mutateAsync } = useMutation({
-    mutationFn: async (id: string) => {
-      const res = await fetch('/api/link?id=' + id, {
-        method: 'DELETE',
-      });
-      return res.json();
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries(['links', session?.user.id], { exact: true });
-    },
-  });
+  const { deleteLink } = useDeleteLink();
 
   return (
     <section className="w-full lg:w-1/2">
@@ -44,8 +31,8 @@ const LinkList = () => {
             <div>{link.title}</div>
             <div>{link.url}</div>
             <button
-              onClick={() => {
-                mutateAsync(link.id);
+              onClick={async () => {
+                await deleteLink(link.id);
               }}
             >
               삭제
