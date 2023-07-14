@@ -6,12 +6,11 @@ import { Fragment, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react';
 import { signIn, signOut } from 'next-auth/react';
+import clsx from 'clsx';
 
 import LinkGraphIcon from '~/components/LinkGraphIcon';
 import { useAuth } from '~/hooks/useAuth';
 import Search from './Search';
-
-const classNames = (...classes: string[]) => classes.filter(Boolean).join(' ');
 
 const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -72,8 +71,8 @@ const Navbar = () => {
                             <Menu.Item>
                               {({ active }) => (
                                 <Link
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
+                                  className={clsx(
+                                    active && 'bg-gray-100',
                                     'flex w-full px-4 py-2 text-sm text-gray-700',
                                   )}
                                   href={`${session?.user?.id}`}
@@ -85,8 +84,8 @@ const Navbar = () => {
                             <Menu.Item>
                               {({ active }) => (
                                 <Link
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
+                                  className={clsx(
+                                    active && 'bg-gray-100',
                                     'flex w-full px-4 py-2 text-sm text-gray-700',
                                   )}
                                   href="/profile"
@@ -98,8 +97,8 @@ const Navbar = () => {
                             <Menu.Item>
                               {({ active }) => (
                                 <button
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
+                                  className={clsx(
+                                    active && 'bg-gray-100',
                                     'flex w-full px-4 py-2 text-sm text-gray-700',
                                   )}
                                   onClick={() => signOut()}
@@ -113,10 +112,7 @@ const Navbar = () => {
                           <Menu.Item>
                             {({ active }) => (
                               <button
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'flex w-full px-4 py-2 text-sm text-gray-700',
-                                )}
+                                className={clsx(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
                                 onClick={() => {
                                   setIsLoginModalOpen(true);
                                 }}
