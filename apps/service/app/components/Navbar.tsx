@@ -3,19 +3,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
+import clsx from 'clsx';
 
 import LinkGraphIcon from '~/components/LinkGraphIcon';
-
-const classNames = (...classes: string[]) => classes.filter(Boolean).join(' ');
+import { useAuth } from '~/hooks/useAuth';
+import Search from './Search';
 
 const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const pathname = usePathname();
   const router = useRouter();
-  const { data: session } = useSession();
+  const session = useAuth();
 
   const closeModal = () => {
     setIsLoginModalOpen(false);
@@ -32,26 +32,29 @@ const Navbar = () => {
           <>
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <div className="flex justify-between h-16">
-                <div className="flex">
-                  <div className="flex items-center flex-shrink-0 cursor-pointer" onClick={() => router.push('/')}>
+                <div className="flex items-center w-full">
+                  <div
+                    className="flex items-center justify-center flex-shrink-0 w-16 h-full cursor-pointer"
+                    onClick={() => router.push('/')}
+                  >
                     <LinkGraphIcon />
                   </div>
+                  <Search />
                 </div>
                 <div className="flex items-center sm:ml-6">
-                  <Menu as="div" className="relative ml-3">
-                    <div>
-                      <Menu.Button className="flex text-sm bg-white rounded-full hover:ring-2 hover:ring-slate-500 hover:ring-offset-2 focus:outline-none ">
-                        <span className="sr-only">Open user menu</span>
-                        <Image
-                          className="w-8 h-8 rounded-full"
-                          src={session?.user?.profileImage || 'https://avatar.vercel.sh/leerob'}
-                          height={32}
-                          width={32}
-                          alt={session?.user?.name || 'avatar'}
-                          priority
-                        />
-                      </Menu.Button>
-                    </div>
+                  <Menu as="div" className="relative ml-3 shrink-0">
+                    <Menu.Button className="flex text-sm bg-white rounded-full shrink-0 hover:ring-2 hover:ring-slate-500 hover:ring-offset-2 focus:outline-none ">
+                      <span className="sr-only">Open user menu</span>
+                      <Image
+                        className="object-cover rounded-full w-9 h-9 "
+                        src={session?.user?.profileImage || 'https://avatar.vercel.sh/leerob'}
+                        alt={session?.user?.name || 'avatar'}
+                        width={32}
+                        height={32}
+                        priority
+                        quality={100}
+                      />
+                    </Menu.Button>
 
                     <Transition
                       as={Fragment}
@@ -68,8 +71,8 @@ const Navbar = () => {
                             <Menu.Item>
                               {({ active }) => (
                                 <Link
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
+                                  className={clsx(
+                                    active && 'bg-gray-100',
                                     'flex w-full px-4 py-2 text-sm text-gray-700',
                                   )}
                                   href={`${session?.user?.id}`}
@@ -81,8 +84,8 @@ const Navbar = () => {
                             <Menu.Item>
                               {({ active }) => (
                                 <Link
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
+                                  className={clsx(
+                                    active && 'bg-gray-100',
                                     'flex w-full px-4 py-2 text-sm text-gray-700',
                                   )}
                                   href="/profile"
@@ -94,8 +97,8 @@ const Navbar = () => {
                             <Menu.Item>
                               {({ active }) => (
                                 <button
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
+                                  className={clsx(
+                                    active && 'bg-gray-100',
                                     'flex w-full px-4 py-2 text-sm text-gray-700',
                                   )}
                                   onClick={() => signOut()}
@@ -109,10 +112,7 @@ const Navbar = () => {
                           <Menu.Item>
                             {({ active }) => (
                               <button
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'flex w-full px-4 py-2 text-sm text-gray-700',
-                                )}
+                                className={clsx(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
                                 onClick={() => {
                                   setIsLoginModalOpen(true);
                                 }}
