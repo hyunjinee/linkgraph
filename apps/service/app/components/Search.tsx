@@ -6,10 +6,16 @@ const Search = () => {
   const [search, setSearch] = useState('');
 
   return (
-    <div className="flex flex-col items-center justify-center w-full bg-red-50">
-      <div>다른 사람을 검색해보세요!</div>
+    <div className="sm:w-[360px] w-full border-8">
+      <input
+        className="w-full h-[44px] p-3"
+        placeholder="다른 유저를 검색해보세요!"
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
-      <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
+      <ul></ul>
     </div>
   );
 };
