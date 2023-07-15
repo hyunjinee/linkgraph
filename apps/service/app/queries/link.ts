@@ -16,23 +16,20 @@ export const useLink = (userId: string) => {
   return { links };
 };
 
-export const useCreateLink = (
-  userId: string,
-  {
-    title,
-    url,
-    image,
-    color,
-  }: {
-    title: string;
-    url: string;
-    image?: File;
-    color?: string;
-  },
-) => {
+export const useCreateLink = (userId: string) => {
   const queryClient = useQueryClient();
   const { mutateAsync } = useMutation({
-    mutationFn: async () => {
+    mutationFn: async ({
+      title,
+      url,
+      image,
+      color,
+    }: {
+      title: string;
+      url: string;
+      image?: File | null;
+      color?: string;
+    }) => {
       // 이미지가 없다면 그냥 바로 생성
       if (!image) {
         const res = await fetch('/api/link', {

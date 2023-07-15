@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export const useUpload = () => {
-  const [file, setFile] = useState<File>();
+  const [file, setFile] = useState<File | null>(null);
 
   const upload = () => {
     return new Promise<File | null>((resolve, reject) => {
@@ -26,5 +26,5 @@ export const useUpload = () => {
     });
   };
 
-  return [file, upload] as [typeof file, typeof upload];
+  return [file, setFile, upload] as [typeof file, typeof setFile, typeof upload];
 };

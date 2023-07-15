@@ -1,22 +1,35 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import styles from './Graph.module.css';
 
 type GraphProps = {
-  links: any;
-  nodes: any;
+  nodes: ForcedNode[];
+  links: ForcedLink[];
 };
 
 const Graph = ({ nodes, links }: GraphProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
-  const width = window.innerWidth;
-  const height = window.innerHeight - 64;
-
   useEffect(() => {
+    if (!svgRef.current) {
+      return;
+    }
+    const svg = d3.select(svgRef.current);
+    const { width, height } = svgRef.current.getBoundingClientRect();
+
+    const zoom = d3
+      .zoom<SVGSVGElement, unknown>()
+      .scaleExtent([0.3, 2])
+      .on('zoom', ({ transform }) => {
+        nodeGroup.attr('transform', transform);
+        linkGroup.attr('transform', transform);
+      });
+
+    zoom(svg);
+
     const tooltip = d3
       .select('body')
       .append('div')
@@ -37,15 +50,21 @@ const Graph = ({ nodes, links }: GraphProps) => {
       .force('charge', d3.forceManyBody().strength(-500))
       .force('center', d3.forceCenter(width / 2, height / 2));
 
-    const dragInteraction = d3.drag().on('drag', (event, node: any) => {
-      node.fx = event.x;
-      node.fy = event.y;
-
-      simulation.alpha(1);
-      simulation.restart();
-    });
-
-    const svg = d3.select(containerRef.current).append('svg').attr('width', width).attr('height', height);
+    const dragInteraction = d3
+      .drag<SVGGElement, ForcedNode>()
+      .on('start', () => {
+        simulation.alphaTarget(0.1).restart();
+      })
+      .on('drag', (event: DragEvent, node) => {
+        node.fx = event.x;
+        node.fy = event.y;
+      })
+      .on('end', (_, node) => {
+        nodeList.style('cursor', 'grab');
+        simulation.alphaTarget(0);
+        node.fx = null;
+        node.fy = null;
+      });
 
     const linkGroup = svg.append('g').attr('id', 'links');
     const nodeGroup = svg.append('g').attr('id', 'nodes');
@@ -96,7 +115,7 @@ const Graph = ({ nodes, links }: GraphProps) => {
           .append('circle')
           .attr('r', 30)
           .attr('class', 'node')
-          .attr('fill', 'grey')
+          .attr('fill', (d: any) => d.color || 'grey')
           .call(dragInteraction as any);
       }
     });
@@ -119,8 +138,6 @@ const Graph = ({ nodes, links }: GraphProps) => {
     // .attr('r', (node: any) => node.size)
     // .attr('fill', (node: any) => node.color || 'grey')
     // .call(dragInteraction as any);
-    console.log(node);
-    console.log(link);
 
     // const link = svg
     //   .append('g')
@@ -173,32 +190,13 @@ const Graph = ({ nodes, links }: GraphProps) => {
       simulation.stop();
       // window.removeEventListener('resize', updateDimensions);
     };
-  }, []);
+  }, [links, nodes]);
 
-  return <div ref={containerRef} className={`${styles.background}`}></div>;
+  return (
+    <div ref={containerRef} className={`${styles.background} w-full h-full`}>
+      <svg ref={svgRef} className="w-full h-full" />
+    </div>
+  );
 };
 
 export default Graph;
-
-// sample dataset
-
-// const dataset = {
-//   nodes: [
-//     {
-//       id: 'hyunjin',
-//       // img: './vercel.svg',
-//       size: 50,
-//     },
-//     {
-//       id: 'hyunjin2',
-//       img: 'https://github.com/favicon.ico',
-//       size: 50,
-//     },
-//   ],
-//   links: [
-//     {
-//       source: 'hyunjin',
-//       target: 'hyunjin2',
-//     },
-//   ],
-// };
