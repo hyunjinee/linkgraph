@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useMutation } from '@tanstack/react-query';
 import { cloudFrontURL } from '@linkgraph/site-info';
 import { getCurrentDateTime } from '@linkgraph/utils';
 
@@ -19,7 +18,7 @@ const Profile = () => {
   const [isEditMode, setIsEditMode] = useState(false);
 
   const { data: session, update } = useSession();
-  const [file, upload] = useUpload();
+  const [file, setFile, upload] = useUpload();
   const { deleteProfileImage } = useDeleteProfileImage();
   const { updateProfile } = useUpdateProfile();
 

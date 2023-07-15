@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import styles from './Graph.module.css';
 
@@ -115,7 +115,7 @@ const Graph = ({ nodes, links }: GraphProps) => {
           .append('circle')
           .attr('r', 30)
           .attr('class', 'node')
-          .attr('fill', 'grey')
+          .attr('fill', (d: any) => d.color || 'grey')
           .call(dragInteraction as any);
       }
     });

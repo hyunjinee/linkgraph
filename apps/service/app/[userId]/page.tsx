@@ -30,13 +30,11 @@ const Graph = async ({ params: { userId } }: { params: { userId: string } }) => 
 
   const userLinks = user.links;
 
-  // console.log(userLinks);
-
   const nodes: ForcedNode[] = [{ id: userId, img: user.image, size: 80 }];
   const links: ForcedLink[] = userLinks.map((link) => ({ source: userId, target: link.id }));
 
   userLinks.forEach((link) => {
-    nodes.push({ id: link.id, img: link.image || '', size: 40, url: link.url });
+    nodes.push({ id: link.id, img: link.image || '', size: 40, url: link.url, color: link.color });
   });
 
   return (

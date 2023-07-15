@@ -17,13 +17,9 @@ const LinkUploadForm = () => {
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
   const paletteRef = useRef<HTMLDivElement>(null);
 
-  const [file, upload] = useUpload();
+  const [file, setFile, upload] = useUpload();
   const session = useAuth();
-  const { createLink } = useCreateLink(session?.user.id, {
-    title: linkTitle,
-    url: linkURL,
-    image: file,
-  });
+  const { createLink } = useCreateLink(session?.user.id);
 
   useOnClickOutside(paletteRef, () => setIsPaletteOpen(false));
 
@@ -32,6 +28,7 @@ const LinkUploadForm = () => {
     setLinkURL('');
     setImageBlobURL('');
     setColor('');
+    setFile(null);
   };
 
   const handleImageUpload = async () => {
@@ -49,7 +46,12 @@ const LinkUploadForm = () => {
   };
 
   const handleLinkUpload = async () => {
-    await createLink();
+    await createLink({
+      title: linkTitle,
+      url: linkURL,
+      image: file,
+      color,
+    });
 
     handleClear();
   };
