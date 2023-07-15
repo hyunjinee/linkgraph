@@ -30,8 +30,10 @@ const Graph = async ({ params: { userId } }: { params: { userId: string } }) => 
 
   const userLinks = user.links;
 
-  const nodes: any = [{ id: userId, img: user.image, size: 80 }];
-  const links = userLinks.map((link) => ({ source: userId, target: link.id }));
+  // console.log(userLinks);
+
+  const nodes: ForcedNode[] = [{ id: userId, img: user.image, size: 80 }];
+  const links: ForcedLink[] = userLinks.map((link) => ({ source: userId, target: link.id }));
 
   userLinks.forEach((link) => {
     nodes.push({ id: link.id, img: link.image || '', size: 40, url: link.url });
@@ -39,7 +41,6 @@ const Graph = async ({ params: { userId } }: { params: { userId: string } }) => 
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full ">
-      {/* <LinkGraph links={links} /> */}
       <GraphTest nodes={nodes} links={links} />
     </div>
   );
