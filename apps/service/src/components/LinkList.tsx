@@ -12,10 +12,6 @@ const LinkList = () => {
   const { links } = useLink(session?.user.id);
   const { deleteLink } = useDeleteLink();
 
-  console.log(links);
-
-  console.log(links?.at(-1)?.color);
-
   return (
     <section className="w-full lg:w-1/2">
       <h2 className="mb-4 text-xl font-semibold">링크 목록</h2>
