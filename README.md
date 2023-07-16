@@ -8,6 +8,8 @@
 
 ![service architecture](https://github.com/hyunjinee/linkgraph/assets/63354527/36ca1fcb-d4bd-4298-b09c-6219a78a8c47)
 
+S3에 이미지를 업로드할 때는 PresignedURL 방식을 사용하였고, 이미지를 브라우저에서 불러올 때는 CloudFront를 사용하였습니다.
+
 ## 프로젝트에서 배운 것 기록
 
 - [서버 사이드 렌더링으로 UX 개선하기](https://www.youtube.com/watch?v=wxxNS6hEptE)
