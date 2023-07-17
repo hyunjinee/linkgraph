@@ -6,7 +6,7 @@
 
 ## 서비스 아키텍처
 
-![service architecture](https://github.com/hyunjinee/linkgraph/assets/63354527/36ca1fcb-d4bd-4298-b09c-6219a78a8c47)
+![image](https://github.com/hyunjinee/linkgraph/assets/63354527/9d9c9450-782a-42af-a117-0477d43f05fc)
 
 S3에 이미지를 업로드할 때는 PresignedURL 방식을 사용하였고, 이미지를 브라우저에서 불러올 때는 CloudFront를 사용하였습니다.
 
