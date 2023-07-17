@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react';
 import { signIn, signOut } from 'next-auth/react';
 import clsx from 'clsx';
@@ -14,7 +13,6 @@ import Search from './Search';
 
 const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const router = useRouter();
   const session = useAuth();
 
   const closeModal = () => {
@@ -33,12 +31,12 @@ const Navbar = () => {
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <div className="flex justify-between h-16">
                 <div className="flex items-center w-full">
-                  <div
+                  <Link
+                    href={'/'}
                     className="flex items-center justify-center flex-shrink-0 w-16 h-full cursor-pointer"
-                    onClick={() => router.push('/')}
                   >
                     <LinkGraphIcon />
-                  </div>
+                  </Link>
                   <Search />
                 </div>
                 <div className="flex items-center sm:ml-6">

@@ -20,7 +20,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
 
   return (
     <html lang="ko" className="h-full antialiased scroll-smooth">
-      <body className={`flex h-full flex-col`} suppressHydrationWarning={true}>
+      <body className={`flex h-full flex-col`} suppressHydrationWarning>
         <Core session={session}>
           <Navbar />
           {children}
