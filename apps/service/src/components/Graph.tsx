@@ -47,7 +47,7 @@ const Graph = ({ nodes, links }: GraphProps) => {
           .id((d: any) => d.id)
           .distance(() => 100),
       )
-      .force('charge', d3.forceManyBody().strength(-500))
+      .force('charge', d3.forceManyBody().strength(-1000))
       .force('center', d3.forceCenter(width / 2, height / 2));
 
     const dragInteraction = d3
