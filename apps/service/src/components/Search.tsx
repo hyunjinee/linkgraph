@@ -1,41 +1,60 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
-
 import { SearchIcon, X } from 'lucide-react';
-import Spinner from './Spinner';
 import { useQuery } from '@tanstack/react-query';
 
-const Search = () => {
-  const [search, setSearch] = useState('');
-  const debouncedSearch = 'temp';
-  // const { isLoading, data } = useQuery({
-  //   queryKey: ['search', search],
-  //   queryFn: () => {
-  //     return Promise.resolve(1);
-  //     // return fetch(`/api/search?search=${search}`).then((res) => res.json());
-  //   },
-  //   enabled: debouncedSearch.length > 100,
-  // });
+import Spinner from './Spinner';
+import { useDebounce } from '~/hooks/useDebounce';
+import type { User } from '.prisma/client';
+import { cn } from '~/lib/utils';
 
-  let isLoading = false;
+const Search = () => {
+  const [keyword, setKeyword] = useState('');
+  const debouncedKeyword = useDebounce(keyword);
+  const searchParams = new URLSearchParams({ keyword: debouncedKeyword });
+
+  const { data: users, isFetching } = useQuery<User[]>({
+    queryKey: ['search', searchParams.get('keyword')],
+    queryFn: async () => {
+      return fetch(`/api/search?${searchParams.toString()}`).then((res) => res.json());
+    },
+    enabled: debouncedKeyword.length > 0,
+  });
 
   return (
-    <div className="sm:w-[360px] h-[44px] w-full rounded-lg bg-[#fafafa] overflow-hidden">
-      <div className="flex items-center justify-center p-3 ">
+    <div
+      className={cn(
+        'sm:w-[360px] h-[44px] w-full rounded-lg bg-[#fafafa] relative',
+        users && 'rounded-br-none rounded-bl-none',
+      )}
+    >
+      <div className="flex items-center justify-center h-full p-3 ">
         <SearchIcon />
         <input
           className="w-full h-full outline-none bg-[#fafafa] ml-3"
           placeholder="다른 유저를 검색해보세요!"
           type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
         />
-
-        {/* {isLoading ? <X size={25} className="cursor-pointer hover:text-pink-300" /> : <Spinner size={6} />} */}
+        {isFetching ? (
+          <Spinner />
+        ) : (
+          <X size={25} className="cursor-pointer hover:text-pink-300" onClick={() => setKeyword('')} />
+        )}
       </div>
-
-      <ul></ul>
+      {users && users.length > 0 && (
+        <ul className="absolute w-full z-50 bg-[#fafafa] flex flex-col gap-4 p-4 top-[44px] rounded-bl-lg rounded-br-lg">
+          {users.map((user) => (
+            <li key={user.id} className="flex items-center">
+              <Image src={user.profileImage || '/profile.png'} width={40} height={40} alt="profile image" />
+              <div className="ml-2 text-xl">{user.name}</div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

@@ -5,5 +5,26 @@ export const GET = async (req: Request) => {
   const { searchParams } = new URL(req.url);
   const keyword = searchParams.get('keyword');
 
-  return NextResponse.json({ hi: 'hi' });
+  if (!keyword) {
+    return NextResponse.json({ message: 'No keyword provided' });
+  }
+
+  const users = await prisma.user.findMany({
+    where: {
+      OR: [
+        {
+          name: {
+            startsWith: keyword,
+          },
+        },
+        {
+          url: {
+            startsWith: keyword,
+          },
+        },
+      ],
+    },
+  });
+
+  return NextResponse.json(users);
 };

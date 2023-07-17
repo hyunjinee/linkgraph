@@ -19,10 +19,6 @@ const Navbar = () => {
     setIsLoginModalOpen(false);
   };
 
-  const openModal = () => {
-    setIsLoginModalOpen(true);
-  };
-
   return (
     <>
       <Disclosure as="nav" className="bg-white shadow-sm">
