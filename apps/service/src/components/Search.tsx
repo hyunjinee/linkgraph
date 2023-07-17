@@ -45,8 +45,8 @@ const Search = () => {
           <X size={25} className="cursor-pointer hover:text-pink-300" onClick={() => setKeyword('')} />
         )}
       </div>
-      {users && (
-        <ul className="absolute w-full z-50 bg-[#fafafa] flex gap-4 p-4 top-[44px] rounded-bl-lg rounded-br-lg">
+      {users && users.length > 0 && (
+        <ul className="absolute w-full z-50 bg-[#fafafa] flex flex-col gap-4 p-4 top-[44px] rounded-bl-lg rounded-br-lg">
           {users.map((user) => (
             <li key={user.id} className="flex items-center">
               <Image src={user.profileImage || '/profile.png'} width={40} height={40} alt="profile image" />
