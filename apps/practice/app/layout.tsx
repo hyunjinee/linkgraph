@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('min-h-screen flex flex-col bg-background', font.className)} suppressHydrationWarning>
+      <body className={cn(font.className)} suppressHydrationWarning>
         {/* <div className="container py-2 h-fit md:py-18 grow">{children}</div> */}
 
         <Sidebar>{children}</Sidebar>
