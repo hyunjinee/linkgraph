@@ -42,7 +42,7 @@ const Search = () => {
         {isFetching ? (
           <Spinner />
         ) : (
-          <X size={25} className="cursor-pointer hover:text-pink-300" onClick={() => setKeyword('')} />
+          <X size={25} className="transition cursor-pointer hover:text-pink-300" onClick={() => setKeyword('')} />
         )}
       </div>
       {users && users.length > 0 && (
