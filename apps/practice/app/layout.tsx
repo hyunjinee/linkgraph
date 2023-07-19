@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import Sidebar from '@/components/Sidebar';
 import SupabaseProvider from '@/providers/SupabaseProvider';
 
+
 const font = Figtree({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
