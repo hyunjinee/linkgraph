@@ -6721,6 +6721,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@supabase/auth-helpers-nextjs@npm:^0.7.3":
+  version: 0.7.3
+  resolution: "@supabase/auth-helpers-nextjs@npm:0.7.3"
+  dependencies:
+    "@supabase/auth-helpers-shared": 0.4.1
+    set-cookie-parser: ^2.6.0
+  peerDependencies:
+    "@supabase/supabase-js": ^2.19.0
+  checksum: ceaa3929ab5c617e039f2e13d9ffcb2a022981819ab8cfa4fb7dd248e14fcff010011317605607cf86605d7b781a7f579f89bf0f20c37a1c30adb1146ff85b58
+  languageName: node
+  linkType: hard
+
+"@supabase/auth-helpers-react@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "@supabase/auth-helpers-react@npm:0.4.1"
+  peerDependencies:
+    "@supabase/supabase-js": ^2.19.0
+  checksum: d5e2b1b22b6727daa3592869b7b8a05cf3868dc4b75ddc3e217ac883bdc02cf1f6f9c9474942c1d30eb1be0a357d47b1fd761033d6b7d805e89136929813d96c
+  languageName: node
+  linkType: hard
+
+"@supabase/auth-helpers-shared@npm:0.4.1":
+  version: 0.4.1
+  resolution: "@supabase/auth-helpers-shared@npm:0.4.1"
+  dependencies:
+    jose: ^4.14.3
+  peerDependencies:
+    "@supabase/supabase-js": ^2.19.0
+  checksum: 07e29f12127b297bb3a11ca5d411ca20c3944a6cadda0d3266ff59bffd85d676116447f70de34116e1773fac0229fd8e944865597d8c044c8f979fa26db4d9f9
+  languageName: node
+  linkType: hard
+
 "@svgr/babel-plugin-add-jsx-attribute@npm:^6.5.1":
   version: 6.5.1
   resolution: "@svgr/babel-plugin-add-jsx-attribute@npm:6.5.1"
@@ -16128,7 +16160,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^4.11.4, jose@npm:^4.14.4":
+"jose@npm:^4.11.4, jose@npm:^4.14.3, jose@npm:^4.14.4":
   version: 4.14.4
   resolution: "jose@npm:4.14.4"
   checksum: 2d820a91a8fd97c05d8bc8eedc373b944a0cd7f5fe41063086da233d0473c73fb523912a9f026ea870782bd221f4a515f441a2d3af4de48c6f2c76dac5082377
@@ -19187,6 +19219,8 @@ __metadata:
   resolution: "practice@workspace:apps/practice"
   dependencies:
     "@radix-ui/react-slot": ^1.0.2
+    "@supabase/auth-helpers-nextjs": ^0.7.3
+    "@supabase/auth-helpers-react": ^0.4.1
     "@types/node": 20.4.2
     "@types/react": 18.2.15
     "@types/react-dom": 18.2.7
@@ -21675,6 +21709,13 @@ __metadata:
   version: 2.0.0
   resolution: "set-blocking@npm:2.0.0"
   checksum: 6e65a05f7cf7ebdf8b7c75b101e18c0b7e3dff4940d480efed8aad3a36a4005140b660fa1d804cb8bce911cac290441dc728084a30504d3516ac2ff7ad607b02
+  languageName: node
+  linkType: hard
+
+"set-cookie-parser@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "set-cookie-parser@npm:2.6.0"
+  checksum: bf11ebc594c53d84588f1b4c04f1b8ce14e0498b1c011b3d76b5c6d5aac481bbc3f7c5260ec4ce99bdc1d9aed19f9fc315e73166a36ca74d0f12349a73f6bdc9
   languageName: node
   linkType: hard
 
