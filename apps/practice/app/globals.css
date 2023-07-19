@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+:root {
+  height: 100%;
+  background-color: black;
+  color-scheme: dark;
+}
+/* 
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -96,4 +104,4 @@
     -webkit-appearance: none;
     margin: 0;
   }
-}
+} */
