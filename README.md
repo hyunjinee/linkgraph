@@ -2,13 +2,16 @@
 
 유저가 자신을 소개하는 링크를 업로드하면 그래프 형태로 시각화해서 공유할 수 있는 서비스입니다.
 
-<img width="991" alt="image" src="https://github.com/hyunjinee/linkgraph/assets/63354527/85103dc0-f6d1-4e85-a4c0-62a2c50ef838">
+<div style="display: flex;">
+  <img width="391" height="400" align="top" alt="image" src="https://github.com/hyunjinee/linkgraph/assets/63354527/85103dc0-f6d1-4e85-a4c0-62a2c50ef838">
+  <img width="391" height="400" align="top" alt="image" src="https://github.com/hyunjinee/linkgraph/assets/63354527/76963e11-fddd-43ad-945c-88cc4b99310b">
+</div>
 
 ## 서비스 아키텍처
 
 ![image](https://github.com/hyunjinee/linkgraph/assets/63354527/9d9c9450-782a-42af-a117-0477d43f05fc)
 
-S3에 이미지를 업로드할 때는 PresignedURL 방식을 사용하였고, 이미지를 브라우저에서 불러올 때는 CloudFront를 사용하였습니다.
+- S3에 이미지를 업로드할 때는 PresignedURL 방식을 사용하였고, 이미지를 브라우저에서 불러올 때는 CloudFront를 사용하였습니다.
 
 ## 프로젝트에서 배운 것 기록
 
