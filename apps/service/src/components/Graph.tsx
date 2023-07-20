@@ -9,6 +9,29 @@ type GraphProps = {
   links: ForcedLink[];
 };
 
+const colors = [
+  '#9D4452',
+  '#E6A6B0',
+  '#BE6B78',
+  '#812836',
+  '#5B0D1A',
+  '#A76C48',
+  '#F4CAAF',
+  '#C99372',
+  '#884E2A',
+  '#602E0E',
+  '#2E6B5E',
+  '#719D93',
+  '#498175',
+  '#1B584A',
+  '#093E32',
+  '#538E3D',
+  '#A6D096',
+  '#75AC61',
+  '#3A7424',
+  '#1F520C',
+];
+
 const Graph = ({ nodes, links }: GraphProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -115,7 +138,7 @@ const Graph = ({ nodes, links }: GraphProps) => {
           .append('circle')
           .attr('r', 30)
           .attr('class', 'node')
-          .attr('fill', (d: any) => d.color || 'grey')
+          .attr('fill', (d: any) => d.color || colors[Math.floor(Math.random() * colors.length)])
           .call(dragInteraction as any);
       }
     });
