@@ -83,7 +83,7 @@ const Graph: NextPage = () => {
           .id((d: any) => d.id)
           .distance(() => 100),
       )
-      .force('charge', d3.forceManyBody().strength(-500).distanceMin(100))
+      .force('charge', d3.forceManyBody().strength(-2000).distanceMin(150))
       .force('collide', d3.forceCollide().radius(35).strength(0.7))
       .force('center', d3.forceCenter(width / 2, height / 2))
       .force('x', d3.forceX())
