@@ -3,15 +3,16 @@
 import React from 'react';
 import Image from 'next/image';
 
-import { useAuth } from '../hooks/useAuth';
-import { useDeleteLink, useLink } from '../queries/link';
+import { useAuth } from '~/hooks/useAuth';
+import { useDeleteLink, useLink } from '~/queries/link';
 
-const LinkList = () => {
-  const session = useAuth();
-  const { links } = useLink(session?.user.id);
+type LinkListProps = {
+  userId: string;
+};
+
+const LinkList = ({ userId }: LinkListProps) => {
+  const { links } = useLink(userId);
   const { deleteLink } = useDeleteLink();
-
-  console.log(links?.map((link) => console.log(link.color)));
 
   return (
     <section className="w-full lg:w-1/2">
@@ -30,18 +31,7 @@ const LinkList = () => {
                   backgroundColor: link.color || '#ffffff',
                 }}
               >
-                {link.image && (
-                  <Image
-                    className="object-cover"
-                    src={link.image}
-                    alt="링크"
-                    fill
-                    // width={30}
-                    // height={30}
-                    loading="eager"
-                    // priority={true}
-                  />
-                )}
+                {link.image && <Image className="object-cover" src={link.image} alt="링크" fill loading="eager" />}
               </div>
             </div>
             <div>{link.title}</div>
