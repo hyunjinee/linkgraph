@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-import { Link, Node, MANY_BODY_STRENGTH } from '~/app/data/linkgraph';
+import { Link, Node, MANY_BODY_STRENGTH } from '~/data/linkgraph';
 
 interface LinkGraphProps {
   links: any;
