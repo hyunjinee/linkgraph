@@ -77,17 +77,17 @@ const Home = () => {
       {!isSidebarOpened && (
         <div className="fixed bottom-5 left-5">
           <button
-            className="enable-transition flex h-12 w-12 items-center justify-center rounded border bg-white opacity-50 hover:opacity-100"
+            className="flex items-center justify-center w-12 h-12 bg-white border rounded opacity-50 enable-transition hover:opacity-100"
             onClick={() => setIsSidebarOpened(true)}
           >
-            <MenuIcon className="h-5 w-5" />
-            <ChevronRight className="h-3 w-3" />
+            <MenuIcon className="w-5 h-5" />
+            <ChevronRight className="w-3 h-3" />
           </button>
         </div>
       )}
 
       {/* 메인 섹션 */}
-      <div className="flex w-full flex-col px-5 pb-5 sm:px-10">
+      <div className="flex flex-col w-full px-5 pb-5 sm:px-10">
         <h2 className="my-5 text-xl">👋 {session?.user.name || '관리자'}님 안녕하세요!</h2>
 
         <Statistic data={dashboardData} />

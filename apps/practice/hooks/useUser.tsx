@@ -46,6 +46,19 @@ export const MyUserContextProvider = (props: Props) => {
           console.error(err);
           setIsLoadingData(false);
         });
+    } else if (!user && !isLoadingUser && !isLoadingData) {
+      setUserDetails(null);
+      setSubscription(null);
     }
-  }, []);
+  }, [user, isLoadingUser]);
+
+  const value = {
+    accessToken,
+    user,
+    userDetails,
+    isLoading: isLoadingUser || isLoadingData,
+    subscription,
+  };
+
+  return <UserContext.Provider value={value} {...props} />;
 };

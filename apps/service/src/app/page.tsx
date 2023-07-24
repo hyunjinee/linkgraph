@@ -50,6 +50,12 @@ const Home = async () => {
           <span className="text-sky-500">개</span>의 링크를 연결하고 있습니다.
         </h2>
       </section>
+
+      {/* <section>
+        <div>first : 링크를 업로드하고</div>
+        <div>second: 내 페이지로 이동하고</div>
+        <div>third: URL을 공유해보세요.</div>
+      </section> */}
     </main>
   );
 };
