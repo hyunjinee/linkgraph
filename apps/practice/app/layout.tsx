@@ -4,7 +4,8 @@ import { Figtree } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import Sidebar from '@/components/Sidebar';
 import SupabaseProvider from '@/providers/SupabaseProvider';
-
+import UserProvider from '@/providers/UserProvider';
+import ModalProvider from '@/providers/ModalProvider';
 
 const font = Figtree({ subsets: ['latin'] });
 
@@ -19,7 +20,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={cn(font.className)} suppressHydrationWarning>
         {/* <div className="container py-2 h-fit md:py-18 grow">{children}</div> */}
         <SupabaseProvider>
-          <Sidebar>{children}</Sidebar>
+          <UserProvider>
+            <ModalProvider />
+            <Sidebar>{children}</Sidebar>
+          </UserProvider>
         </SupabaseProvider>
       </body>
     </html>
