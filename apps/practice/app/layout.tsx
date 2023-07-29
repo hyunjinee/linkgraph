@@ -6,6 +6,7 @@ import Sidebar from '@/components/Sidebar';
 import SupabaseProvider from '@/providers/SupabaseProvider';
 import UserProvider from '@/providers/UserProvider';
 import ModalProvider from '@/providers/ModalProvider';
+import ToastProvider from '@/providers/ToasterProvider';
 
 const font = Figtree({ subsets: ['latin'] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={cn(font.className)} suppressHydrationWarning>
         {/* <div className="container py-2 h-fit md:py-18 grow">{children}</div> */}
+        <ToastProvider />
         <SupabaseProvider>
           <UserProvider>
             <ModalProvider />
