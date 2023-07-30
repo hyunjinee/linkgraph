@@ -8338,6 +8338,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uniqid@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "@types/uniqid@npm:5.3.2"
+  checksum: 001e0b03f29ee2e25729451a0012707e929a01ee06b092d23d1219d083dfeed556d2e119442f9e996414a77cdf99021230eb318ab4ed7f3bc5db46077cb54ff7
+  languageName: node
+  linkType: hard
+
 "@types/unist@npm:^2, @types/unist@npm:^2.0.0, @types/unist@npm:^2.0.2, @types/unist@npm:^2.0.3":
   version: 2.0.7
   resolution: "@types/unist@npm:2.0.7"
@@ -19675,6 +19682,7 @@ __metadata:
     "@types/node": 20.4.2
     "@types/react": 18.2.15
     "@types/react-dom": 18.2.7
+    "@types/uniqid": ^5.3.2
     autoprefixer: 10.4.14
     class-variance-authority: ^0.6.1
     clsx: ^2.0.0
@@ -19685,6 +19693,8 @@ __metadata:
     postcss: 8.4.26
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-hook-form: ^7.45.2
+    react-hot-toast: ^2.4.1
     react-icons: ^4.10.1
     stripe: ^12.13.0
     supabase: ^1.77.9
@@ -19692,6 +19702,7 @@ __metadata:
     tailwindcss: 3.3.3
     tailwindcss-animate: ^1.0.6
     typescript: 5.1.6
+    uniqid: ^5.4.0
     zustand: ^4.3.9
   languageName: unknown
   linkType: soft
@@ -20854,6 +20865,15 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
   checksum: 3abe1dcf449a3d438b4e5403d93d1502f6dab05afd5c5215f0fc88a32f3d06e7f4b77bee75479359c22a418af6ea0f52711478c73773cb5fd0f43da50669aa17
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.45.2":
+  version: 7.45.2
+  resolution: "react-hook-form@npm:7.45.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18
+  checksum: 023ca091f2bb1f3117d8a694871874c4a344f02c795c6a08b8f78b09b78444451375fbe921d7db4ba7cd78909b1fa5e92d19efd2bfedc43124fdc44540ac036c
   languageName: node
   linkType: hard
 
@@ -23959,6 +23979,13 @@ __metadata:
     trough: ^1.0.0
     vfile: ^4.0.0
   checksum: 7c24461be7de4145939739ce50d18227c5fbdf9b3bc5a29dabb1ce26dd3e8bd4a1c385865f6f825f3b49230953ee8b591f23beab3bb3643e3e9dc37aa8a089d5
+  languageName: node
+  linkType: hard
+
+"uniqid@npm:^5.4.0":
+  version: 5.4.0
+  resolution: "uniqid@npm:5.4.0"
+  checksum: 69fc28e7b2b5b24227b4295e51aa7c1d4085a60655ad071db8fc350876cc9044d68ee0781c0d27c2c98691380aa418970e0d1b02a1e4564480f9d19b0dc1707b
   languageName: node
   linkType: hard
 

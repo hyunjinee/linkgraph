@@ -28,15 +28,19 @@
     "postcss": "8.4.26",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.45.2",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
     "stripe": "^12.13.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.6",
     "typescript": "5.1.6",
+    "uniqid": "^5.4.0",
     "zustand": "^4.3.9"
   },
   "devDependencies": {
+    "@types/uniqid": "^5.3.2",
     "supabase": "^1.77.9"
   }
 }
