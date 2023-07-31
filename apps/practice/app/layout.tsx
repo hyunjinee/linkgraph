@@ -8,6 +8,7 @@ import UserProvider from '@/providers/UserProvider';
 import ModalProvider from '@/providers/ModalProvider';
 import ToastProvider from '@/providers/ToasterProvider';
 import getSongsByUserId from '@/actions/getSongsByUserId';
+import { Suspense } from 'react';
 
 const font = Figtree({ subsets: ['latin'] });
 
@@ -25,10 +26,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className={cn(font.className)} suppressHydrationWarning>
         {/* <div className="container py-2 h-fit md:py-18 grow">{children}</div> */}
         <ToastProvider />
+
         <SupabaseProvider>
           <UserProvider>
             <ModalProvider />
-            <Sidebar songs={userSongs}>{children}</Sidebar>
+            <Suspense fallback="hello suspense">
+              <Sidebar songs={userSongs}>{children}</Sidebar>
+            </Suspense>
           </UserProvider>
         </SupabaseProvider>
       </body>

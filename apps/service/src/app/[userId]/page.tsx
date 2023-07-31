@@ -3,11 +3,18 @@ import prisma from '@linkgraph/db';
 
 import GraphTest from '~/components/Graph';
 
-// export const fetchCache = 'force-no-store';
+export const fetchCache = 'force-no-store';
 export const revalidate = 0;
+export const dynamic = 'force-dynamic';
 
 const Graph = async ({ params: { userId } }: { params: { userId: string } }) => {
-  // 유저의 Id로 넘어오는 값이 uuid 일수도 있지만 유저가 설정한 URL이 올 수도 있다.
+  // const res = await fetch('http://localhost:3000/api/user?userId=' + userId, {
+  //   cache: 'no-store',
+  // });
+  // const user = await res.json();
+  /*
+    유저의 Id로 넘어오는 값이 uuid 일수도 있지만 유저가 설정한 URL이 올 수도 있다.
+  */
   const user = await prisma.user.findFirst({
     where: {
       OR: [

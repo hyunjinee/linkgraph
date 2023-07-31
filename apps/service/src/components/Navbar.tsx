@@ -2,18 +2,20 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Fragment, useState } from 'react';
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react';
 import { signIn, signOut } from 'next-auth/react';
-import clsx from 'clsx';
 
 import LinkGraphIcon from './LinkGraphIcon';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '~/hooks/useAuth';
 import Search from './Search';
+import { cn } from '~/lib/utils';
 
 const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const session = useAuth();
+  const router = useRouter();
 
   const closeModal = () => {
     setIsLoginModalOpen(false);
@@ -64,24 +66,18 @@ const Navbar = () => {
                           <>
                             <Menu.Item>
                               {({ active }) => (
-                                <Link
-                                  className={clsx(
-                                    active && 'bg-gray-100',
-                                    'flex w-full px-4 py-2 text-sm text-gray-700',
-                                  )}
-                                  href={`${session?.user?.id}`}
+                                <div
+                                  className={cn(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
+                                  onClick={() => router.push(`/${session?.user?.id}`)}
                                 >
                                   그래프
-                                </Link>
+                                </div>
                               )}
                             </Menu.Item>
                             <Menu.Item>
                               {({ active }) => (
                                 <Link
-                                  className={clsx(
-                                    active && 'bg-gray-100',
-                                    'flex w-full px-4 py-2 text-sm text-gray-700',
-                                  )}
+                                  className={cn(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
                                   href="/profile"
                                 >
                                   프로필
@@ -91,10 +87,7 @@ const Navbar = () => {
                             <Menu.Item>
                               {({ active }) => (
                                 <button
-                                  className={clsx(
-                                    active && 'bg-gray-100',
-                                    'flex w-full px-4 py-2 text-sm text-gray-700',
-                                  )}
+                                  className={cn(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
                                   onClick={() => signOut()}
                                 >
                                   로그아웃
@@ -106,7 +99,7 @@ const Navbar = () => {
                           <Menu.Item>
                             {({ active }) => (
                               <button
-                                className={clsx(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
+                                className={cn(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
                                 onClick={() => {
                                   setIsLoginModalOpen(true);
                                 }}
