@@ -4473,7 +4473,7 @@ __metadata:
     "@next/bundle-analyzer": ^13.4.12
     "@prisma/client": ^4.14.1
     "@prisma/nextjs-monorepo-workaround-plugin": ^4.14.1
-    "@tanstack/react-query": ^4.29.19
+    "@tanstack/react-query": ^4.32.0
     "@tanstack/react-query-devtools": ^4.29.19
     "@types/d3": ^7.4.0
     "@types/node": 20.1.4
@@ -7311,6 +7311,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:4.32.0":
+  version: 4.32.0
+  resolution: "@tanstack/query-core@npm:4.32.0"
+  checksum: 7b3d965d634ff7e754d5f36fe2e4bd9a34548c1d7b13161a2f1a84c8eaafa835f8193e9494952ae20d330f3b56680a5ef516228b2d85b5bc5a34a49947223e58
+  languageName: node
+  linkType: hard
+
 "@tanstack/react-query-devtools@npm:^4.29.13, @tanstack/react-query-devtools@npm:^4.29.14, @tanstack/react-query-devtools@npm:^4.29.19":
   version: 4.29.23
   resolution: "@tanstack/react-query-devtools@npm:4.29.23"
@@ -7326,7 +7333,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^4.29.14, @tanstack/react-query@npm:^4.29.19":
+"@tanstack/react-query@npm:^4.29.14":
   version: 4.29.23
   resolution: "@tanstack/react-query@npm:4.29.23"
   dependencies:
@@ -7342,6 +7349,25 @@ __metadata:
     react-native:
       optional: true
   checksum: 2d0e0b7c4362c0b7b37c754d2f335f61da2245c25141bd444fef93a53ae3b5d6af5a5cdcea096a981ab6eaeffd25d15fde7d9cb36a5006afe4c2ab3907a82a91
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^4.32.0":
+  version: 4.32.0
+  resolution: "@tanstack/react-query@npm:4.32.0"
+  dependencies:
+    "@tanstack/query-core": 4.32.0
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-native: "*"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: fe9c9573a6132961d0437ca3b8d9e379553e0ddd1e884d75dd34c98d5e64e4305e45119d95aec4a7d56aae7bf09cb2792fd9e75da731f5c14db5e43b36732d48
   languageName: node
   linkType: hard
 
