@@ -2,6 +2,7 @@
 import React from 'react';
 import { TbPlaylist } from 'react-icons/tb';
 import { AiOutlinePlus } from 'react-icons/ai';
+
 import useAuthModal from '@/hooks/useAuthModal';
 import { useUser } from '@/hooks/useUser';
 import useUploadModal from '@/hooks/useUploadModal';
@@ -24,6 +25,8 @@ export default function Library({ songs }: LibraryProps) {
     return uploadModal.onOpen();
   };
 
+  console.log(songs, 'wht');
+
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between px-5 pt-4">
@@ -40,7 +43,7 @@ export default function Library({ songs }: LibraryProps) {
 
       <div className="flex flex-col px-3 mt-4 gap-y-2">
         {songs.map((item) => (
-          <MediaItem key={'123'} data={item} onClick={() => {}} />
+          <MediaItem key={item.id} data={item} onClick={() => {}} />
         ))}
       </div>
     </div>

@@ -1,9 +1,8 @@
 import { getServerSession } from 'next-auth';
 
-import { LinkUploadForm, Profile, LinkList } from '~/components';
+import { LinkUploadForm, Profile } from '~/components';
 import { authOptions } from '~/app/api/auth/[...nextauth]/route';
-import { Suspense } from 'react';
-import LinkListSkeleton from '~/components/LinkListSkeleton';
+import LinkListContent from './components/LinkListContent';
 
 const ProfilePage = async () => {
   const session = await getServerSession(authOptions);
@@ -17,13 +16,11 @@ const ProfilePage = async () => {
   return (
     <main className="w-full h-full p-4 mx-auto max-w-7xl md:p-10">
       <Profile />
+      <LinkListContent userId={userId} />
+
       <div className="lg:flex">
         <LinkUploadForm />
         <div className="mb-4 " />
-
-        <Suspense fallback={<LinkListSkeleton />}>
-          <LinkList userId={userId} />
-        </Suspense>
       </div>
     </main>
   );

@@ -1,10 +1,7 @@
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
-
-import { useAuth } from '~/hooks/useAuth';
-import { useDeleteLink, useLink } from '~/queries/link';
+import Link from '~/components/Link';
+import { useLink } from '~/queries/link';
 
 type LinkListProps = {
   userId: string;
@@ -12,42 +9,16 @@ type LinkListProps = {
 
 const LinkList = ({ userId }: LinkListProps) => {
   const { links } = useLink(userId);
-  const { deleteLink } = useDeleteLink();
-
   return (
-    <section className="w-full lg:w-1/2">
-      <h2 className="mb-4 text-xl font-semibold">링크 목록</h2>
-      <ul className="flex flex-col w-full gap-3">
-        {links?.map((link: Link) => (
-          <li key={link.id} className="flex items-center gap-5">
-            <div className="w-[80px] h-[80px] flex items-center justify-center rounded-full overflow-hidden relative">
-              {/* <div
-                className={cn('absolute w-[80px] h-[80px]', link.color ? 'bg-[' + link.color + ']' : 'bg-[#000000]')}
-              /> */}
-
-              <div
-                className={'w-[80px] h-[80px] relative'}
-                style={{
-                  backgroundColor: link.color || '#ffffff',
-                }}
-              >
-                {link.image && <Image className="object-cover" src={link.image} alt="링크" fill loading="eager" />}
-              </div>
-            </div>
-            <div>{link.title}</div>
-            <div>{link.url}</div>
-            <button
-              onClick={async () => {
-                await deleteLink(link.id);
-              }}
-            >
-              삭제
-            </button>
-          </li>
+    <>
+      {!links?.length && <div className="mb-4 text-neutral-400">연결된 링크가 없습니다.</div>}
+      <div className="grid grid-cols-2 gap-4 mt-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8">
+        {links?.map((link) => (
+          <Link link={link} key={link.id} />
         ))}
-      </ul>
-    </section>
+      </div>
+    </>
   );
 };
 
-export default React.memo(LinkList);
+export default LinkList;

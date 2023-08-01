@@ -2,10 +2,11 @@
 import { usePathname } from 'next/navigation';
 import { HiHome } from 'react-icons/hi';
 import { BiSearch } from 'react-icons/bi';
+
+import { Song } from '@/types';
 import Box from './Box';
 import SidebarItem from './SidebarItem';
 import Library from './Library';
-import { Song } from '@/types';
 
 type SidebarProps = {
   children: React.ReactNode;

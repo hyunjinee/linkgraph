@@ -12,7 +12,6 @@ type SongItemProps = {
 };
 
 const SongItem = ({ data, onClick }: SongItemProps) => {
-  console.log(data);
   const imagePath = useLoadImage(data);
 
   return (
