@@ -24,10 +24,10 @@ const Navbar: React.FC = () => {
     <Disclosure as="nav" className="bg-white shadow-sm">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex h-16 justify-between">
+          <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="flex justify-between h-16">
               <div className="flex">
-                <div className="flex flex-shrink-0 cursor-pointer items-center" onClick={() => router.push('/')}>
+                <div className="flex items-center flex-shrink-0 cursor-pointer" onClick={() => router.push('/')}>
                   <LinkGraph />
                 </div>
                 <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
@@ -50,11 +50,11 @@ const Navbar: React.FC = () => {
               </div>
               <div className="hidden sm:flex sm:items-center">
                 <Menu as="div" className="relative ml-3">
-                  <div className="fg-white flex rounded-full ">
+                  <div className="flex rounded-full fg-white ">
                     <Menu.Button className="flex rounded-full">
                       <span className="sr-only">Open user menu</span>
                       <Image
-                        className="h-8 w-8 rounded-full"
+                        className="w-8 h-8 rounded-full"
                         src={session?.user?.image || 'https://avatar.vercel.sh/leerob'}
                         height={32}
                         width={32}
@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 z-10 w-48 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       {session?.user ? (
                         <Menu.Item>
                           {({ active }) => (
@@ -105,13 +105,13 @@ const Navbar: React.FC = () => {
                   </Transition>
                 </Menu>
               </div>
-              <div className="-mr-2 flex items-center sm:hidden">
+              <div className="flex items-center -mr-2 sm:hidden">
                 <Disclosure.Button className="inline-flex items-center justify-center">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                    <XMarkIcon className="block w-6 h-6" aria-hidden="true" />
                   ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                    <Bars3Icon className="block w-6 h-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>
@@ -119,7 +119,7 @@ const Navbar: React.FC = () => {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 pb-3 pt-2">
+            <div className="pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
                 </Disclosure.Button>
               ))}
             </div>
-            <div className="border-t border-gray-200 pb-3 pt-4">
+            <div className="pt-4 pb-3 border-t border-gray-200">
               {session?.user ? (
                 <>
                   <div>

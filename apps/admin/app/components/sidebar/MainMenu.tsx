@@ -3,6 +3,7 @@ import type { ParsedUrlQueryInput } from 'querystring';
 import Link from 'next/link';
 import { Divider } from 'antd';
 import { ChevronRight, Home, Package2 } from 'lucide-react';
+
 import styles from './menu.module.css';
 
 export type Menu = {
