@@ -3909,7 +3909,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/react@npm:^1.7.14, @headlessui/react@npm:^1.7.15":
+"@headlessui/react@npm:^1.7.10":
+  version: 1.7.16
+  resolution: "@headlessui/react@npm:1.7.16"
+  dependencies:
+    client-only: ^0.0.1
+  peerDependencies:
+    react: ^16 || ^17 || ^18
+    react-dom: ^16 || ^17 || ^18
+  checksum: 85844c96c79796236fa7dec2f1c2f0332d7554d9b785d7b37d9762bb4133088a0cf1334653d6f91c1fe4619960eb569f14ba5f6a962c3305e03f7b362acbabbe
+  languageName: node
+  linkType: hard
+
+"@headlessui/react@npm:^1.7.14":
   version: 1.7.15
   resolution: "@headlessui/react@npm:1.7.15"
   dependencies:
@@ -4463,7 +4475,7 @@ __metadata:
     "@aws-sdk/client-s3": ^3.342.0
     "@aws-sdk/s3-request-presigner": ^3.342.0
     "@aws-sdk/signature-v4-crt": ^3.342.0
-    "@headlessui/react": ^1.7.15
+    "@headlessui/react": ^1.7.10
     "@heroicons/react": ^2.0.18
     "@hookform/resolvers": ^3.1.1
     "@linkgraph/db": "*"
@@ -4487,7 +4499,7 @@ __metadata:
     d3: ^7.8.5
     limiter: ^2.1.0
     lucide-react: ^0.244.0
-    next: ^13.4.12
+    next: ^13.4.10
     next-auth: ^4.22.1
     postcss: 8.4.23
     prisma: ^4.14.1
@@ -17949,7 +17961,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^13.4.12":
+"next@npm:^13.4.10, next@npm:^13.4.12":
   version: 13.4.12
   resolution: "next@npm:13.4.12"
   dependencies:
