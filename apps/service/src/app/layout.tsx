@@ -4,8 +4,10 @@ import type { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
 import { getServerSession } from 'next-auth';
 
+import { pretendard } from './fonts';
 import { Navbar, Core } from '~/components';
 import { authOptions } from './api/auth/[...nextauth]/route';
+import { cn } from '~/lib/utils';
 
 export const metadata: Metadata = {
   title: 'LinkGraph',
@@ -19,8 +21,8 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
   const session = await getServerSession(authOptions);
 
   return (
-    <html lang="ko" className="h-full antialiased scroll-smooth">
-      <body className={`flex h-full flex-col`} suppressHydrationWarning>
+    <html lang="ko" className={cn('h-full antialiased scroll-smooth')}>
+      <body className={cn('flex h-full flex-col', pretendard.className)} suppressHydrationWarning>
         <Core session={session}>
           <Navbar />
           {children}
