@@ -9,6 +9,7 @@ import ModalProvider from '@/providers/ModalProvider';
 import ToastProvider from '@/providers/ToasterProvider';
 import getSongsByUserId from '@/actions/getSongsByUserId';
 import { Suspense } from 'react';
+import Player from '@/components/Player';
 
 const font = Figtree({ subsets: ['latin'] });
 
@@ -33,6 +34,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Suspense fallback="hello suspense">
               <Sidebar songs={userSongs}>{children}</Sidebar>
             </Suspense>
+            <Player />
           </UserProvider>
         </SupabaseProvider>
       </body>
