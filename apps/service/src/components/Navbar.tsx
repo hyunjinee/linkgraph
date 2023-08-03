@@ -37,7 +37,7 @@ const Navbar = () => {
                   <Search />
                 </div>
                 <div className="flex items-center sm:ml-6">
-                  <Menu as="div" className="ml-3 shrink-0">
+                  <Menu as="div" className="relative ml-3 shrink-0">
                     <Menu.Button className="relative flex w-10 h-10 overflow-hidden text-sm bg-white rounded-full shrink-0 hover:ring-2 hover:ring-slate-500 hover:ring-offset-2 focus:outline-none ">
                       <span className="sr-only">Open user menu</span>
 
