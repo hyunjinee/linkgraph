@@ -15,7 +15,6 @@ import { cn } from '~/lib/utils';
 const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const session = useAuth();
-  const router = useRouter();
 
   const closeModal = () => {
     setIsLoginModalOpen(false);
@@ -66,12 +65,12 @@ const Navbar = () => {
                           <>
                             <Menu.Item>
                               {({ active }) => (
-                                <div
+                                <Link
                                   className={cn(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
-                                  onClick={() => router.push(`/${session?.user?.id}`)}
+                                  href={`/${session.user.id}`}
                                 >
                                   그래프
-                                </div>
+                                </Link>
                               )}
                             </Menu.Item>
                             <Menu.Item>
