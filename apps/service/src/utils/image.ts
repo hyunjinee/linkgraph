@@ -22,3 +22,9 @@ export const uploadImageToS3 = async (presignedURL: string, image: File) =>
       'Content-type': image.type,
     },
   });
+
+export const checkImageSize = (fileSizeInMB: number) => {
+  if (fileSizeInMB > 4) {
+    throw new Error('이미지 용량이 너무 큽니다. 4MB 이하의 이미지를 업로드해주세요.');
+  }
+};
