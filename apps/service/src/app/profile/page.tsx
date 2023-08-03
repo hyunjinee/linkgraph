@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth';
 import { LinkUploadForm, Profile } from '~/components';
 import { authOptions } from '~/app/api/auth/[...nextauth]/route';
 import LinkListContent from './components/LinkListContent';
+import TestComponent from '~/components/TestComponent';
 
 const ProfilePage = async () => {
   const session = await getServerSession(authOptions);
@@ -18,10 +19,15 @@ const ProfilePage = async () => {
       <Profile />
       <LinkListContent userId={userId} />
 
-      <div className="lg:flex">
+      {/* <div className="lg:flex">
         <LinkUploadForm />
         <div className="mb-4 " />
-      </div>
+      </div> */}
+
+      <TestComponent>
+        <div>hi</div>
+        <div>hi</div>
+      </TestComponent>
     </main>
   );
 };
