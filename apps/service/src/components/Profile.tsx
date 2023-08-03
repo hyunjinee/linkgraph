@@ -8,7 +8,8 @@ import { cloudFrontURL } from '@linkgraph/site-info';
 import { getCurrentDateTime } from '@linkgraph/utils';
 
 import { useUpload } from '../hooks/useUpload';
-import { useDeleteProfileImage, useUpdateProfile } from '../queries/profile';
+import { useDeleteProfileImage, useUpdateProfile } from '~/queries/profile';
+import { calculateFileSizeInMB, getPresignedURL, uploadImageToS3 } from '~/utils/image';
 
 const Profile = () => {
   const [name, setName] = useState('');
@@ -18,80 +19,76 @@ const Profile = () => {
   const [isEditMode, setIsEditMode] = useState(false);
 
   const { data: session, update } = useSession();
-  const [file, setFile, upload] = useUpload();
+  const [_, __, upload] = useUpload();
   const { deleteProfileImage } = useDeleteProfileImage();
   const { updateProfile } = useUpdateProfile();
 
   const handleImageUpload = async () => {
     const image = await upload();
+
     if (!image) {
+      toast.error('이미지를 선택해주세요!');
       return;
     }
+    setImageBlobURL(URL.createObjectURL(image));
 
-    const fileSizeMB = image.size / 1024 / 1024;
-    if (fileSizeMB > 4) {
+    const fileSizeInMB = calculateFileSizeInMB(image);
+
+    if (fileSizeInMB > 4) {
       toast.error('이미지 용량이 너무 큽니다. 4MB 이하의 이미지를 업로드해주세요.');
       return;
     }
 
-    setImageBlobURL(URL.createObjectURL(image));
-
-    const body = {
-      name: 'profile/' + getCurrentDateTime() + '-' + image.name,
-      type: image.type,
-    };
-
     try {
-      const presignedURLResponse = await fetch('/api/presigned-url', {
-        method: 'POST',
-        body: JSON.stringify(body),
+      const presignedURL = await getPresignedURL({
+        name: 'profile/' + getCurrentDateTime() + '-' + image.name,
+        type: image.type,
       });
-      const { url: presignedURL } = await presignedURLResponse.json();
-
-      const uploadResponse = await fetch(presignedURL, {
-        method: 'PUT',
-        body: image,
-        headers: {
-          'Content-type': image.type,
-        },
-      });
+      const uploadResponse = await uploadImageToS3(presignedURL, image);
 
       if (uploadResponse.ok) {
-        await fetch('/api/profile-image', {
-          method: 'PATCH',
-          body: JSON.stringify({
-            userId: session?.user.id,
-            profileImage: cloudFrontURL + new URL(presignedURL).pathname,
+        await Promise.all([
+          fetch('/api/profile-image', {
+            method: 'PATCH',
+            body: JSON.stringify({
+              userId: session?.user.id,
+              profileImage: cloudFrontURL + new URL(presignedURL).pathname,
+            }),
           }),
-        });
-        await update({
-          ...session,
-          user: {
-            ...session?.user,
-            profileImage: cloudFrontURL + new URL(presignedURL).pathname,
-          },
-        });
-
-        toast.success('이미지 업로드에 성공했습니다.');
+          update({
+            ...session,
+            user: {
+              ...session?.user,
+              profileImage: cloudFrontURL + new URL(presignedURL).pathname,
+            },
+          }),
+        ]);
       }
-    } catch (error) {
+      toast.success('이미지 업로드에 성공했습니다.');
+    } catch {
       setImageBlobURL('');
       toast.error('이미지 업로드에 실패했습니다.');
-      console.log(error);
     }
   };
 
   const handleImageDelete = async () => {
-    await deleteProfileImage(session?.user.id);
-    await update({
-      ...session,
-      user: {
-        ...session?.user,
-        profileImage: '',
-      },
-    });
-    setImageBlobURL('');
-    toast.success('이미지 삭제에 성공했습니다.');
+    try {
+      await Promise.all([
+        deleteProfileImage(session?.user.id),
+        update({
+          ...session,
+          user: {
+            ...session?.user,
+            profileImage: '',
+          },
+        }),
+      ]);
+
+      setImageBlobURL('');
+      toast.success('이미지 삭제에 성공했습니다.');
+    } catch {
+      toast.error('이미지 삭제에 실패했습니다.');
+    }
   };
 
   return (

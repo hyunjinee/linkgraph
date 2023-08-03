@@ -9,7 +9,7 @@ import { useQuery } from '@tanstack/react-query';
 import type { User } from '.prisma/client';
 import Spinner from './Spinner';
 import { useDebounce } from '~/hooks/useDebounce';
-import { cn } from '~/lib/utils';
+import { cn } from '~/utils/className';
 import { useOnClickOutside } from '~/hooks/useOnClickOutside';
 
 const Search = () => {

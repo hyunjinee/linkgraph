@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { Fragment, useState } from 'react';
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react';
 import { signIn, signOut } from 'next-auth/react';
@@ -10,7 +9,7 @@ import { signIn, signOut } from 'next-auth/react';
 import LinkGraphIcon from './LinkGraphIcon';
 import { useAuth } from '~/hooks/useAuth';
 import Search from './Search';
-import { cn } from '~/lib/utils';
+import { cn } from '~/utils/className';
 
 const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -28,10 +27,7 @@ const Navbar = () => {
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <div className="flex justify-between h-16">
                 <div className="flex items-center w-full">
-                  <Link
-                    href={'/'}
-                    className="flex items-center justify-center flex-shrink-0 w-16 h-full cursor-pointer"
-                  >
+                  <Link href="/" className="flex items-center justify-center flex-shrink-0 w-16 h-full cursor-pointer">
                     <LinkGraphIcon />
                   </Link>
                   <Search />
