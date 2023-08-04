@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import styles from './Graph.module.css';
 
 type GraphProps = {
   nodes: ForcedNode[];
@@ -216,7 +215,7 @@ const Graph = ({ nodes, links }: GraphProps) => {
   }, [links, nodes]);
 
   return (
-    <div ref={containerRef} className={`${styles.background} w-full h-full`}>
+    <div ref={containerRef} className="w-full h-full">
       <svg ref={svgRef} className="w-full h-full" />
     </div>
   );
