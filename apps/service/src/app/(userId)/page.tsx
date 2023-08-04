@@ -15,21 +15,37 @@ const Graph = async ({ params: { userId } }: { params: { userId: string } }) => 
   /*
     유저의 Id로 넘어오는 값이 uuid 일수도 있지만 유저가 설정한 URL이 올 수도 있다.
   */
-  const user = await prisma.user.findFirst({
-    where: {
-      OR: [
-        {
-          id: userId,
-        },
-        {
-          url: userId,
-        },
-      ],
-    },
-    include: {
-      links: true,
-    },
-  });
+
+  const user =
+    (await prisma.user.findFirst({
+      where: {
+        OR: [
+          {
+            id: userId,
+          },
+          {
+            url: userId,
+          },
+        ],
+      },
+      include: {
+        links: true,
+      },
+    })) || (await getRandomRecord());
+
+  async function getRandomRecord() {
+    const totalRecords = await prisma.user.count();
+    const randomIndex = Math.floor(Math.random() * totalRecords);
+
+    const randomRecord = await prisma.user.findFirst({
+      skip: randomIndex,
+      include: {
+        links: true,
+      },
+    });
+
+    return randomRecord;
+  }
 
   if (!user) {
     notFound();

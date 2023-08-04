@@ -7,7 +7,7 @@ import { toast } from 'react-hot-toast';
 import { cloudFrontURL } from '@linkgraph/site-info';
 import { getCurrentDateTime } from '@linkgraph/utils';
 
-import { useUpload } from '../hooks/useUpload';
+import { useUpload } from '~/hooks/useUpload';
 import { useDeleteProfileImage, useUpdateProfile } from '~/queries/profile';
 import { calculateFileSizeInMB, getPresignedURL, uploadImageToS3 } from '~/utils/image';
 
@@ -92,10 +92,9 @@ const Profile = () => {
   };
 
   return (
-    <section className="flex flex-col items-center w-full gap-4 p-4 rounded-md sm:flex-row">
-      {/* Image Upload */}
-      <div className="flex flex-col items-center">
-        <div className="relative flex-shrink-0 w-40 h-40">
+    <section className="flex items-center w-full gap-4 p-4 rounded-md h-fit">
+      <div className="flex flex-col items-start w-fit sm:items-center sm:w-fit ">
+        <div className="relative flex-shrink-0 w-32 h-32 sm:w-40 sm:h-40">
           <Image
             onClick={handleImageUpload}
             src={session?.user.profileImage || imageBlobURL || '/profile.png'}
@@ -108,7 +107,7 @@ const Profile = () => {
           />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col mt-2">
           <button
             onClick={handleImageUpload}
             type="button"
@@ -127,7 +126,7 @@ const Profile = () => {
       </div>
 
       {/* Divider */}
-      <div className="h-[2px] w-60 bg-gray-100 sm:h-60 sm:w-[2px]" />
+      <div className="h-[2px bg-gray-100 sm:h-60 sm:w-[2px]" />
 
       {/* 소개 */}
       <div className="self-start w-full mt-2">
@@ -140,8 +139,6 @@ const Profile = () => {
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              // value={linkTitle}
-              // onChange={(e) => setLinkTitle(e.target.value)}
             />
             <input
               type="text"
@@ -177,7 +174,7 @@ const Profile = () => {
             </button>
           </div>
         ) : (
-          <>
+          <div className="w-full">
             <div className="text-3xl font-semibold">{session?.user.name}님 안녕하세요.😊</div>
             <div className="mt-4">
               <div>{session?.user.description}</div>
@@ -197,7 +194,7 @@ const Profile = () => {
             >
               수정
             </button>
-          </>
+          </div>
         )}
       </div>
     </section>
