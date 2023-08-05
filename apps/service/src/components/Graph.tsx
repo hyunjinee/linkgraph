@@ -39,6 +39,7 @@ const Graph = ({ nodes, links }: GraphProps) => {
     if (!svgRef.current) {
       return;
     }
+
     const svg = d3.select(svgRef.current);
     const { width, height } = svgRef.current.getBoundingClientRect();
 
@@ -210,6 +211,10 @@ const Graph = ({ nodes, links }: GraphProps) => {
 
     return () => {
       simulation.stop();
+
+      if (svgRef.current) {
+        svgRef.current.innerHTML = '';
+      }
       // window.removeEventListener('resize', updateDimensions);
     };
   }, [links, nodes]);

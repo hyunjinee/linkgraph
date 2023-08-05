@@ -184,8 +184,6 @@ const Graph: NextPage = () => {
     // .attr('r', (node: any) => node.size)
     // .attr('fill', (node: any) => node.color || 'grey')
     // .call(dragInteraction as any);
-    console.log(node);
-    console.log(link);
 
     // const link = svg
     //   .append('g')
@@ -236,6 +234,10 @@ const Graph: NextPage = () => {
 
     return () => {
       simulation.stop();
+      console.log(svgRef.current, '?wjrfew');
+      if (svgRef.current) {
+        svgRef.current.remove();
+      }
       // window.removeEventListener('resize', updateDimensions);
     };
     // const simulation = d3
