@@ -4149,7 +4149,7 @@ __metadata:
     d3: ^7.8.5
     limiter: ^2.1.0
     lucide-react: ^0.263.1
-    next: ^13.4.12
+    next: canary
     next-auth: ^4.22.1
     postcss: 8.4.23
     prisma: ^4.14.1
@@ -4279,6 +4279,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/env@npm:13.4.13-canary.16":
+  version: 13.4.13-canary.16
+  resolution: "@next/env@npm:13.4.13-canary.16"
+  checksum: 1d61433d8d778b24363deb001acc0259e1007653f95190580fcff3d9c886e55546d9d46fa1838c89e6851cb202a9d74576b09694e78f72292b3198436d3d7dee
+  languageName: node
+  linkType: hard
+
 "@next/eslint-plugin-next@npm:13.4.10":
   version: 13.4.10
   resolution: "@next/eslint-plugin-next@npm:13.4.10"
@@ -4313,9 +4320,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-darwin-arm64@npm:13.4.13-canary.16":
+  version: 13.4.13-canary.16
+  resolution: "@next/swc-darwin-arm64@npm:13.4.13-canary.16"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
 "@next/swc-darwin-x64@npm:13.4.12":
   version: 13.4.12
   resolution: "@next/swc-darwin-x64@npm:13.4.12"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@next/swc-darwin-x64@npm:13.4.13-canary.16":
+  version: 13.4.13-canary.16
+  resolution: "@next/swc-darwin-x64@npm:13.4.13-canary.16"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
@@ -4327,9 +4348,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-linux-arm64-gnu@npm:13.4.13-canary.16":
+  version: 13.4.13-canary.16
+  resolution: "@next/swc-linux-arm64-gnu@npm:13.4.13-canary.16"
+  conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
 "@next/swc-linux-arm64-musl@npm:13.4.12":
   version: 13.4.12
   resolution: "@next/swc-linux-arm64-musl@npm:13.4.12"
+  conditions: os=linux & cpu=arm64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@next/swc-linux-arm64-musl@npm:13.4.13-canary.16":
+  version: 13.4.13-canary.16
+  resolution: "@next/swc-linux-arm64-musl@npm:13.4.13-canary.16"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
@@ -4341,9 +4376,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-linux-x64-gnu@npm:13.4.13-canary.16":
+  version: 13.4.13-canary.16
+  resolution: "@next/swc-linux-x64-gnu@npm:13.4.13-canary.16"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
 "@next/swc-linux-x64-musl@npm:13.4.12":
   version: 13.4.12
   resolution: "@next/swc-linux-x64-musl@npm:13.4.12"
+  conditions: os=linux & cpu=x64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@next/swc-linux-x64-musl@npm:13.4.13-canary.16":
+  version: 13.4.13-canary.16
+  resolution: "@next/swc-linux-x64-musl@npm:13.4.13-canary.16"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
@@ -4355,6 +4404,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-win32-arm64-msvc@npm:13.4.13-canary.16":
+  version: 13.4.13-canary.16
+  resolution: "@next/swc-win32-arm64-msvc@npm:13.4.13-canary.16"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
 "@next/swc-win32-ia32-msvc@npm:13.4.12":
   version: 13.4.12
   resolution: "@next/swc-win32-ia32-msvc@npm:13.4.12"
@@ -4362,9 +4418,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-win32-ia32-msvc@npm:13.4.13-canary.16":
+  version: 13.4.13-canary.16
+  resolution: "@next/swc-win32-ia32-msvc@npm:13.4.13-canary.16"
+  conditions: os=win32 & cpu=ia32
+  languageName: node
+  linkType: hard
+
 "@next/swc-win32-x64-msvc@npm:13.4.12":
   version: 13.4.12
   resolution: "@next/swc-win32-x64-msvc@npm:13.4.12"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@next/swc-win32-x64-msvc@npm:13.4.13-canary.16":
+  version: 13.4.13-canary.16
+  resolution: "@next/swc-win32-x64-msvc@npm:13.4.13-canary.16"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -8854,6 +8924,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"acorn-loose@npm:^8.3.0":
+  version: 8.3.0
+  resolution: "acorn-loose@npm:8.3.0"
+  dependencies:
+    acorn: ^8.5.0
+  checksum: 3418a20bded1e74a20950dee8289fb87808c21a50d4065e4ec48230668ea77f4238be1dd1ee30b2116f469e496bcdaf937ccb86d469482e028052f8eec804c07
+  languageName: node
+  linkType: hard
+
 "acorn-walk@npm:^7.2.0":
   version: 7.2.0
   resolution: "acorn-walk@npm:7.2.0"
@@ -8877,7 +8956,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:^8.0.4, acorn@npm:^8.7.1, acorn@npm:^8.8.2, acorn@npm:^8.9.0":
+"acorn@npm:^8.0.4, acorn@npm:^8.5.0, acorn@npm:^8.7.1, acorn@npm:^8.8.2, acorn@npm:^8.9.0":
   version: 8.10.0
   resolution: "acorn@npm:8.10.0"
   bin:
@@ -10719,6 +10798,13 @@ __metadata:
     slice-ansi: ^5.0.0
     string-width: ^5.0.0
   checksum: c3243e41974445691c63f8b405df1d5a24049dc33d324fe448dc572e561a7b772ae982692900b1a5960901cc4fc7def25a629b9c69a4208ee89d12ab3332617a
+  languageName: node
+  linkType: hard
+
+"client-only-vendored@file:vendored/node_modules/client-only-vendored::locator=next%40npm%3A13.4.13-canary.16":
+  version: 0.0.1
+  resolution: "client-only-vendored@file:vendored/node_modules/client-only-vendored#vendored/node_modules/client-only-vendored::hash=47ed64&locator=next%40npm%3A13.4.13-canary.16"
+  checksum: 45decce3e19a6818dae7ec97980fed6384b791392a73fcd8f679e873e1814f44674477a2bc2e3967896dd98c648bc680b5e957567cff3b4e0fccb677a885e0ea
   languageName: node
   linkType: hard
 
@@ -18306,6 +18392,92 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next@npm:canary":
+  version: 13.4.13-canary.16
+  resolution: "next@npm:13.4.13-canary.16"
+  dependencies:
+    "@next/env": 13.4.13-canary.16
+    "@next/swc-darwin-arm64": 13.4.13-canary.16
+    "@next/swc-darwin-x64": 13.4.13-canary.16
+    "@next/swc-linux-arm64-gnu": 13.4.13-canary.16
+    "@next/swc-linux-arm64-musl": 13.4.13-canary.16
+    "@next/swc-linux-x64-gnu": 13.4.13-canary.16
+    "@next/swc-linux-x64-musl": 13.4.13-canary.16
+    "@next/swc-win32-arm64-msvc": 13.4.13-canary.16
+    "@next/swc-win32-ia32-msvc": 13.4.13-canary.16
+    "@next/swc-win32-x64-msvc": 13.4.13-canary.16
+    "@swc/helpers": 0.5.1
+    busboy: 1.6.0
+    caniuse-lite: ^1.0.30001406
+    client-only-vendored: "file:vendored/node_modules/client-only-vendored"
+    postcss: 8.4.14
+    react-dom-experimental-vendored: "file:vendored/node_modules/react-dom-experimental-vendored"
+    react-dom-vendored: "file:vendored/node_modules/react-dom-vendored"
+    react-experimental-vendored: "file:vendored/node_modules/react-experimental-vendored"
+    react-server-dom-webpack-experimental-vendored: "file:vendored/node_modules/react-server-dom-webpack-experimental-vendored"
+    react-server-dom-webpack-vendored: "file:vendored/node_modules/react-server-dom-webpack-vendored"
+    react-vendored: "file:vendored/node_modules/react-vendored"
+    scheduler-experimental-vendored: "file:vendored/node_modules/scheduler-experimental-vendored"
+    scheduler-vendored: "file:vendored/node_modules/scheduler-vendored"
+    server-only-vendored: "file:vendored/node_modules/server-only-vendored"
+    styled-jsx: 5.1.1
+    watchpack: 2.4.0
+    zod: 3.21.4
+  peerDependencies:
+    "@opentelemetry/api": ^1.1.0
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    sass: ^1.3.0
+  dependenciesMeta:
+    "@next/swc-darwin-arm64":
+      optional: true
+    "@next/swc-darwin-x64":
+      optional: true
+    "@next/swc-linux-arm64-gnu":
+      optional: true
+    "@next/swc-linux-arm64-musl":
+      optional: true
+    "@next/swc-linux-x64-gnu":
+      optional: true
+    "@next/swc-linux-x64-musl":
+      optional: true
+    "@next/swc-win32-arm64-msvc":
+      optional: true
+    "@next/swc-win32-ia32-msvc":
+      optional: true
+    "@next/swc-win32-x64-msvc":
+      optional: true
+    client-only-vendored:
+      optional: true
+    react-dom-experimental-vendored:
+      optional: true
+    react-dom-vendored:
+      optional: true
+    react-experimental-vendored:
+      optional: true
+    react-server-dom-webpack-experimental-vendored:
+      optional: true
+    react-server-dom-webpack-vendored:
+      optional: true
+    react-vendored:
+      optional: true
+    scheduler-experimental-vendored:
+      optional: true
+    scheduler-vendored:
+      optional: true
+    server-only-vendored:
+      optional: true
+  peerDependenciesMeta:
+    "@opentelemetry/api":
+      optional: true
+    sass:
+      optional: true
+  bin:
+    next: dist/bin/next
+  checksum: 1149697d988d9cf7b3ead3ea14b0ca42c38c019e180c04b866cd9fe5f94c67bfde7d690cc9b20d3e2391df640d91ae393866159dfcf748564714e4ec97ede34f
+  languageName: node
+  linkType: hard
+
 "no-case@npm:^3.0.4":
   version: 3.0.4
   resolution: "no-case@npm:3.0.4"
@@ -21070,6 +21242,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-dom-experimental-vendored@file:vendored/node_modules/react-dom-experimental-vendored::locator=next%40npm%3A13.4.13-canary.16":
+  version: 0.0.0-experimental-546fe4681-20230713
+  resolution: "react-dom-experimental-vendored@file:vendored/node_modules/react-dom-experimental-vendored#vendored/node_modules/react-dom-experimental-vendored::hash=bc572c&locator=next%40npm%3A13.4.13-canary.16"
+  dependencies:
+    loose-envify: ^1.1.0
+    scheduler: 0.0.0-experimental-546fe4681-20230713
+  checksum: e1cc5e7a391c830aa8634cd3b7179b01a29550ac32ea6d364bd0a4ee6f7dee6e5bdf5bdff129641a63d1d50f3b44798bc8a1de26b91199cd4e6cce6d53c52162
+  languageName: node
+  linkType: hard
+
+"react-dom-vendored@file:vendored/node_modules/react-dom-vendored::locator=next%40npm%3A13.4.13-canary.16":
+  version: 18.3.0-canary-546fe4681-20230713
+  resolution: "react-dom-vendored@file:vendored/node_modules/react-dom-vendored#vendored/node_modules/react-dom-vendored::hash=3dbe58&locator=next%40npm%3A13.4.13-canary.16"
+  dependencies:
+    loose-envify: ^1.1.0
+    scheduler: 0.24.0-canary-546fe4681-20230713
+  checksum: 958247d096240396b6bc4ac3a72958a48cbbea942d33e8a7ae3015b8be0766e759422904cfbcfd8f06ba1fa69e3c30c32e30c52f319d2503e3a5cfaeccd50340
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:18.2.0, react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
@@ -21113,6 +21305,15 @@ __metadata:
   version: 6.0.11
   resolution: "react-error-overlay@npm:6.0.11"
   checksum: ce7b44c38fadba9cedd7c095cf39192e632daeccf1d0747292ed524f17dcb056d16bc197ddee5723f9dd888f0b9b19c3b486c430319e30504289b9296f2d2c42
+  languageName: node
+  linkType: hard
+
+"react-experimental-vendored@file:vendored/node_modules/react-experimental-vendored::locator=next%40npm%3A13.4.13-canary.16":
+  version: 0.0.0-experimental-546fe4681-20230713
+  resolution: "react-experimental-vendored@file:vendored/node_modules/react-experimental-vendored#vendored/node_modules/react-experimental-vendored::hash=dc8a60&locator=next%40npm%3A13.4.13-canary.16"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: 2d41639dc3301ed698fa9a9cc8c0a7e313f4552f257a01529c399fc68ecef227c8387648e4e17f74924f9c25d81d6405e11bd15fb10dbb1514ded77fef08f5cb
   languageName: node
   linkType: hard
 
@@ -21357,6 +21558,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-server-dom-webpack-experimental-vendored@file:vendored/node_modules/react-server-dom-webpack-experimental-vendored::locator=next%40npm%3A13.4.13-canary.16":
+  version: 0.0.0-experimental-546fe4681-20230713
+  resolution: "react-server-dom-webpack-experimental-vendored@file:vendored/node_modules/react-server-dom-webpack-experimental-vendored#vendored/node_modules/react-server-dom-webpack-experimental-vendored::hash=eb0f02&locator=next%40npm%3A13.4.13-canary.16"
+  dependencies:
+    acorn-loose: ^8.3.0
+    loose-envify: ^1.1.0
+    neo-async: ^2.6.1
+  checksum: 44217a7568d57b4453be1bf9e3b19311904863dd730b27c8fc135da549179ea77a1b58e06130bb80a721e0b8a7540222132db79d6a892f1e86a4276ccaa26c51
+  languageName: node
+  linkType: hard
+
+"react-server-dom-webpack-vendored@file:vendored/node_modules/react-server-dom-webpack-vendored::locator=next%40npm%3A13.4.13-canary.16":
+  version: 18.3.0-canary-546fe4681-20230713
+  resolution: "react-server-dom-webpack-vendored@file:vendored/node_modules/react-server-dom-webpack-vendored#vendored/node_modules/react-server-dom-webpack-vendored::hash=dd9ea3&locator=next%40npm%3A13.4.13-canary.16"
+  dependencies:
+    acorn-loose: ^8.3.0
+    loose-envify: ^1.1.0
+    neo-async: ^2.6.1
+  checksum: 733864e4346c230048947c86745244fb9f85166933f7b63e54d5f3ac194086d52e0af54535bfbc08c2c91a61af9adf9837775aebefb558ed1f9336c91fb3b2fc
+  languageName: node
+  linkType: hard
+
 "react-smooth@npm:^2.0.2":
   version: 2.0.3
   resolution: "react-smooth@npm:2.0.3"
@@ -21428,6 +21651,15 @@ __metadata:
     react: ">=16.6.0"
     react-dom: ">=16.6.0"
   checksum: 75602840106aa9c6545149d6d7ae1502fb7b7abadcce70a6954c4b64a438ff1cd16fc77a0a1e5197cdd72da398f39eb929ea06f9005c45b132ed34e056ebdeb1
+  languageName: node
+  linkType: hard
+
+"react-vendored@file:vendored/node_modules/react-vendored::locator=next%40npm%3A13.4.13-canary.16":
+  version: 18.3.0-canary-546fe4681-20230713
+  resolution: "react-vendored@file:vendored/node_modules/react-vendored#vendored/node_modules/react-vendored::hash=eb806c&locator=next%40npm%3A13.4.13-canary.16"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: 3b31c6342b858792edcc7059c155ec17f31296d3433d5db3920a527397b11e14132c798ec8c028d9981c6352663af2816cf327ac658232f95edc9bb55feb0b38
   languageName: node
   linkType: hard
 
@@ -22281,6 +22513,42 @@ __metadata:
   languageName: node
   linkType: hard
 
+"scheduler-experimental-vendored@file:vendored/node_modules/scheduler-experimental-vendored::locator=next%40npm%3A13.4.13-canary.16":
+  version: 0.0.0-experimental-546fe4681-20230713
+  resolution: "scheduler-experimental-vendored@file:vendored/node_modules/scheduler-experimental-vendored#vendored/node_modules/scheduler-experimental-vendored::hash=798db6&locator=next%40npm%3A13.4.13-canary.16"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: 95e9849194026200ef01d49e3861db2f0d66b4b834ca3005dc68e0ece38984b4b599356d4347f3ac6a1725d00eb23203721ab9c27eb4611e4112332087e7e4ca
+  languageName: node
+  linkType: hard
+
+"scheduler-vendored@file:vendored/node_modules/scheduler-vendored::locator=next%40npm%3A13.4.13-canary.16":
+  version: 0.24.0-canary-546fe4681-20230713
+  resolution: "scheduler-vendored@file:vendored/node_modules/scheduler-vendored#vendored/node_modules/scheduler-vendored::hash=809ccc&locator=next%40npm%3A13.4.13-canary.16"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: 66fcb88d1382888ccd0557e537759511ab783678c11ba14a240a8da89a503cf8eb496ab2e0274795d587eadc39f33f3bcdaa597661b98b8810801e6c8e2d784e
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:0.0.0-experimental-546fe4681-20230713":
+  version: 0.0.0-experimental-546fe4681-20230713
+  resolution: "scheduler@npm:0.0.0-experimental-546fe4681-20230713"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: a2205e18aa6e6a9839b37b62e39e90078ea5dd54225e389acdc5e64dd1eab68487ee5b27e9adb57a68f42086ac8e424a652a28cc5cc71325851b1cac99d646d5
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:0.24.0-canary-546fe4681-20230713":
+  version: 0.24.0-canary-546fe4681-20230713
+  resolution: "scheduler@npm:0.24.0-canary-546fe4681-20230713"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: 1bfe9a34937fcfd24ef49f7219f74bb3b8d9339d0bc5473a084ba6f70a6003131f78ef59b3ef838c514301241862de6166e5ba9d3bdcffc27f9dc106c4d31b8d
+  languageName: node
+  linkType: hard
+
 "scheduler@npm:^0.20.2":
   version: 0.20.2
   resolution: "scheduler@npm:0.20.2"
@@ -22501,6 +22769,13 @@ __metadata:
     parseurl: ~1.3.3
     send: 0.18.0
   checksum: af57fc13be40d90a12562e98c0b7855cf6e8bd4c107fe9a45c212bf023058d54a1871b1c89511c3958f70626fff47faeb795f5d83f8cf88514dbaeb2b724464d
+  languageName: node
+  linkType: hard
+
+"server-only-vendored@file:vendored/node_modules/server-only-vendored::locator=next%40npm%3A13.4.13-canary.16":
+  version: 0.0.1
+  resolution: "server-only-vendored@file:vendored/node_modules/server-only-vendored#vendored/node_modules/server-only-vendored::hash=c8d697&locator=next%40npm%3A13.4.13-canary.16"
+  checksum: fb3cd8c40836552be6da0e903d60a706756ba498055f30372b1c08b42f1d00fd3cf2fa55430491b43849529040daeac84a5fbd83ffa1bae397cf0ddc7f9f7341
   languageName: node
   linkType: hard
 
