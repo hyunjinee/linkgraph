@@ -10,23 +10,8 @@ export const fetchCache = 'force-no-store';
 export const revalidate = 0;
 export const dynamic = 'force-dynamic';
 
-const Graph = async ({ params: { userId } }: { params: { userId: string } }) => {
-  const user =
-    (await prisma.user.findFirst({
-      where: {
-        OR: [
-          {
-            id: userId,
-          },
-          {
-            url: userId,
-          },
-        ],
-      },
-      include: {
-        links: true,
-      },
-    })) || (await getRandomUserWithLinks());
+const Graph = async () => {
+  const user = await getRandomUserWithLinks();
 
   if (!user) {
     notFound();
@@ -34,8 +19,8 @@ const Graph = async ({ params: { userId } }: { params: { userId: string } }) => 
 
   const userLinks = user.links;
 
-  const nodes: ForcedNode[] = [{ id: userId, img: user.profileImage, size: 80 }];
-  const links: ForcedLink[] = userLinks.map((link) => ({ source: userId, target: link.id }));
+  const nodes: ForcedNode[] = [{ id: user.id, img: user.profileImage, size: 80 }];
+  const links: ForcedLink[] = userLinks.map((link) => ({ source: user.id, target: link.id }));
 
   userLinks.forEach((link) => {
     nodes.push({ id: link.id, img: link.image || '', size: 40, url: link.url, color: link.color });
