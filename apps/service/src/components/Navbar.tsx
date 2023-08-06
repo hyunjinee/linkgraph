@@ -73,7 +73,7 @@ const Navbar = () => {
                               className={cn(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
                               href={`/${session.user.id}`}
                             >
-                              그래프
+                              내 그래프
                             </Link>
                           )}
                         </Menu.Item>
