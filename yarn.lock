@@ -4149,7 +4149,7 @@ __metadata:
     d3: ^7.8.5
     limiter: ^2.1.0
     lucide-react: ^0.263.1
-    next: latest
+    next: ^13.4.12
     next-auth: ^4.22.1
     postcss: 8.4.23
     prisma: ^4.14.1
@@ -4857,6 +4857,36 @@ __metadata:
     "@types/react-dom":
       optional: true
   checksum: af7b63cc9e2c6006ec08163392d244941e9e03534e7add1b7c5a86059d0eb8a0398d4f3e80d43ff22126874a02b985e44f1722d1de9218922f7aa653d09412e3
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-slider@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@radix-ui/react-slider@npm:1.1.2"
+  dependencies:
+    "@babel/runtime": ^7.13.10
+    "@radix-ui/number": 1.0.1
+    "@radix-ui/primitive": 1.0.1
+    "@radix-ui/react-collection": 1.0.3
+    "@radix-ui/react-compose-refs": 1.0.1
+    "@radix-ui/react-context": 1.0.1
+    "@radix-ui/react-direction": 1.0.1
+    "@radix-ui/react-primitive": 1.0.3
+    "@radix-ui/react-use-controllable-state": 1.0.1
+    "@radix-ui/react-use-layout-effect": 1.0.1
+    "@radix-ui/react-use-previous": 1.0.1
+    "@radix-ui/react-use-size": 1.0.1
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 2b774f23d90549aa688ee2e500c5325a91ea92db7a5ef245bdf7b5c709078433e6853d4ad84b1367cf701d0f54906979db51baa21e5154b439dde03a365ed270
   languageName: node
   linkType: hard
 
@@ -15266,6 +15296,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"howler@npm:^2.1.3":
+  version: 2.2.3
+  resolution: "howler@npm:2.2.3"
+  checksum: c04ce19411f4d86f8508d411a93aea943f128c2686b3df3c61383fd4ed8f5551232c4389aba3a8d4c8b0eeb34ae51df5a9c3ccd9ba48583ac53e9bf9fcbd1ecf
+  languageName: node
+  linkType: hard
+
 "hpack.js@npm:^2.1.6":
   version: 2.1.6
   resolution: "hpack.js@npm:2.1.6"
@@ -18247,7 +18284,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^13.4.12, next@npm:^13.4.3, next@npm:^13.4.7, next@npm:latest":
+"next@npm:^13.4.12, next@npm:^13.4.3, next@npm:^13.4.7":
   version: 13.4.12
   resolution: "next@npm:13.4.12"
   dependencies:
@@ -19927,6 +19964,7 @@ __metadata:
   resolution: "practice@workspace:apps/practice"
   dependencies:
     "@radix-ui/react-dialog": ^1.0.4
+    "@radix-ui/react-slider": ^1.1.2
     "@radix-ui/react-slot": ^1.0.2
     "@supabase/auth-helpers-nextjs": ^0.7.3
     "@supabase/auth-helpers-react": ^0.4.1
@@ -19951,6 +19989,7 @@ __metadata:
     react-hook-form: ^7.45.2
     react-hot-toast: ^2.4.1
     react-icons: ^4.10.1
+    react-spinners: ^0.13.8
     stripe: ^12.13.0
     supabase: ^1.77.9
     tailwind-merge: ^1.14.0
@@ -19958,6 +19997,7 @@ __metadata:
     tailwindcss-animate: ^1.0.6
     typescript: 5.1.6
     uniqid: ^5.4.0
+    use-sound: ^4.0.1
     zustand: ^4.3.9
   languageName: unknown
   linkType: soft
@@ -21368,6 +21408,16 @@ __metadata:
     react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
     react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
   checksum: dccdd5c3c937c5990fff119cbf1324ff7f8b7e1cb74a8f215291cdd71122e6aa82c350642612a52056543520446b1f7ddd4176ffdb52fd0f0c657f36bc7ae802
+  languageName: node
+  linkType: hard
+
+"react-spinners@npm:^0.13.8":
+  version: 0.13.8
+  resolution: "react-spinners@npm:0.13.8"
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: cb58f916bbf00c4f7fc33c1a75a8c0f91a98a42af26944340a0e29e4b3a97937a03f0292bc444eb5f5f0bea099344b580f9c04a81524246dadbf0571bdb57e62
   languageName: node
   linkType: hard
 
@@ -24643,6 +24693,17 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 925d1922f9853e516eaad526b6fed1be38008073067274f0ecc3f56b17bb8ab63480140dd7c271f94150027c996cea4efe83d3e3525e8f3eda22055f6a39220b
+  languageName: node
+  linkType: hard
+
+"use-sound@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "use-sound@npm:4.0.1"
+  dependencies:
+    howler: ^2.1.3
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 0920ec7fe549073497b92949e7f7a9ac17287acc723bf5ab76c9378d4667ef3a39e1d64fae189e3ad4ac42641d561cc48836f4bbe75ea038562292ee24d3fa3b
   languageName: node
   linkType: hard
 
