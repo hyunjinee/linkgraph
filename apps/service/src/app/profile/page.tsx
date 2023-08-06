@@ -18,10 +18,10 @@ const ProfilePage = async () => {
       <Profile />
       <LinkListContent userId={userId} />
 
-      {/* <div className="lg:flex">
+      <div className="lg:flex">
         <LinkUploadForm />
         <div className="mb-4 " />
-      </div> */}
+      </div>
     </main>
   );
 };

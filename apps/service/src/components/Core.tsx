@@ -19,7 +19,8 @@ const client = new QueryClient({
 
 export const AuthContext = React.createContext<Session | null>(null);
 
-const Core = ({ children, session }: PropsWithChildren<{ session: Session | null }>) => {
+// const Core = ({ children, session }: PropsWithChildren<{ session: Session | null }>) => {
+const Core = ({ children, session }: any) => {
   return (
     <AuthContext.Provider value={session}>
       <SessionProvider>

@@ -7,7 +7,11 @@ export const useLink = (userId: string) => {
   const { data: links } = useQuery<Link[]>({
     queryKey: ['links', userId],
     queryFn: async () => {
-      const res = await fetch('http://localhost:3000/api/link?userId=' + userId);
+      const res = await fetch(
+        process.env.NODE_ENV === 'production'
+          ? 'https://link-graph.vercel.app/api/link?userId=' + userId
+          : 'http://localhost:3000/api/link?userId=' + userId,
+      );
       return res.json();
     },
     suspense: true,
