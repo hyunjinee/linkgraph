@@ -4,6 +4,7 @@ import { getUserByIdOrURL } from '@linkgraph/db';
 import styles from './background.module.css';
 import GraphTest from '~/components/Graph';
 import { cn } from '~/utils/className';
+import AddLink from './components/AddLinkButton';
 
 export const fetchCache = 'force-no-store';
 export const revalidate = 0;
@@ -32,6 +33,8 @@ const Graph = async ({ params: { userId } }: { params: { userId: string } }) => 
     <div className={cn('flex flex-col items-center justify-center w-full h-full', styles.background)}>
       <div className="relative w-full h-full max-w-7xl">
         <GraphTest nodes={nodes} links={links} />
+        {/* feature toggle */}
+        <AddLink />
       </div>
     </div>
   );
