@@ -6,8 +6,8 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { Table } from 'antd';
 import { ChevronRight, MenuIcon } from 'lucide-react';
 
-import Sidebar from '~/app/components/sidebar/Sidebar';
-import Statistic from '~/app/components/Statistic';
+import Sidebar from '~/components/sidebar/Sidebar';
+import Statistic from '~/components/Statistic';
 import { useDashboard } from './queries/dashboard';
 import { ColumnsType } from 'antd/es/table';
 
@@ -37,12 +37,13 @@ const Home = () => {
 
   const { data: dashboardData } = useDashboard();
 
-  const dataSource =
-    data &&
-    data?.map((d: any) => ({
-      ...d,
-      key: d.id,
-    }));
+  // TODO: fix this
+  const dataSource: readonly any[] | undefined = [];
+  // data &&
+  // data?.map((d: any) => ({
+  //   ...d,
+  //   key: d.id,
+  // }));
 
   const columns = [
     {
