@@ -37,7 +37,8 @@ const Home = () => {
 
   const { data: dashboardData } = useDashboard();
 
-  const dataSource = [];
+  // TODO: fix this
+  const dataSource: readonly any[] | undefined = [];
   // data &&
   // data?.map((d: any) => ({
   //   ...d,
