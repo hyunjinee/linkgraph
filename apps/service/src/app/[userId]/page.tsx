@@ -34,7 +34,7 @@ const Graph = async ({ params: { userId } }: { params: { userId: string } }) => 
       <div className="relative w-full h-full max-w-7xl">
         <GraphTest nodes={nodes} links={links} />
         {/* feature toggle */}
-        <AddLink />
+        {/* <AddLink /> */}
       </div>
     </div>
   );
