@@ -25,19 +25,19 @@ export const getRandomUserWithLinks = async (): Promise<UserWithLinks> => {
   return getRandomUserWithLinks();
 };
 
-// const user =
-// (await prisma.user.findFirst({
-//   where: {
-//     OR: [
-//       {
-//         id: userId,
-//       },
-//       {
-//         url: userId,
-//       },
-//     ],
-//   },
-//   include: {
-//     links: true,
-//   },
-// })) || (await getRandomUserWithLinks());
+export const getUserByIdOrURL = async (userId: string) =>
+  await prisma.user.findFirst({
+    where: {
+      OR: [
+        {
+          id: userId,
+        },
+        {
+          url: userId,
+        },
+      ],
+    },
+    include: {
+      links: true,
+    },
+  });
