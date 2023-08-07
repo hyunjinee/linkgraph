@@ -11,6 +11,7 @@ import { useAuth } from '~/hooks/useAuth';
 import Search from './Search';
 import { cn } from '~/utils/className';
 import ErrorBoundary from './ErrorBoundary';
+import GoogleSignInButton from './GoogleSignInButton';
 
 const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -101,14 +102,16 @@ const Navbar = () => {
                     ) : (
                       <Menu.Item>
                         {({ active }) => (
-                          <button
-                            className={cn(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
-                            onClick={() => {
-                              setIsLoginModalOpen(true);
-                            }}
-                          >
-                            로그인
-                          </button>
+                          <>
+                            <button
+                              className={cn(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
+                              onClick={() => {
+                                setIsLoginModalOpen(true);
+                              }}
+                            >
+                              로그인
+                            </button>
+                          </>
                         )}
                       </Menu.Item>
                     )}
@@ -150,14 +153,24 @@ const Navbar = () => {
                   <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
                     로그인
                   </Dialog.Title>
-                  {/* <div className="mt-2">
+
+                  <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent you an email with all of the details of
-                      your order.
+                      안녕하세요.{' '}
+                      <i className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                        LinkGraph
+                      </i>{' '}
+                      에 방문해주셔서 감사합니다.
+                      <br />
+                      그래프를 만들려면 구글 로그인이 필요합니다.
                     </p>
-                  </div> */}
+                  </div>
 
                   <div className="mt-4">
+                    <GoogleSignInButton />
+                  </div>
+
+                  {/* <div className="mt-4">
                     <button
                       type="button"
                       className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
@@ -168,7 +181,7 @@ const Navbar = () => {
                     >
                       구글로 로그인
                     </button>
-                  </div>
+                  </div> */}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
