@@ -27,8 +27,6 @@ export const POST = async (req: Request) => {
   const session = await getServerSession(authOptions);
   const linkCount = await countLink(userId);
 
-  console.log('notrun');
-
   if (linkCount > 30) {
     return NextResponse.json({
       message: '링크는 30개까지만 등록할 수 있습니다.',
