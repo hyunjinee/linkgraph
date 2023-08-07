@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import LinkGraph from '~/app/components/LinkGraphIcon';
+import LinkGraph from '~/components/LinkGraphIcon';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Fragment } from 'react';
 
