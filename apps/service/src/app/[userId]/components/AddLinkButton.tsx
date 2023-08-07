@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 const AddLink = () => {
   const router = useRouter();
   const onClick = async () => {
-    const res = await fetch('/api/link', { method: 'POST' });
+    const res = await fetch('/api/link', { method: 'POST', body: JSON.stringify({}) });
     // const data = await res.json();
 
     console.log(res);
@@ -16,8 +16,7 @@ const AddLink = () => {
   return (
     <button
       onClick={onClick}
-      // add some transitions
-      className="absolute flex items-center justify-center w-10 h-10 bg-white rounded-md bottom-5 right-5"
+      className="absolute flex items-center justify-center w-10 h-10 transition bg-white rounded-md bottom-5 right-5 hover:bg-white/80"
     >
       <PlusIcon />
     </button>
