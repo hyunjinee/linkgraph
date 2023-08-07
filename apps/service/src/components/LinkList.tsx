@@ -9,6 +9,7 @@ type LinkListProps = {
 
 const LinkList = ({ userId }: LinkListProps) => {
   const { links } = useLink(userId);
+
   return (
     <>
       {!links?.length && <div className="mb-4 text-neutral-400">연결된 링크가 없습니다.</div>}
