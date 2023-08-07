@@ -8,6 +8,7 @@ import { pretendard } from './fonts';
 import { Navbar, Core } from '~/components';
 import { authOptions } from './api/auth/[...nextauth]/route';
 import { cn } from '~/utils/className';
+import TestModal from '~/components/TestModal';
 
 export const metadata: Metadata = {
   title: 'LinkGraph',
@@ -27,6 +28,8 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
           <Navbar />
           {children}
         </Core>
+
+        <TestModal />
       </body>
     </html>
   );
