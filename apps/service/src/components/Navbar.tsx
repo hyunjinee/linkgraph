@@ -4,13 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react';
-import { signIn, signOut } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 
 import LinkGraphIcon from './LinkGraphIcon';
 import { useAuth } from '~/hooks/useAuth';
 import Search from './Search';
 import { cn } from '~/utils/className';
-import ErrorBoundary from './ErrorBoundary';
 import GoogleSignInButton from './GoogleSignInButton';
 
 const Navbar = () => {
@@ -34,28 +33,21 @@ const Navbar = () => {
             </div>
             <div className="flex items-center sm:ml-6">
               <Menu as="div" className="relative ml-3 shrink-0">
-                {/* Menu.Button */}
+                <Menu.Button
+                  as="button"
+                  className="relative flex w-10 h-10 overflow-hidden text-sm bg-white rounded-full shrink-0 hover:ring-2 hover:ring-slate-500 hover:ring-offset-2 focus:outline-none "
+                >
+                  <span className="sr-only">Open user menu</span>
 
-                <>
-                  <>
-                    <Menu.Button
-                      as="button"
-                      className="relative flex w-10 h-10 overflow-hidden text-sm bg-white rounded-full shrink-0 hover:ring-2 hover:ring-slate-500 hover:ring-offset-2 focus:outline-none "
-                    >
-                      <span className="sr-only">Open user menu</span>
-
-                      <Image
-                        className="object-cover w-10 h-10 "
-                        src={session?.user?.profileImage || 'https://avatar.vercel.sh/leerob'}
-                        alt="profile"
-                        fill
-                        priority
-                        quality={100}
-                      />
-                    </Menu.Button>
-                  </>
-                </>
-
+                  <Image
+                    className="object-cover w-10 h-10 "
+                    src={session?.user?.profileImage || 'https://avatar.vercel.sh/leerob'}
+                    alt="profile"
+                    fill
+                    priority
+                    quality={100}
+                  />
+                </Menu.Button>
                 <Transition
                   as={Fragment}
                   enter="transition ease-out duration-200"
@@ -102,16 +94,14 @@ const Navbar = () => {
                     ) : (
                       <Menu.Item>
                         {({ active }) => (
-                          <>
-                            <button
-                              className={cn(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
-                              onClick={() => {
-                                setIsLoginModalOpen(true);
-                              }}
-                            >
-                              로그인
-                            </button>
-                          </>
+                          <button
+                            className={cn(active && 'bg-gray-100', 'flex w-full px-4 py-2 text-sm text-gray-700')}
+                            onClick={() => {
+                              setIsLoginModalOpen(true);
+                            }}
+                          >
+                            로그인
+                          </button>
                         )}
                       </Menu.Item>
                     )}
@@ -155,7 +145,7 @@ const Navbar = () => {
                   </Dialog.Title>
 
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">
+                    <p className="pt-3 text-sm text-gray-500 border-t">
                       안녕하세요.{' '}
                       <i className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
                         LinkGraph
