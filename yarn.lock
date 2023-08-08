@@ -3635,6 +3635,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hyunjin/hooks@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "@hyunjin/hooks@npm:0.0.6"
+  peerDependencies:
+    react: ^16.8.0  || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0  || ^17.0.0 || ^18.0.0
+  checksum: 30b6739e6b23b7031ed6c1bf215920770cfe9eeaddd035050752f672bd7016e9b2708210f9db12b1157fbe561972420fb01e86e19cb52ed2aa8d884687284ab7
+  languageName: node
+  linkType: hard
+
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
   resolution: "@isaacs/cliui@npm:8.0.2"
@@ -4121,6 +4131,7 @@ __metadata:
     "@headlessui/react": ^1.7.16
     "@heroicons/react": ^2.0.18
     "@hookform/resolvers": ^3.1.1
+    "@hyunjin/hooks": ^0.0.6
     "@linkgraph/db": "*"
     "@linkgraph/site-info": "*"
     "@linkgraph/utils": "*"

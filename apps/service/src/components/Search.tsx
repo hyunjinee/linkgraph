@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { SearchIcon, X } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
+import { useDebounce } from '@hyunjin/hooks';
 
 import type { User } from '.prisma/client';
 import Spinner from './Spinner';
-import { useDebounce } from '~/hooks/useDebounce';
 import { cn } from '~/utils/className';
 import { useOnClickOutside } from '~/hooks/useOnClickOutside';
 

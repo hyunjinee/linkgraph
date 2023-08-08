@@ -16,6 +16,7 @@
     "@headlessui/react": "^1.7.16",
     "@heroicons/react": "^2.0.18",
     "@hookform/resolvers": "^3.1.1",
+    "@hyunjin/hooks": "^0.0.6",
     "@linkgraph/db": "*",
     "@linkgraph/site-info": "*",
     "@linkgraph/utils": "*",
