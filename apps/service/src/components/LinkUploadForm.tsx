@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
+import { useRouter } from 'next/navigation';
 
 import { useAuth } from '../hooks/useAuth';
 import { useOnClickOutside } from '../hooks/useOnClickOutside';
@@ -10,6 +11,7 @@ import { useUpload } from '../hooks/useUpload';
 import { useCreateLink } from '../queries/link';
 
 const LinkUploadForm = () => {
+  const router = useRouter();
   const [linkTitle, setLinkTitle] = useState('');
   const [linkURL, setLinkURL] = useState('');
   const [imageBlobURL, setImageBlobURL] = useState('');
@@ -54,14 +56,13 @@ const LinkUploadForm = () => {
     });
 
     handleClear();
+    router.refresh();
   };
 
   return (
     <section className="w-full lg:w-1/2">
-      {/* title */}
       <h2 className="mb-4 text-xl font-semibold">링크 업로드</h2>
 
-      {/* link images, colors */}
       <div className="flex justify-center gap-10 mb-4">
         <div
           onClick={handleImageUpload}
