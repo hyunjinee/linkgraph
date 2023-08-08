@@ -12,6 +12,7 @@ const LinkListContent = ({ userId }: LinkListProps) => {
       <h2 className="mb-3 text-xl font-semibold">링크 목록</h2>
       {/* TODO Change Skeleton (Size -> mobile, PC) */}
       <Suspense fallback={<LinkListSkeleton />}>
+        {/* @ts-expect-error Server Component */}
         <LinkList userId={userId} />
       </Suspense>
     </section>
