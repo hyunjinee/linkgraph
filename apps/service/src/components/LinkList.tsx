@@ -1,14 +1,17 @@
-'use client';
-
 import Link from '~/components/Link';
-import { useLink } from '~/queries/link';
 
 type LinkListProps = {
   userId: string;
 };
 
-const LinkList = ({ userId }: LinkListProps) => {
-  const { links } = useLink(userId);
+const LinkList = async ({ userId }: LinkListProps) => {
+  const res = await fetch(
+    process.env.NODE_ENV === 'production'
+      ? 'https://link-graph.vercel.app/api/link?userId=' + userId
+      : 'http://localhost:3000/api/link?userId=' + userId,
+  );
+
+  const links = (await res.json()) as Link[];
 
   return (
     <>

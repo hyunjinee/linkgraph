@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { useLinkDeleteModalActions } from '~/hooks/useLinkDeleteModalStore';
 import { cn } from '~/utils/className';
