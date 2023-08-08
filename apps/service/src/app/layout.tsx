@@ -9,6 +9,7 @@ import { Navbar, Core } from '~/components';
 import { authOptions } from './api/auth/[...nextauth]/route';
 import { cn } from '~/utils/className';
 import TestModal from '~/components/TestModal';
+import LinkDeleteModal from '~/components/LinkDeleteModal';
 
 export const metadata: Metadata = {
   title: 'LinkGraph',
@@ -30,6 +31,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
         </Core>
 
         <TestModal />
+        <LinkDeleteModal />
       </body>
     </html>
   );
