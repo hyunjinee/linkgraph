@@ -11,9 +11,7 @@ export const revalidate = 0;
 export const dynamic = 'force-dynamic';
 
 const GraphPage = async ({ params: { userId } }: { params: { userId: string } }) => {
-  /*
-    유저의 Id로 넘어오는 값이 uuid 일수도 있지만 유저가 설정한 URL이 올 수도 있다.
-  */
+  // 유저의 Id로 넘어오는 값이 uuid 일수도 있지만 유저가 설정한 URL이 올 수도 있다.
   const user = await getUserByIdOrURL(userId);
 
   if (!user) {
