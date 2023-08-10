@@ -8,7 +8,7 @@ import { pretendard } from './fonts';
 import { Navbar, Core } from '~/components';
 import { authOptions } from './api/auth/[...nextauth]/route';
 import { cn } from '~/utils/className';
-import TestModal from '~/components/TestModal';
+import LinkUploadModal from '~/components/LinkUploadModal';
 import LinkDeleteModal from '~/components/LinkDeleteModal';
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
           {children}
         </Core>
 
-        <TestModal />
+        <LinkUploadModal />
         <LinkDeleteModal />
       </body>
     </html>
