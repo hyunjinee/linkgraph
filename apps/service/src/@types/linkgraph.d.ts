@@ -17,5 +17,6 @@ type ForcedNode = d3.SimulationNodeDatum & {
   size: number;
   url?: string;
   color?: string | null;
+  title?: string | null;
 };
 type ForcedLink = d3.SimulationLinkDatum<ForcedNode>;
