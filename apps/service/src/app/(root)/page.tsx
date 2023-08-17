@@ -23,7 +23,7 @@ const Graph = async () => {
   const links: ForcedLink[] = userLinks.map((link) => ({ source: user.id, target: link.id }));
 
   userLinks.forEach((link) => {
-    nodes.push({ id: link.id, img: link.image || '', size: 40, url: link.url, color: link.color });
+    nodes.push({ id: link.id, img: link.image || '', size: 40, url: link.url, color: link.color, title: link.title });
   });
 
   return (

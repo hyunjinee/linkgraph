@@ -53,14 +53,6 @@ const Graph = ({ nodes, links }: GraphProps) => {
 
     zoom(svg);
 
-    const tooltip = d3
-      .select('body')
-      .append('div')
-      .attr('class', 'tooltip')
-      .style('position', 'absolute')
-      .style('visibility', 'hidden')
-      .text('hi');
-
     const simulation = d3
       .forceSimulation(nodes as any)
       .force(
@@ -95,6 +87,17 @@ const Graph = ({ nodes, links }: GraphProps) => {
     const nodeList = nodeGroup.selectAll('g').data(nodes).join('g');
 
     nodeList.each(function (d: any) {
+      let tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>;
+      if (d.title) {
+        tooltip = d3
+          .select('body')
+          .append('div')
+          .attr('class', 'tooltip')
+          .style('position', 'absolute')
+          .style('visibility', 'hidden')
+          .text(d.title);
+      }
+
       if (d.img) {
         d3.select(this)
           .append('foreignObject')
@@ -103,29 +106,23 @@ const Graph = ({ nodes, links }: GraphProps) => {
           .attr('class', 'node')
           .call(dragInteraction as any)
           .on('click', () => {
-            if (d.url.startsWith('https')) {
-              window.open('https://github.com/hyunjinee');
-            }
+            window.open(d.url, '_blank');
           })
           .on('mouseover.tooltip', function (d, e) {
             // d3.select(this).transition().duration(300).style('opacity', 1);
             // tooltip.html('ID: hi');
-            return tooltip.style('visibility', 'visible');
-            // console.log('hi');
+            return tooltip?.style('visibility', 'visible');
 
             // .style('left', e.pageX + 'px')
             // .style('top', (e.pageY as any) + 10 + 'px');
           })
           .on('mousemove.tooltip', function (e) {
-            // console.log(d);
-            // console.log(e);
-            return tooltip.style('top', e.pageY - 10 + 'px').style('left', e.pageX + 10 + 'px');
+            return tooltip?.style('top', e.pageY - 10 + 'px').style('left', e.pageX + 10 + 'px');
           })
           .on('mouseout', function () {
-            return tooltip.style('visibility', 'hidden');
+            return tooltip?.style('visibility', 'hidden');
           })
           .style('user-select', 'none')
-
           .append('xhtml:img')
           .attr('src', () => d.img || '')
           .style('width', '80px')
