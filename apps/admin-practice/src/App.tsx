@@ -1,12 +1,13 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useContext, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
+import { DarkModeContext, DarkModeContextProvider } from './context/darkmode';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { darkMode } = useContext(DarkModeContext);
 
   return (
-    <div>
+    <div className={darkMode ? 'app dark' : 'app'}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
