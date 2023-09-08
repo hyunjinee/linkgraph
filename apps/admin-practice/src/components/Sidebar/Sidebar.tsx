@@ -14,6 +14,8 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { useContext } from 'react';
+import { DarkModeContext } from '../../context/darkmode';
 
 const SidebarContainer = styled.div`
   flex: 1;
@@ -68,6 +70,12 @@ const List = styled.li`
 `;
 
 export default function Sidebar() {
+  const { dispatch } = useContext(DarkModeContext);
+
+  if (!dispatch) {
+    return null;
+  }
+
   return (
     <SidebarContainer>
       <Top>
@@ -178,8 +186,8 @@ export default function Sidebar() {
           }
         `}
       >
-        <div className="colorOption"></div>
-        <div className="colorOption"></div>
+        <div className="colorOption" onClick={() => dispatch({ type: 'LIGHT' })}></div>
+        <div className="colorOption" onClick={() => dispatch({ type: 'DARK' })}></div>
       </div>
     </SidebarContainer>
   );
