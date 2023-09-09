@@ -13,7 +13,9 @@ const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   return (
     <>
-      <Alert message="로그인 중 오류가 발생했습니다." type="warning" />
+      {/* <div className="mb-3">
+        <Alert message="로그인 중 오류가 발생했습니다." type="warning" />
+      </div> */}
 
       <Form<LoginFormValue>>
         <Form.Item name="username" rules={[{ required: true, message: '아이디를 입력해주세요' }]}>
