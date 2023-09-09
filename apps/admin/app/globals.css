@@ -8,3 +8,5 @@
     font-size: 14px;
   }
 }
+
+@import '../styles/_spinner.css';

@@ -19,10 +19,10 @@ const Sidebar = ({ isSidebarOpened, setSidebarOpened }: SidebarProps) => {
         !isSidebarOpened && 'sm:hidden'
       }`}
     >
-      <div className="flex h-full flex-col">
+      <div className="flex flex-col h-full">
         <div className="flex">
           <div className="shrink-0">
-            <Link href="/" className="flex h-12 w-12 items-center justify-center rounded-lg bg-red-200 text-white">
+            <Link href="/" className="flex items-center justify-center w-12 h-12 text-white bg-red-200 rounded-lg">
               {/* session user name으로 바꾸기 */}P
             </Link>
           </div>
@@ -36,11 +36,11 @@ const Sidebar = ({ isSidebarOpened, setSidebarOpened }: SidebarProps) => {
         <div>
           <div className="flex justify-end">
             <button
-              className="flex h-12 w-12 items-center rounded hover:bg-gray-200"
+              className="flex items-center w-12 h-12 rounded hover:bg-gray-200"
               onClick={() => setSidebarOpened(false)}
             >
-              <ChevronLeft className="h-3 w-3" />
-              <MenuIcon className="h-5 w-5" />
+              <ChevronLeft className="w-3 h-3" />
+              <MenuIcon className="w-5 h-5" />
             </button>
           </div>
         </div>
