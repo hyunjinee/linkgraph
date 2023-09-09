@@ -1,21 +1,21 @@
-class ErrorBoundary extends React.Component {
-  constructor(props: unknown) {
-    super(props);
-    this.state = { hasError: false };
-  }
+// class ErrorBoundary extends React.Component {
+//   constructor(props: unknown) {
+//     super(props);
+//     this.state = { hasError: false };
+//   }
 
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
+//   static getDerivedStateFromError(error) {
+//     return { hasError: true };
+//   }
 
-  render() {
-    if (this.state.hasError) {
-      return this.props.fallback;
-    }
+//   render() {
+//     if (this.state.hasError) {
+//       return this.props.fallback;
+//     }
 
-    return this.props.children;
-  }
-}
+//     return this.props.children;
+//   }
+// }
 
 /**
  * ErrorBoundary
