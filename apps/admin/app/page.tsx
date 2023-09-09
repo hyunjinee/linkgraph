@@ -6,8 +6,8 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { Table } from 'antd';
 import { ChevronRight, MenuIcon } from 'lucide-react';
 
-import Sidebar from '~/components/Sidebar/Sidebar';
 import Statistic from '~/components/Statistic';
+import Sidebar from '~/components/Sidebar/Sidebar';
 import { useDashboard } from './queries/dashboard';
 import { ColumnsType } from 'antd/es/table';
 
