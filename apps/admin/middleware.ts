@@ -1,7 +1,3 @@
-// export { default } from 'next-auth/middleware';
-// export const config = { matcher: ['/playground'] };
-
-// /middleware.ts
 import { NextResponse } from 'next/server';
 
 export function middleware(request: Request) {
