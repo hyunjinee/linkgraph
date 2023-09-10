@@ -1,11 +1,13 @@
-import { getServerSession } from 'next-auth';
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, NextPageContext } from 'next';
+import { headers } from 'next/headers';
+
 import { Inter } from 'next/font/google';
 import { Suspense, type PropsWithChildren } from 'react';
 
 import Core from '~/components/Core';
 import { authOptions } from './api/auth/[...nextauth]/route';
+import Sidebar from '~/components/Sidebar/Sidebar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,12 +16,19 @@ export const metadata: Metadata = {
   description: 'Admin Dashboard for LinkGraph',
 };
 
-const RootLayout = async ({ children }: PropsWithChildren) => {
-  const session = await getServerSession(authOptions);
+const RootLayout = ({ children }: PropsWithChildren) => {
+  const headerList = headers();
+  const isLoginPage = headerList.get('x-url')?.includes('/login');
+
   return (
     <html lang="ko" className="h-full">
       <body className={`${inter.className} h-full`} suppressHydrationWarning={true}>
-        <Core>{children}</Core>
+        <Core>
+          <div className="flex w-full h-full">
+            {isLoginPage ? null : <Sidebar />}
+            {children}
+          </div>
+        </Core>
       </body>
     </html>
   );

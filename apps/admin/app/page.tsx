@@ -72,22 +72,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex h-full">
-      {/* 사이드바 */}
-      <Sidebar isSidebarOpened={isSidebarOpened} setSidebarOpened={setIsSidebarOpened} />
-      {!isSidebarOpened && (
-        <div className="fixed bottom-5 left-5">
-          <button
-            className="flex items-center justify-center w-12 h-12 bg-white border rounded opacity-50 enable-transition hover:opacity-100"
-            onClick={() => setIsSidebarOpened(true)}
-          >
-            <MenuIcon className="w-5 h-5" />
-            <ChevronRight className="w-3 h-3" />
-          </button>
-        </div>
-      )}
-
-      {/* 메인 섹션 */}
+    <div className="flex w-full h-full">
       <div className="flex flex-col w-full px-5 pb-5 sm:px-10">
         <h2 className="my-5 text-xl">👋 {session?.user.name || '관리자'}님 안녕하세요!</h2>
 
