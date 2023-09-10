@@ -79,7 +79,11 @@ const Home = () => {
 
         <Table dataSource={dataSource} columns={columns as any} />
 
-        <Toggle></Toggle>
+        <Toggle onToggle={(on: boolean) => console.log(on + "입니다")}>
+          <Toggle.On>켜짐</Toggle.On>
+          <Toggle.Off>꺼짐</Toggle.Off>
+          <Toggle.Button />
+        </Toggle>
       </div>
     </div>
   );
