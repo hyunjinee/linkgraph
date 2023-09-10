@@ -2,16 +2,10 @@
 
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight, MenuIcon } from 'lucide-react';
-import { useSession } from 'next-auth/react';
 
 import Profile from './Profile';
 import MainMenu from './MainMenu';
 import { useState } from 'react';
-
-// type Props = {
-//   isSidebarOpened: boolean;
-//   setSidebarOpened: React.Dispatch<React.SetStateAction<boolean>>;
-// };
 
 const Sidebar = () => {
   const [isSidebarOpened, setIsSidebarOpened] = useState(true);

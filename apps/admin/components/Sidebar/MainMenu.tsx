@@ -53,20 +53,18 @@ const MainMenu = () => {
       <ul className={styles.menu}>
         {mainMenuData.map((menu) => {
           return (
-            <>
-              <li key={menu.id}>
-                <Link
-                  href={{
-                    pathname: menu.link?.path ?? '/',
-                    query: menu.link?.query,
-                  }}
-                >
-                  {menu.icon}
-                  <span>{menu.name}</span>
-                  <ChevronRight className="" />
-                </Link>
-              </li>
-            </>
+            <li key={menu.id}>
+              <Link
+                href={{
+                  pathname: menu.link?.path ?? '/',
+                  query: menu.link?.query,
+                }}
+              >
+                {menu.icon}
+                <span>{menu.name}</span>
+                <ChevronRight className="" />
+              </Link>
+            </li>
           );
         })}
       </ul>
