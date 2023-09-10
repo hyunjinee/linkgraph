@@ -4,15 +4,14 @@ import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Table } from 'antd';
-import { ChevronRight, MenuIcon } from 'lucide-react';
 
 import Statistic from '~/components/Statistic';
 import Sidebar from '~/components/Sidebar/Sidebar';
 import { useDashboard } from './queries/dashboard';
 import { ColumnsType } from 'antd/es/table';
+import Toggle from '~/components/Toggle/Toggle';
 
 const Home = () => {
-  const [isSidebarOpened, setIsSidebarOpened] = useState(true);
   const { data: session } = useSession();
   const { data } = useQuery(['users'], async () => {
     const res = await fetch('/api/users');
@@ -79,6 +78,8 @@ const Home = () => {
         <Statistic data={dashboardData} />
 
         <Table dataSource={dataSource} columns={columns as any} />
+
+        <Toggle></Toggle>
       </div>
     </div>
   );
