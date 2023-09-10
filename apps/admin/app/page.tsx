@@ -4,15 +4,14 @@ import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Table } from 'antd';
-import { ChevronRight, MenuIcon } from 'lucide-react';
 
 import Statistic from '~/components/Statistic';
 import Sidebar from '~/components/Sidebar/Sidebar';
 import { useDashboard } from './queries/dashboard';
 import { ColumnsType } from 'antd/es/table';
+import Toggle from '~/components/Toggle/Toggle';
 
 const Home = () => {
-  const [isSidebarOpened, setIsSidebarOpened] = useState(true);
   const { data: session } = useSession();
   const { data } = useQuery(['users'], async () => {
     const res = await fetch('/api/users');
@@ -72,28 +71,19 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex h-full">
-      {/* 사이드바 */}
-      <Sidebar isSidebarOpened={isSidebarOpened} setSidebarOpened={setIsSidebarOpened} />
-      {!isSidebarOpened && (
-        <div className="fixed bottom-5 left-5">
-          <button
-            className="flex items-center justify-center w-12 h-12 bg-white border rounded opacity-50 enable-transition hover:opacity-100"
-            onClick={() => setIsSidebarOpened(true)}
-          >
-            <MenuIcon className="w-5 h-5" />
-            <ChevronRight className="w-3 h-3" />
-          </button>
-        </div>
-      )}
-
-      {/* 메인 섹션 */}
+    <div className="flex w-full h-full">
       <div className="flex flex-col w-full px-5 pb-5 sm:px-10">
         <h2 className="my-5 text-xl">👋 {session?.user.name || '관리자'}님 안녕하세요!</h2>
 
         <Statistic data={dashboardData} />
 
         <Table dataSource={dataSource} columns={columns as any} />
+
+        <Toggle onToggle={(on: boolean) => console.log(on + "입니다")}>
+          <Toggle.On>켜짐</Toggle.On>
+          <Toggle.Off>꺼짐</Toggle.Off>
+          <Toggle.Button />
+        </Toggle>
       </div>
     </div>
   );
