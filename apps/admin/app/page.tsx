@@ -1,15 +1,13 @@
 'use client';
 
-import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Table } from 'antd';
 
 import Statistic from '~/components/Statistic';
-import Sidebar from '~/components/Sidebar/Sidebar';
 import { useDashboard } from './queries/dashboard';
 import { ColumnsType } from 'antd/es/table';
-import Toggle from '~/components/Toggle/Toggle';
+import Accordian from '~/components/Accordian/AccordianNotCompound';
 
 const Home = () => {
   const { data: session } = useSession();
@@ -76,14 +74,18 @@ const Home = () => {
         <h2 className="my-5 text-xl">👋 {session?.user.name || '관리자'}님 안녕하세요!</h2>
 
         <Statistic data={dashboardData} />
-
         <Table dataSource={dataSource} columns={columns as any} />
 
-        <Toggle onToggle={(on: boolean) => console.log(on + "입니다")}>
-          <Toggle.On>켜짐</Toggle.On>
-          <Toggle.Off>꺼짐</Toggle.Off>
-          <Toggle.Button />
-        </Toggle>
+        <Accordian
+          title="아코디안"
+          contents={
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat tenetur reiciendis excepturi deserunt
+              dolores, at quae? Odit veniam libero, incidunt in illo eius praesentium quia rerum eaque illum
+              perspiciatis sint.
+            </p>
+          }
+        />
       </div>
     </div>
   );

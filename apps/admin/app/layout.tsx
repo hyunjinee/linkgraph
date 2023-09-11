@@ -3,10 +3,9 @@ import type { Metadata, NextPageContext } from 'next';
 import { headers } from 'next/headers';
 
 import { Inter } from 'next/font/google';
-import { Suspense, type PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 
 import Core from '~/components/Core';
-import { authOptions } from './api/auth/[...nextauth]/route';
 import Sidebar from '~/components/Sidebar/Sidebar';
 
 const inter = Inter({ subsets: ['latin'] });

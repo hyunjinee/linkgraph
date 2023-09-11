@@ -3,7 +3,6 @@
 import { Alert, Button, Form, Input } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { signIn } from 'next-auth/react';
-import Link from 'next/link';
 import { useState } from 'react';
 
 type LoginFormValue = {
@@ -19,7 +18,6 @@ const LoginForm = () => {
     setIsLoading(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
       await signIn('login-credentials', { username: value.username, password: value.password });
     } catch (error) {
       console.log(error);
