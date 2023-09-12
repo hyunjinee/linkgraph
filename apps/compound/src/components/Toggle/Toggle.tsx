@@ -1,6 +1,7 @@
 import { type PropsWithChildren, createContext, useCallback, useState, useContext, useEffect } from 'react';
 import Switch from './Switch';
 import { useUpdateEffect } from '@hyunjin/hooks';
+
 const ToggleContext = createContext<{
   on: boolean;
   toggle: () => void;

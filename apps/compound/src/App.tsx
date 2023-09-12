@@ -1,12 +1,26 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { css } from '@emotion/react';
 import './App.css';
+import Counter from './components/Counter';
 
 function App() {
-  const [count, setCount] = useState(0);
+  return (
+    <>
+      <Counter>
+        <Counter.Monitor />
+        <div
+          css={css`
+            display: flex;
+            flex-direction: column;
 
-  return <></>;
+            margin-bottom: 1rem;
+          `}
+        >
+          <Counter.Up amount={3} />
+          <Counter.Down amount={1} />
+        </div>
+      </Counter>
+    </>
+  );
 }
 
 export default App;
