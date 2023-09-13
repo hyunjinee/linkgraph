@@ -6,10 +6,10 @@ export default function PageLayout({ children }: PropsWithChildren) {
     <div
       css={css`
         max-width: 650px;
+        height: 100vh;
         width: 100%;
         padding: 0 4%;
         margin: 0 auto;
-        background-color: red;
       `}
     >
       {children}
