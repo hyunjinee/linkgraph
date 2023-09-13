@@ -4037,13 +4037,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hyunjin/hooks@npm:^0.0.16":
-  version: 0.0.16
-  resolution: "@hyunjin/hooks@npm:0.0.16"
+"@hyunjin/hooks@npm:^0.0.17":
+  version: 0.0.17
+  resolution: "@hyunjin/hooks@npm:0.0.17"
   peerDependencies:
     react: ^16.8.0  || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0  || ^17.0.0 || ^18.0.0
-  checksum: 7d1484a5f6120f0780de48e2f43182182db9c4199acfea93365a48be63033e2fddc1b1aa1ea4a8a5dd42f4ee84c56559cab1b60abbb02edb3997d43db12a8266
+  checksum: 64663aca77dd29d6f5a505090023ac06250636adc22ed09f161671ef3a810c27b80452b8b7111394110211213bcd5d532407d58e4847e7535a6690aa209540ca
   languageName: node
   linkType: hard
 
@@ -11683,12 +11683,13 @@ __metadata:
   resolution: "compound@workspace:apps/compound"
   dependencies:
     "@emotion/react": ^11.11.1
-    "@hyunjin/hooks": ^0.0.16
+    "@hyunjin/hooks": ^0.0.17
     "@types/react": ^18.2.15
     "@types/react-dom": ^18.2.7
     "@typescript-eslint/eslint-plugin": ^6.0.0
     "@typescript-eslint/parser": ^6.0.0
     "@vitejs/plugin-react": ^4.0.3
+    emotion-normalize: ^11.0.1
     eslint: ^8.45.0
     eslint-plugin-react-hooks: ^4.6.0
     eslint-plugin-react-refresh: ^0.4.3
@@ -13415,6 +13416,16 @@ __metadata:
   version: 3.2.0
   resolution: "emoticon@npm:3.2.0"
   checksum: f30649d18b672ab3139e95cb04f77b2442feb95c99dc59372ff80fbfd639b2bf4018bc68ab0b549bd765aecf8230d7899c43f86cfcc7b6370c06c3232783e24f
+  languageName: node
+  linkType: hard
+
+"emotion-normalize@npm:^11.0.1":
+  version: 11.0.1
+  resolution: "emotion-normalize@npm:11.0.1"
+  peerDependencies:
+    "@emotion/react": ^11.0.0
+    react: ">=16.3.0"
+  checksum: f33c6ac75eca2d52d84cad99e359c0e73f78f814377121743c6002edb903864d8ad0adaf2a760dfac5a9c18dc5591ef01a7985f5c223973b10e7d20fa706f226
   languageName: node
   linkType: hard
 

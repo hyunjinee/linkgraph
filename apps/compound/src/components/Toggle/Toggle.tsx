@@ -1,20 +1,16 @@
 import { type PropsWithChildren, createContext, useCallback, useState, useContext, useEffect } from 'react';
 import Switch from './Switch';
-import { useUpdateEffect } from '@hyunjin/hooks';
+import { useSafeContext, useUpdateEffect } from '@hyunjin/hooks';
 
 const ToggleContext = createContext<{
   on: boolean;
   toggle: () => void;
 } | null>(null);
 
+ToggleContext.displayName = 'ToggleContext';
+
 const useToggleContext = () => {
-  const context = useContext(ToggleContext);
-
-  if (!context) {
-    throw new Error('Toggle compound components cannot be rendered outside the Toggle component');
-  }
-
-  return context;
+  return useSafeContext(ToggleContext);
 };
 
 const Toggle = ({
