@@ -4037,16 +4037,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hyunjin/hooks@npm:^0.0.17":
-  version: 0.0.17
-  resolution: "@hyunjin/hooks@npm:0.0.17"
-  peerDependencies:
-    react: ^16.8.0  || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0  || ^17.0.0 || ^18.0.0
-  checksum: 64663aca77dd29d6f5a505090023ac06250636adc22ed09f161671ef3a810c27b80452b8b7111394110211213bcd5d532407d58e4847e7535a6690aa209540ca
-  languageName: node
-  linkType: hard
-
 "@hyunjin/hooks@npm:^0.0.6":
   version: 0.0.6
   resolution: "@hyunjin/hooks@npm:0.0.6"
@@ -4054,6 +4044,16 @@ __metadata:
     react: ^16.8.0  || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0  || ^17.0.0 || ^18.0.0
   checksum: 30b6739e6b23b7031ed6c1bf215920770cfe9eeaddd035050752f672bd7016e9b2708210f9db12b1157fbe561972420fb01e86e19cb52ed2aa8d884687284ab7
+  languageName: node
+  linkType: hard
+
+"@hyunjin/hooks@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@hyunjin/hooks@npm:1.0.0"
+  peerDependencies:
+    react: ^16.8.0  || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0  || ^17.0.0 || ^18.0.0
+  checksum: bfb5ab23fcf56f286095fbf3866a047c2f56f9a34be6554b8697480071358ca6d0f2061e1bcb4db901049a3492e0331a7a34d9322789e4a92c7c80fde25971ac
   languageName: node
   linkType: hard
 
@@ -11683,7 +11683,7 @@ __metadata:
   resolution: "compound@workspace:apps/compound"
   dependencies:
     "@emotion/react": ^11.11.1
-    "@hyunjin/hooks": ^0.0.17
+    "@hyunjin/hooks": ^1.0.0
     "@types/react": ^18.2.15
     "@types/react-dom": ^18.2.7
     "@typescript-eslint/eslint-plugin": ^6.0.0
