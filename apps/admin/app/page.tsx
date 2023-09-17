@@ -34,13 +34,10 @@ const Home = () => {
 
   const { data: dashboardData } = useDashboard();
 
-  // TODO: fix this
-  const dataSource: readonly any[] | undefined = [];
-  // data &&
-  // data?.map((d: any) => ({
-  //   ...d,
-  //   key: d.id,
-  // }));
+  const dataSource = data?.map((d: any) => ({
+    ...d,
+    key: d.id,
+  }));
 
   const columns = [
     {
@@ -74,18 +71,8 @@ const Home = () => {
         <h2 className="my-5 text-xl">👋 {session?.user.name || '관리자'}님 안녕하세요!</h2>
 
         <Statistic data={dashboardData} />
+        <div className="mb-2"></div>
         <Table dataSource={dataSource} columns={columns as any} />
-
-        <Accordian
-          title="아코디안"
-          contents={
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat tenetur reiciendis excepturi deserunt
-              dolores, at quae? Odit veniam libero, incidunt in illo eius praesentium quia rerum eaque illum
-              perspiciatis sint.
-            </p>
-          }
-        />
       </div>
     </div>
   );

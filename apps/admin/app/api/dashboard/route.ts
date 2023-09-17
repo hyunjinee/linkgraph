@@ -1,5 +1,7 @@
+import { NextResponse } from 'next/server';
+
 export const GET = async () => {
-  return {
+  return NextResponse.json({
     visitor: {
       value: getRandomInt(1000, 10000),
       rate: getRandomRate(-10, 50),
@@ -12,7 +14,7 @@ export const GET = async () => {
       value: getRandomInt(1000000, 10000000),
       rate: getRandomRate(-10, 50),
     },
-  };
+  });
 };
 
 type Data = {
