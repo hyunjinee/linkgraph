@@ -1,9 +1,5 @@
 import { PropsWithChildren, createContext, useRef, useState } from 'react';
 
-const AccordianContext = createContext(null);
-
-const useAccordionContext = () => {};
-
 type Props = {
   title?: React.ReactNode;
   contents?: React.ReactNode;

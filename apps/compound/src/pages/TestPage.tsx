@@ -26,6 +26,8 @@ export default function TestPage() {
       <Spacing size={24} />
 
       <Button css={{ width: '100%' }}>완료</Button>
+
+      <Accordian></Accordian>
     </main>
   );
 }

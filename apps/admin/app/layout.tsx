@@ -1,7 +1,7 @@
 import './globals.css';
+
 import type { Metadata, NextPageContext } from 'next';
 import { headers } from 'next/headers';
-
 import { Inter } from 'next/font/google';
 import { type PropsWithChildren } from 'react';
 
