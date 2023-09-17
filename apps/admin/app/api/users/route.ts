@@ -3,8 +3,6 @@ import prisma from '@linkgraph/db';
 
 export const GET = async () => {
   const data = await prisma.user.findMany();
-  return NextResponse.json({});
-
   return NextResponse.json(data);
 };
 
@@ -29,7 +27,6 @@ export const POST = async (req: Request) => {
 };
 
 export const DELETE = async (req: Request) => {
-  console.log('hi');
   // const data = await req.json();
 
   // console.log(data);
