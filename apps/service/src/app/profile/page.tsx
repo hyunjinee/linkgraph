@@ -2,7 +2,7 @@ import { getServerSession } from 'next-auth';
 
 import { LinkUploadForm, Profile } from '~/components';
 import { authOptions } from '~/app/api/auth/[...nextauth]/route';
-import LinkListContent from './components/LinkListContent';
+import { LinkListContent } from './components/LinkListContent';
 
 const ProfilePage = async () => {
   const session = await getServerSession(authOptions);

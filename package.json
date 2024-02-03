@@ -1,21 +1,20 @@
 {
   "name": "linkgraph",
-  "packageManager": "yarn@3.6.1",
   "private": true,
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "dev": "yarn workspace @linkgraph/service dev",
-    "d3-poc": "yarn workspace @linkgraph/d3-poc",
-    "admin": "yarn workspace @linkgraph/admin",
-    "docs": "yarn workspace @linkgraph/docs",
-    "d3": "yarn workspace @linkgraph/d3",
-    "db": "yarn workspace @linkgraph/db",
-    "service": "yarn workspace @linkgraph/service",
+    "dev": "pnpm -F @linkgraph/service dev",
+    "d3-poc": "pnpm -F @linkgraph/d3-poc",
+    "admin": "pnpm -F @linkgraph/admin",
+    "docs": "pnpm -F @linkgraph/docs",
+    "d3": "pnpm -F @linkgraph/d3",
+    "db": "pnpm -F @linkgraph/db",
+    "service": "pnpm -F @linkgraph/service",
     "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx",
-    "postinstall": "husky install && yarn db prisma generate"
+    "postinstall": "husky install && pnpm db prisma generate"
   },
   "devDependencies": {
     "@tanstack/react-query-devtools": "^4.29.13",

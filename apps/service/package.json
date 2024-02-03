@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "yarn playwright test"
+    "test": "pnpm playwright test"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.342.0",
@@ -26,8 +26,6 @@
     "@tanstack/react-query": "^4.32.0",
     "@tanstack/react-query-devtools": "^4.29.19",
     "@types/node": "20.1.4",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
     "aws-crt": "^1.15.17",
     "class-variance-authority": "^0.6.0",
@@ -35,7 +33,7 @@
     "d3": "^7.8.5",
     "limiter": "^2.1.0",
     "lucide-react": "^0.263.1",
-    "next": "^13.4.19",
+    "next": "^13.5.6",
     "next-auth": "^4.22.1",
     "postcss": "8.4.23",
     "react": "^18.2.0",
@@ -55,6 +53,8 @@
     "@playwright/test": "^1.36.2",
     "@prisma/nextjs-monorepo-workaround-plugin": "^4.14.1",
     "@types/d3": "^7.4.0",
-    "prisma": "^4.14.1"
+    "prisma": "^4.14.1",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4"
   }
 }
