@@ -2,6 +2,9 @@
 
 유저가 자신을 소개하는 링크를 업로드하면 그래프 형태로 시각화해서 공유할 수 있는 서비스입니다.
 
+- 서비스: https://link-graph.vercel.app/
+- 어드민 페이지: .
+
 <div style="display: flex;">
   <img width="391" height="400" align="top" alt="image" src="https://github.com/hyunjinee/linkgraph/assets/63354527/85103dc0-f6d1-4e85-a4c0-62a2c50ef838">
   <img width="391" height="400" align="top" alt="image" src="https://github.com/hyunjinee/linkgraph/assets/63354527/76963e11-fddd-43ad-945c-88cc4b99310b">
