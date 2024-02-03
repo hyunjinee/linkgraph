@@ -1,5 +1,6 @@
 'use client';
 
+import { ImageSuspense } from 'react-image-suspense';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
