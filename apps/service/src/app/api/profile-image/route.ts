@@ -4,8 +4,6 @@ import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } fro
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import prisma from '@linkgraph/db';
 
-import { authOptions } from '../auth/[...nextauth]/route';
-
 const client = new S3Client({
   region: process.env.AWS_REGION,
   credentials: {

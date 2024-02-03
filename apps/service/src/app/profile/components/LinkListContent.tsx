@@ -15,6 +15,7 @@ export const LinkListContent = ({ userId }: LinkListProps) => {
     <section className="w-full">
       <h2 className="mb-3 text-xl font-semibold">링크 목록</h2>
       <Suspense fallback={<LinkListSkeleton />}>
+        {/* @ts-expect-error Async Server Component */}
         <LinkList userId={userId} />
       </Suspense>
     </section>

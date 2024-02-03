@@ -1,8 +1,8 @@
 import { getServerSession } from 'next-auth';
 
 import { LinkUploadForm, Profile } from '~/components';
-import { authOptions } from '~/app/api/auth/[...nextauth]/route';
 import { LinkListContent } from './components/LinkListContent';
+import { authOptions } from '~/auth-options';
 
 const ProfilePage = async () => {
   const session = await getServerSession(authOptions);

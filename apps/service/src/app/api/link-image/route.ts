@@ -1,8 +1,7 @@
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 import { DeleteObjectCommand, S3Client } from '@aws-sdk/client-s3';
-
-import { authOptions } from '../auth/[...nextauth]/route';
+import { authOptions } from '~/auth-options';
 
 const client = new S3Client({
   region: process.env.AWS_REGION,

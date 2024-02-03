@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma, { countLink } from '@linkgraph/db';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth/[...nextauth]/route';
+import { authOptions } from '~/auth-options';
 
 export const GET = async (req: Request) => {
   const { searchParams } = new URL(req.url);

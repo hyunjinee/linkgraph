@@ -6,10 +6,10 @@ import { getServerSession } from 'next-auth';
 
 import { pretendard } from './fonts';
 import { Navbar, Core } from '~/components';
-import { authOptions } from './api/auth/[...nextauth]/route';
 import { cn } from '~/utils/className';
 import LinkUploadModal from '~/components/LinkUploadModal';
 import LinkDeleteModal from '~/components/LinkDeleteModal';
+import { authOptions } from '~/auth-options';
 
 export const metadata: Metadata = {
   title: 'LinkGraph',
