@@ -1,6 +1,5 @@
 {
   "name": "@linkgraph/components",
-  "packageManager": "yarn@3.5.1",
   "main": "src/index.ts",
   "devDependencies": {
     "@babel/core": "^7.21.8",

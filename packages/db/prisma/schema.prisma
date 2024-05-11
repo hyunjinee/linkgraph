@@ -1,12 +1,13 @@
 generator client {
   provider = "prisma-client-js"
   output = "../../../node_modules/.prisma/client"
+  // output = "../../../apps/service/node_modules/.prisma/client"
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 enum Role {
@@ -16,7 +17,6 @@ enum Role {
 
 model Account {
   id                       String  @id @default(cuid())
-  userId                   String
   type                     String
   provider                 String
   providerAccountId        String
@@ -28,10 +28,14 @@ model Account {
   scope                    String?
   id_token                 String? @db.Text
   session_state            String?
+
+  userId                   String
   user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
   @@index([userId])
+
+  @@map("lg_account")
 }
 
 model Session {
@@ -42,6 +46,7 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+  @@map("lg_session")
 }
 
 model User {
@@ -60,6 +65,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
   links         Link[]
+
+  @@map("lg_user")
 }
 
 model VerificationToken {
@@ -68,6 +75,8 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+
+  @@map("lg_verification_token")
 }
 
 model Link {
@@ -84,5 +93,7 @@ model Link {
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+
+  @@map("lg_link")
 }
 

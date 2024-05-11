@@ -17,9 +17,9 @@
     "@heroicons/react": "^2.0.18",
     "@hookform/resolvers": "^3.1.1",
     "@hyunjin/hooks": "^1.1.2",
-    "@linkgraph/db": "*",
-    "@linkgraph/site-info": "*",
-    "@linkgraph/utils": "*",
+    "@linkgraph/db": "workspace:^",
+    "@linkgraph/site-info": "workspace:^",
+    "@linkgraph/utils": "workspace:^",
     "@next-auth/prisma-adapter": "^1.0.6",
     "@next/bundle-analyzer": "^13.4.12",
     "@prisma/client": "^4.14.1",
@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.36.2",
-    "@prisma/nextjs-monorepo-workaround-plugin": "^4.14.1",
+    "@prisma/nextjs-monorepo-workaround-plugin": "^4.16.2",
     "@types/d3": "^7.4.0",
     "prisma": "^4.14.1"
   }

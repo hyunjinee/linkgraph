@@ -1,6 +1,5 @@
 {
   "name": "@linkgraph/d3",
-  "packageManager": "yarn@3.5.1",
   "main": "src/index.ts",
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.23",

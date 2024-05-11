@@ -14,14 +14,15 @@ export const getPresignedURL = async (body: { name: string; type: string }) => {
 
 export const uploadURLToServer = async () => {};
 
-export const uploadImageToS3 = async (presignedURL: string, image: File) =>
-  await fetch(presignedURL, {
+export const uploadImageToS3 = async (presignedURL: string, image: File) => {
+  return await fetch(presignedURL, {
     method: 'PUT',
     body: image,
     headers: {
       'Content-type': image.type,
     },
   });
+};
 
 export const checkImageSize = (fileSizeInMB: number) => {
   if (fileSizeInMB > 4) {

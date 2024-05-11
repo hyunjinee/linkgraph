@@ -1,6 +1,5 @@
 {
   "name": "@linkgraph/lib",
-  "packageManager": "yarn@3.6.0",
   "main": "./src/index.ts",
   "type": "module",
   "dependencies": {
